@@ -1,12 +1,95 @@
-.container {
+.hello {
+  font-size: 8rem;
+  position: relative;
+  right: 10px;
+}
+
+.relishContacts {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100vh;
+  /* background-color: red; */
+  width: 5rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.relish {
+  writing-mode: vertical-rl;
+  font-size: 1rem;
+  color: #4cd964;
+}
+
+.introContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.block {
+  height: 30rem;
+  width: 25rem;
+  /* background-color: cornsilk; */
+}
+
+.button {
+  position: absolute;
+  right: 10rem;
+  top: 2rem;
+  /* padding: 2rem; */
   
 }
 
-.skills { /* This is not Being Used */
-  position: relative;
-} 
+.buttonContent {
+  background-color: #FF4655;
+  width: 12rem;
+  height: 3.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  display: flex;
+  justify-content:center;
+  align-items:center;
+  margin: 5px;
+}
+.btntopleft {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 1px;
+  width: 5rem;
+  background-color: #f6f6f6;
+}
+.btnleft {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 3rem;
+  width: 0.8px;
+  background-color: #f6f6f6;
+}
+.btnbotright {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 3rem;
+  width: 1px;
+  background-color: #f6f6f6;
+}
+.btnbot {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 0.8px;
+  width: 5rem;
+  background-color: #f6f6f6;
+}
 
-
+.socials {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  min-height: 15rem;
+}

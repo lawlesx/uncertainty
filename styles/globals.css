@@ -3,170 +3,94 @@
   padding: 0;
   box-sizing: border-box;
 }
+body {
+  background-color: #1a1a1a;
+  font-family: 'Quicksand', sans-serif;
+  color: #f6f6f6;
+}
+h1,h2,h3 {
+  font-family: 'Montserrat', serif;
+  color: #f6f6f6;
+  font-weight:normal;
+}
 
-.outterIntro {
-  height: auto;
-  width: auto;
-  background: #0F0F0F;
+nav {
+  position: fixed;
+  top: 0;
+  height: 100vh;
+  width: 5rem;
+  background-color: #f6f6f6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.navLinks {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 2rem;
+}
+
+.navLinks a{
+  text-decoration: none;
+  color: #1a1a1a;
+  font-family: 'Montserrat';
+  font-weight: 500;
+  height: 5rem;
+}
+
+.logo {
+  margin-top: auto;
+  margin-bottom:2rem;
+  color: #4cd964;
+  transform: rotate(-90deg);
+  /* background-color: #ddd; */
+  /* width:20vw; */
   /* display: flex;
-  flex-direction: column; */
+  justify-content:center;
+  align-items:center; */
+  margin-bottom: 15vh;
 }
 
 .intro {
-  display: grid;
-  grid-template-columns: 0.5fr 0.2fr 1.8fr;
-  grid-template-rows: 0.5fr 0.2fr 1.8fr;
-  grid-column-gap: 1.5rem;
-  grid-row-gap: 1.5rem;
-}
-
-.intro h2{
-  font-family: 'Arima Madurai', cursive;
-  color: #FF4B6B;
-  font-size: 4rem;
-  padding: 5vh;
-  height: 20vh;
-}
-.intro p{
-  font-family: 'Rubik', sans-serif;
-  color: #f6f6f6;
-  font-weight: 300;
-  font-size: 4rem;
-  grid-column: 2/3;
-  grid-row:2/3;
-}
-
-.intro h1{
-  font-family: 'Arima Madurai', cursive;
-  color: #FF4B6B;
-  font-size: 6rem;
-  grid-column:3/4;
-  grid-row: 3/4;
-}
-
-.skills {
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  /* background: #f6f6f6; */
-  height: auto;
-  width: auto;
-  padding: 5vh 5vh;
-}
-
-.skills div{
-  color: #f6f6f6;
-
-}
-
-.skills div h3{
-  font-family: 'Comfortaa', cursive;
-  font-weight: bold;
-  font-size: 4rem;
-}
-.skills div p{
-  font-family: 'Arima Madurai', cursive;
-  font-weight: 300;
-  font-size: 2rem;
-  padding: 0 0 0 5rem;
-}
-
-.uncertain {
-  background-color: #FF3055;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 5rem;
-}
-.uncertain p,h1{
-  font-family: 'Arima Madurai', cursive;
-  font-weight: bold;
-  font-size: 6rem;
-}
-
-.fusionContainer { 
-  display: grid;
-  grid-template-columns: 1.6fr 0.4fr 1fr;
-  grid-template-rows: 1fr 0.2fr 1fr;
-  grid-column-gap: 1.5rem;
-  grid-row-gap: 1.5rem;
-  margin: 2rem 0;
-}
-.fusionContainer p{
-  font-size: 4rem;
-  font-weight:300;
-  grid-column: 2/3;
-  grid-row: 2/3;
-}
-
-.fusion {
-  display: flex;
-  flex-direction:row;
-  justify-content: space-around;
-}
-.fusion p{
-  font-size: 4rem;
-  font-weight: 400;
-}
-.fusion h2{
-  font-family: 'Arima Madurai', cursive;
-  font-weight: bold;
-  font-size: 4rem;
-  padding: 0 0 0 1rem;
-}
-.uncertain h1 {
-  grid-column: 3/4;
-  grid-row: 3/4;
-}
-.uncertain .wonders {
-  font-family: 'Comfortaa', cursive;
-  font-weight: 300;
-  font-size: 4rem;
-}
-
-.projectsContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #FFD338;
   min-height: 100vh;
-
-}
-.projectsContainer h1 {
-  font-family: 'Courgette', cursive;
-  font-size: 6rem;
-  padding: 2rem;
-  font-weight: normal;
-  
-}
-
-.cards {
-  display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  /* background-color: orange; */
-  align-items: center;
-  width: 80vw;
-  margin: 5rem;
-  /* padding: 2rem; */
+  margin: 0 5rem;
+  padding: 5rem;
 }
-.lcard{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-end;
+.intro h1{
+  font-size: 48px;
 }
 
-.lcard h3{
-  font-family: 'Courgette', cursive;
-  font-size: 8rem;
-  font-weight: normal;
+.intro p{
+  font-size: 36px;
+  padding-top: 10px;
 }
-.lcard p{
-  font-family: 'Arima Madurai', cursive;
-  font-size: 1rem;
-  width: 15rem;
+.scrollContainer {
+  display: flex;
+  flex-direction: row;
+  width: 2rem;
+  height: 20vh;
+  margin-left: 20vh;
+  justify-content: center;
+}
+
+.scrollContainer p{
+  writing-mode: vertical-rl;
+}
+
+body::-webkit-scrollbar {
+  width: 12px;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: #1a1a1a;
+}
+body::-webkit-scrollbar-thumb {
+  background-color: #4cd964;
+  border-radius: 20px;
+  border: 3px solid #1a1a1a;
 }
