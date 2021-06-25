@@ -1,0 +1,52 @@
+.skillsContainer {
+  /* background-color: blue; */
+  margin-left: 4.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content:space-between; 
+  align-items: center;
+  padding: 5rem;
+  min-height: 100vh;
+}
+
+.skillsContainer h1{
+  margin-bottom: 5rem;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background: url(../public/page.svg);
+}
+.pageL {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background: url(../public/pageright.svg);
+
+}
+.page h1{
+  text-align: center;
+  margin: 5rem;
+  font-weight: bold;
+}
+.page p{
+  margin: 0.5rem 5rem;
+}
+
+.pageL h1{
+  text-align: center;
+  margin: 5rem;
+  font-weight: bold;
+}
+.pageL p{
+  margin: 0.5rem 5rem;
+  /* text-align: center; */
+}
+
+.center {
+  text-align: center;
+}

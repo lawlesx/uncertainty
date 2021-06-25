@@ -1,0 +1,58 @@
+.about{
+  display: flex;
+  flex-direction: column;
+  width: 40vw;
+  height: 50vh;
+  justify-content: space-evenly;
+  /* background-color: #f6f6f6; */
+}
+
+.about h1{
+  font-size: 4.5rem;
+  font-weight: 600;
+}
+
+.about p{
+  font-size:1.1rem;
+  letter-spacing: 2px;
+}
+
+.aboutEffects {
+  height: 60vh;
+  width: 30vw;
+  display: flex;
+  /* background-color: grey; */
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+.top {
+  position: absolute;
+  top: 0;
+}
+.bottom {
+  position: absolute;
+  bottom: 0;
+}
+
+.vertTextLeft {
+  writing-mode: vertical-rl;
+  position: absolute;
+  left: 0;
+}
+.vertTextRight {
+  writing-mode: vertical-rl;
+  position: absolute;
+  right: 0;
+}
+.highlight {
+  color: #4cd964;
+  font-weight: 500;
+}
+.highlight:hover {
+  color: #FF4655;
+
+}

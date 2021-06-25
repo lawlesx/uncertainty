@@ -2,8 +2,9 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Intro from '../components/Intro'
 import styles from '../styles/Home.module.css'
-import Uncertainty from '../components/uncertainty'
+import About from '../components/About'
 import Projects from '../components/Projects'
+import Skills from '../components/Skills'
 import Scroll from '../components/Scroll'
 
 
@@ -17,6 +18,8 @@ export default function Home() {
       </Head>
       <Intro />
       <Scroll />
+      <About />
+      <Skills />
     </div>
   )
 }
