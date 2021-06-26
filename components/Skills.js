@@ -4,7 +4,7 @@ import HTMLFlipBook from 'react-pageflip';
 const Skills = () => {
   return ( 
     <div className={styles.skillsContainer}>
-      <h1>Expertise</h1>
+      <h1 className={styles.header}>Expertise</h1>
       <HTMLFlipBook width={400} height={500} maxShadowOpacity={0.5} showCover={true}>
           <div className={styles.page}>
             <h1>Full Stack Developement</h1>

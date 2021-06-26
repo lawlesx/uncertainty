@@ -20,6 +20,7 @@ export default function Home() {
       <Scroll />
       <About />
       <Skills />
+      <Projects />
     </div>
   )
 }
