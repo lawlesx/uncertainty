@@ -48,6 +48,11 @@ const svgVariants = {
       duration: 2}
   }
 }
+const btnh1Variant = {
+  hover: { 
+    x: '105%',
+  }
+}
 
 
 const Intro = () => {
@@ -56,7 +61,7 @@ const Intro = () => {
       <motion.div variants={buttonVariants} initial='hidden' animate='visible' className={styles.button}>
         <div className={styles.btntopleft}></div>
         <div className={styles.btnleft}></div>
-        <h1 className={styles.buttonContent}>GET IN TOUCH</h1>
+        <motion.h1 variants={btnh1Variant} whileHover='hover' className={styles.buttonContent}>GET IN TOUCH</motion.h1>
         <div className={styles.btnbotright}></div>
         <div className={styles.btnbot}></div>
       </motion.div>

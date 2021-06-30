@@ -40,6 +40,7 @@
   right: 10rem;
   top: 2rem;
   /* padding: 2rem; */
+  overflow: hidden;
   
 }
 
@@ -55,6 +56,23 @@
   margin: 5px;
   cursor: pointer;
 }
+.buttonContent::before {
+  content: "Would love to!";
+  background-color: #f6f6f6;
+  width: 12rem;
+  height: 3.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  display: flex;
+  justify-content:center;
+  align-items:center;
+  margin: 5px;
+  cursor: pointer;
+  color: #1a1a1a;
+  position: absolute;
+  transform: translateX(-105%);
+}
+
 .btntopleft {
   position: absolute;
   top: 0;
