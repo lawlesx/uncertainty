@@ -7,7 +7,6 @@ const effectsVariants={
     rotateY: [90,180,270,360],
     // color: ['#FF4655','#f6f6f6','#4cd964'],
     transition : {
-      delay: 10,
       duration: 5,
       type : 'Spring',
       yoyo: Infinity

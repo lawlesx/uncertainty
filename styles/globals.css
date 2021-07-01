@@ -23,12 +23,16 @@ nav {
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: hidden;
 }
 .navLinks {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding-top: 2rem;
+  height: 50vh;
+  /* background-color: brown; */
+  justify-content: space-evenly;
 }
 
 .navLinks a{
@@ -36,7 +40,12 @@ nav {
   color: #1a1a1a;
   font-family: 'Montserrat';
   font-weight: 500;
-  height: 5rem;
+  height: 3rem;
+  width: 3rem;
+  display: grid;
+  place-items: center;
+  background-color: #f6f6f6;
+  border-radius: 25px;
 }
 
 .logo {
@@ -95,4 +104,36 @@ body::-webkit-scrollbar-thumb {
   background-color: #4cd964;
   border-radius: 20px;
   border: 3px solid #1a1a1a;
+}
+
+.navMotion {
+  position: relative;
+  cursor: pointer;
+}
+
+.home::before, .about::before, .skills::before, .projects::before{
+  display: grid;
+  place-items: center;
+  background-color: #f6f6f6;
+  height: 3rem;
+  width: 5rem;
+  position: absolute;
+  border-radius: 20px;
+  transform: translateX(-5rem);
+}
+
+.home::before{
+  content: 'Home';
+}
+
+.about::before {
+  content: 'About';
+}
+
+.skills::before {
+  content: 'Skills';
+}
+
+.projects::before {
+  content: 'Works';
 }
