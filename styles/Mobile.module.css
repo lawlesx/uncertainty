@@ -66,22 +66,15 @@
   font-size: 2rem;
 }
 
-.image2{
-  width: 765px;
-  height: 478px;
-  position: absolute;
-  transform: rotate(10.09deg);
-  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.25);
-}
 
 .image1{
-  width: 761px;
-  height: 488px;
+  width: 729.1px;
+  height: 513px;
   position: absolute;
-  transform: rotate(-10.09deg);
+  transform: rotate(0deg);
+  background-color: #f6f6f6;
   box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.25);
 }
-
 .backdrop {
   position: fixed;
   inset: 0;
@@ -95,6 +88,10 @@
 
 .backdrop a{
   font-size:5rem;
+  color:#d3d3d3;
+}
+.backdrop p{
+  font-size:3rem;
   color:#d3d3d3;
 }
 

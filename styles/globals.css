@@ -13,17 +13,31 @@ h1,h2,h3 {
   color: #f6f6f6;
   font-weight:normal;
 }
+body::-webkit-scrollbar {
+  width: 12px;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: none;
+}
+body::-webkit-scrollbar-thumb {
+  background-color: #9f9f9f;
+  border-radius: 20px;
+  border: 3px solid #1a1a1a;
+}
 
 nav {
   position: fixed;
   top: 0;
   height: 100vh;
   width: 4.2rem;
-  background-color: #f6f6f6;
+  background-color: transparent;
   display: flex;
   flex-direction: column;
   align-items: center;
   overflow: hidden;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+
 }
 .navLinks {
   display: flex;
@@ -44,7 +58,7 @@ nav {
   width: 3rem;
   display: grid;
   place-items: center;
-  background-color: #f6f6f6;
+  /* background-color: #f6f6f6; */
   border-radius: 25px;
 }
 
@@ -93,19 +107,6 @@ nav {
   writing-mode: vertical-rl;
 }
 
-body::-webkit-scrollbar {
-  width: 12px;
-}
-
-body::-webkit-scrollbar-track {
-  background-color: #1a1a1a;
-}
-body::-webkit-scrollbar-thumb {
-  background-color: #4cd964;
-  border-radius: 20px;
-  border: 3px solid #1a1a1a;
-}
-
 .navMotion {
   position: relative;
   cursor: pointer;
@@ -113,8 +114,9 @@ body::-webkit-scrollbar-thumb {
 
 .home::before, .about::before, .skills::before, .projects::before{
   display: grid;
+  color: #626262;
   place-items: center;
-  background-color: #f6f6f6;
+  /* background-color: #f6f6f6; */
   height: 3rem;
   width: 5rem;
   position: absolute;

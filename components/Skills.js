@@ -1,9 +1,40 @@
+import {useEffect} from 'react';
 import styles from '../styles/Skills.module.css';
 import HTMLFlipBook from 'react-pageflip';
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from 'react-intersection-observer';
 
 const Skills = () => {
+  const {ref, inView} = useInView({threshold: 0.5});
+
+  const animation = useAnimation();
+
+  useEffect (() => {
+    if(!inView)
+    { 
+      animation.start(
+        {
+          opacity: 0,
+          transition : {
+            duration: 1.2
+          }
+        }
+      );
+    }
+    if(inView)
+    { 
+      animation.start(
+        {
+          opacity: 1,
+          transition : {
+            duration: 1.3
+          }
+        }
+      );
+    }
+  })
   return ( 
-    <div className={styles.skillsContainer}>
+    <motion.div ref={ref} animate={animation} className={styles.skillsContainer}>
       <h1 className={styles.header}>Expertise</h1>
       <HTMLFlipBook width={400} height={500} maxShadowOpacity={0.5} showCover={true}>
           <div className={styles.page}>
@@ -24,7 +55,7 @@ const Skills = () => {
             <p>Loves to design.</p>
           </div>
           <div className={styles.pageL}>
-            <h1>3D Modelling andd Animation</h1>
+            <h1>3D Modelling and Animation</h1>
             <p>My vivid Imagination are brought to life using blender.</p>
             <p>Loves to reflect my fantasies to the world.</p>
           </div>
@@ -37,7 +68,7 @@ const Skills = () => {
             <p className={styles.center}>Thanks You</p>
           </div>
       </HTMLFlipBook>
-    </div>
+    </motion.div>
    );
 }
  

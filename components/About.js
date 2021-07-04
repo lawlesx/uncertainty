@@ -1,5 +1,7 @@
+import {useEffect} from 'react';
 import styles from '../styles/About.module.css'
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from 'react-intersection-observer';
 
 const effectsVariants={
   visible: {
@@ -15,8 +17,38 @@ const effectsVariants={
 }
 
 const About = () => {
+
+  const {ref, inView} = useInView({threshold: 0.5});
+
+  const animation = useAnimation();
+
+  useEffect (() => {
+    if(!inView)
+    { 
+      animation.start(
+        {
+          opacity: 0,
+          transition : {
+            duration: 1
+          }
+        }
+      );
+    }
+    if(inView)
+    { 
+      animation.start(
+        {
+          opacity: 1,
+          transition : {
+            duration: 1
+          }
+        }
+      );
+    }
+  })
+
   return ( 
-    <div className="intro">
+    <motion.div ref={ref} animate={animation} className="intro">
       <div className={styles.about}>
         <h1>About Me</h1>
         <p>I am a Developer and Designer from India. The Uncertainty in Design fascinates me.</p>
@@ -32,7 +64,7 @@ const About = () => {
           <h1 className={styles.bottom}>Mobile APPs</h1>
           <h1 className={styles.vertTextRight}>3D Designer</h1>
       </motion.div>
-    </div>
+    </motion.div>
    );
 }
  
