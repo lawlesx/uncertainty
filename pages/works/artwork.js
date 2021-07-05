@@ -49,11 +49,11 @@ const ui = () => {
         </motion.div>    
       </div>
       <motion.ul>
-        <li><Link href="https://www.youtube.com/watch?v=KraBZd5UxW4&ab_channel=WelcomeToHell"><motion.a href="https://www.youtube.com/watch?v=KraBZd5UxW4&ab_channel=WelcomeToHell"  onHoverStart={() => setHover2(true)} onHoverEnd={() => setHover2(false)}>Cave</motion.a></Link></li>
-        <li><Link href="https://www.youtube.com/watch?v=phTeplD1adE&ab_channel=WelcomeToHell"><motion.a href="https://www.youtube.com/watch?v=phTeplD1adE&ab_channel=WelcomeToHell" onHoverStart={() => setHover(true)} onHoverEnd={() => setHover(false)}>Chained</motion.a></Link></li>
+        <li><Link href="https://www.youtube.com/watch?v=KraBZd5UxW4&ab_channel=WelcomeToHell"><motion.a href="https://www.youtube.com/watch?v=KraBZd5UxW4&ab_channel=WelcomeToHell" target="_blank" rel="noopener noreferrer"  onHoverStart={() => setHover2(true)} onHoverEnd={() => setHover2(false)}>Cave</motion.a></Link></li>
+        <li><Link href="https://www.youtube.com/watch?v=phTeplD1adE&ab_channel=WelcomeToHell"><motion.a href="https://www.youtube.com/watch?v=phTeplD1adE&ab_channel=WelcomeToHell" target="_blank" rel="noopener noreferrer" onHoverStart={() => setHover(true)} onHoverEnd={() => setHover(false)}>Chained</motion.a></Link></li>
         <li><Link href="https://www.instagram.com/p/CMC2qzxg_hG/"><motion.a href="https://www.instagram.com/p/CMC2qzxg_hG/"  onHoverStart={() => setHover1(true)} onHoverEnd={() => setHover1(false)}>PentaPendulum</motion.a></Link></li>
-        <li><Link href="https://www.youtube.com/watch?v=buv4Sngms14&ab_channel=WelcomeToHell"><motion.a href="https://www.youtube.com/watch?v=buv4Sngms14&ab_channel=WelcomeToHell" onHoverStart={() => setHover3(true)} onHoverEnd={() => setHover3(false)}>Arm Cortex</motion.a></Link></li>
-        <li><Link href="https://www.youtube.com/watch?v=lEbTlM7AnNI&ab_channel=WelcomeToHell"><motion.a href="https://www.youtube.com/watch?v=lEbTlM7AnNI&ab_channel=WelcomeToHell" onHoverStart={() => setHover4(true)} onHoverEnd={() => setHover4(false)}>Lost Sword</motion.a></Link></li>
+        <li><Link href="https://www.youtube.com/watch?v=buv4Sngms14&ab_channel=WelcomeToHell"><motion.a href="https://www.youtube.com/watch?v=buv4Sngms14&ab_channel=WelcomeToHell" target="_blank" rel="noopener noreferrer" onHoverStart={() => setHover3(true)} onHoverEnd={() => setHover3(false)}>Arm Cortex</motion.a></Link></li>
+        <li><Link href="https://www.youtube.com/watch?v=lEbTlM7AnNI&ab_channel=WelcomeToHell"><motion.a href="https://www.youtube.com/watch?v=lEbTlM7AnNI&ab_channel=WelcomeToHell" target="_blank" rel="noopener noreferrer" onHoverStart={() => setHover4(true)} onHoverEnd={() => setHover4(false)}>Lost Sword</motion.a></Link></li>
       </motion.ul>
     </div>
    );

@@ -25,6 +25,8 @@ const ui = () => {
   const [hover, setHover] = useState(false);
   const [hover1, setHover1] = useState(false);
   const [hover2, setHover2] = useState(false);
+  const [hover3, setHover3] = useState(false);
+
 
 
   return ( 
@@ -38,12 +40,16 @@ const ui = () => {
         </motion.div>
         <motion.div variants={imageVariant} animate={hover2 ? 'visible': 'hidden'} className={styles.image3}>
           <Image src='/ChatUi.png' layout='fill' />
-        </motion.div>        
+        </motion.div>   
+        <motion.div variants={imageVariant} animate={hover3 ? 'visible': 'hidden'} className={styles.image4}>
+          <Image src='/LastroClub.png' layout='fill' />
+        </motion.div>     
       </div>
       <motion.ul>
-        <li><motion.a onHoverStart={() => setHover(true)} onHoverEnd={() => setHover(false)}>MarveloUnit</motion.a></li>
-        <li><motion.a onHoverStart={() => setHover1(true)} onHoverEnd={() => setHover1(false)}>Verification Ui</motion.a></li>
-        <li><motion.a onHoverStart={() => setHover2(true)} onHoverEnd={() => setHover2(false)}>Chat App</motion.a></li>
+        <li><motion.a href="https://dribbble.com/shots/15978545-MarveloUnit" target="_blank" rel="noopener noreferrer" onHoverStart={() => setHover(true)} onHoverEnd={() => setHover(false)}>MarveloUnit</motion.a></li>
+        <li><motion.a href="https://dribbble.com/shots/15978558-LastroClub" target="_blank" rel="noopener noreferrer" onHoverStart={() => setHover3(true)} onHoverEnd={() => setHover3(false)}>Lastro Club</motion.a></li>
+        <li><motion.a href="https://dribbble.com/shots/15978486-Verifyble" target="_blank" rel="noopener noreferrer" onHoverStart={() => setHover1(true)} onHoverEnd={() => setHover1(false)}>Verifyble</motion.a></li>
+        <li><motion.a href="https://dribbble.com/shots/15978533-Gossips" target="_blank" rel="noopener noreferrer" onHoverStart={() => setHover2(true)} onHoverEnd={() => setHover2(false)}>Chat App</motion.a></li>
       </motion.ul>
     </div>
    );

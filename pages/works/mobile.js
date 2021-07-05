@@ -54,7 +54,7 @@ const webdev = () => {
               <AnimatePresence>
         {
           modal && <motion.div variants={backdrop} initial='hidden' animate='visible' exit='hidden' className={styles.backdrop}>
-            <Link href="https://github.com/lawlesx/Medicalow"><a>Github Repo</a></Link>
+            <Link href="https://github.com/lawlesx/Medicalow"><a target="_blank" rel="noopener noreferrer">Github Repo</a></Link>
               <p>Currently In Development</p>
               <motion.div variants={crossVariants} whileHover='hover' className={styles.crossSection}
                 onClick={() => setModal(false)}

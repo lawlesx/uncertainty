@@ -35,6 +35,7 @@
 .parentContainer a{
   text-decoration: none;
   color: #d3d3d3;
+  cursor: pointer;
   /* background-color: bisque; */
 }
 
@@ -74,10 +75,18 @@
   box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.25);
 }
 .image3{
-  width: 729.1px;
-  height: 513px;
+  width: 718px;
+  height: 538px;
   position: absolute;
   transform: rotate(-15.09deg);
+  background-color: #f6f6f6;
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.25);
+}
+.image4{
+  width: 785px;
+  height: 588px;
+  position: absolute;
+  transform: rotate(0deg);
   background-color: #f6f6f6;
   box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.25);
 }

@@ -39,8 +39,8 @@ const webdev = () => {
         </motion.div>        
       </div>
       <motion.ul>
-        <li><Link href="https://www.instagram.com/ar/770292486994019/"><motion.a href="https://www.instagram.com/ar/770292486994019/" onHoverStart={() => setHover(true)} onHoverEnd={() => setHover(false)}>ExCalibur</motion.a></Link></li>
-        <li><Link href="https://www.instagram.com/ar/265495934638851/"><motion.a href="https://www.instagram.com/ar/265495934638851/" onHoverStart={() => setHover1(true)} onHoverEnd={() => setHover1(false)}>Scary Mask</motion.a></Link></li>
+        <li><Link href="https://www.instagram.com/ar/770292486994019/"><motion.a href="https://www.instagram.com/ar/770292486994019/" target="_blank" rel="noopener noreferrer" onHoverStart={() => setHover(true)} onHoverEnd={() => setHover(false)}>ExCalibur</motion.a></Link></li>
+        <li><Link href="https://www.instagram.com/ar/265495934638851/"><motion.a href="https://www.instagram.com/ar/265495934638851/" target="_blank" rel="noopener noreferrer" onHoverStart={() => setHover1(true)} onHoverEnd={() => setHover1(false)}>Scary Mask</motion.a></Link></li>
         
 
       </motion.ul>

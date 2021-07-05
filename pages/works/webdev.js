@@ -44,6 +44,16 @@ const crossVariants = {
   }
 }
 
+const appear = {
+  hidden: {opacity: 0 },
+  visible: {opacity: 1,
+    transition : {
+      duration: 2
+    }
+  }
+}
+
+
 
 const webdev = () => {
 
@@ -56,12 +66,13 @@ const webdev = () => {
 
   return ( 
     
-      <div className={styles.parentContainer}>
+      <motion.div variants={appear} initial='hidden' animate='visible' className={styles.parentContainer}>
+        
         <AnimatePresence>
         {
           modal && <motion.div variants={backdrop} initial='hidden' animate='visible' exit='hidden' className={styles.backdrop}>
-            <Link href='https://github.com/lawlesx/hackclubnmit-website'><a>Github Repo</a></Link>
-            <Link href='https://lawlesx.github.io/'><a>Live Link</a></Link>
+            <Link href='https://github.com/lawlesx/hackclubnmit-website'><a target="_blank" rel="noopener noreferrer">Github Repo</a></Link>
+            <Link href='https://lawlesx.github.io/'><a target="_blank" rel="noopener noreferrer">Live Link</a></Link>
               <motion.div variants={crossVariants} whileHover='hover' className={styles.crossSection}
                 onClick={() => setModal(false)}
               >
@@ -72,7 +83,7 @@ const webdev = () => {
         }
         {
           modal1 && <motion.div variants={backdrop} initial='hidden' animate='visible' exit='hidden' className={styles.backdrop}>
-            <Link href='https://github.com/lawlesx/uncertainty'><a>Github Repo</a></Link>
+            <Link href='https://github.com/lawlesx/uncertainty'><a target="_blank" rel="noopener noreferrer">Github Repo</a></Link>
             <Link href='#'><a>Live Link</a></Link>
               <motion.div variants={crossVariants} whileHover='hover' className={styles.crossSection}
                 onClick={() => setModal1(false)}
@@ -98,7 +109,7 @@ const webdev = () => {
           
 
         </motion.ul>
-      </div>
+      </motion.div>
     
     
    );
