@@ -56,27 +56,27 @@ const Projects = () => {
 
       </div>
       <div className={styles.grid}>
-        <Link href='works/webdev'><motion.div variants={sliderVariants} whileHover='hover' className={styles.item}>
+        <Link href='works/webdev' passHref><motion.div variants={sliderVariants} whileHover='hover' className={styles.item}>
           <div className={styles.web}>
             <Image src='/projectsImages/Webdev.png' height={160} width={640} alt='Web Dev'/>
           </div>
         </motion.div></Link>
-        <Link href='works/mobile'><motion.div variants={sliderVariants} whileHover='hover' className={styles.item}>
+        <Link href='works/mobile' passHref><motion.div variants={sliderVariants} whileHover='hover' className={styles.item}>
           <div className={styles.app}>
             <Image src='/projectsImages/App.png' height={161} width={640} alt='App Dev'/>
           </div>
         </motion.div></Link>
-        <Link href='works/artwork'><motion.div variants={sliderVariants} whileHover='hover' className={styles.item}>
+        <Link href='works/artwork' passHref><motion.div variants={sliderVariants} whileHover='hover' className={styles.item}>
           <div className={styles.blender}>
            <Image src='/projectsImages/3D.png' height={161} width={640} alt='3D Artwork'/>
           </div>
         </motion.div></Link>
-        <Link href='works/ui'><motion.div variants={sliderVariants} whileHover='hover' className={styles.item}>
+        <Link href='works/ui' passHref><motion.div variants={sliderVariants} whileHover='hover' className={styles.item}>
           <div className={styles.ui}>
             <Image src='/projectsImages/UI.png' height={161} width={640} alt='UI/UX'/>
           </div>
         </motion.div></Link>
-        <Link href='works/ui'><motion.div variants={sliderVariants} whileHover='hover' className={styles.item}>
+        <Link href='works/ar' passHref><motion.div variants={sliderVariants} whileHover='hover' className={styles.item}>
           <div className={styles.ar}>
             <Image src='/projectsImages/AR.png' height={161} width={640} alt='AR Effects'/>
           </div>
