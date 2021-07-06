@@ -75,3 +75,45 @@
   width: 30rem;
   padding-left: 0.4rem;
 }
+
+@media screen and (max-width: 1460px) {
+  .web, .app, .ui, .blender, .ar  {
+    height: 8rem;
+    width:32rem;
+  }
+  .web::before, .app::before, .ui::before, .blender::before, .ar::before {
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    position: absolute;
+    transform: translateX(-100%);
+    background-color: #f6f6f6;
+    height: 8rem;
+    width: 32rem; 
+  }
+  .item {
+    height: 8rem;
+    width:32rem;
+  }
+}
+
+@media screen and (max-width: 1330px) {
+  .web, .app, .ui, .blender, .ar  {
+    height: 6rem;
+    width:25rem;
+  }
+  .web::before, .app::before, .ui::before, .blender::before, .ar::before {
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    position: absolute;
+    transform: translateX(-100%);
+    background-color: #f6f6f6;
+    height: 6rem;
+    width: 25rem; 
+  }
+  .item {
+    height: 6rem;
+    width:25rem;
+  }
+}

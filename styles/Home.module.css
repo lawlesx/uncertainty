@@ -43,6 +43,11 @@
   overflow: hidden;
   
 }
+@media screen and (max-width: 1460px) {
+  .button {
+    top: 1rem;
+  }
+}
 
 .buttonContent {
   background-color: #FF4655;
