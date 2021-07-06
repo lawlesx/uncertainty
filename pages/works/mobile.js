@@ -53,7 +53,7 @@ const appear = {
 
 
 
-const webdev = () => {
+const Mobile = () => {
   const [modal, setModal] = useState(false);
   const [hover, setHover] = useState(false);
 
@@ -77,7 +77,7 @@ const webdev = () => {
       <div className={styles.frame}>
         {!hover && <h1>App Dev</h1>}
         <motion.div variants={imageVariant} animate={hover ? 'visible': 'hidden'} className={styles.image1}>
-          <Image src='/ChatUi.png' layout='fill' />
+          <Image src='/ChatUi.png' layout='fill' alt='Medicalow'/>
         </motion.div>       
       </div>
       <motion.ul>
@@ -88,4 +88,4 @@ const webdev = () => {
    );
 }
  
-export default webdev;
+export default Mobile;

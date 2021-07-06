@@ -58,7 +58,7 @@ const Navbar = () => {
   return ( 
     <motion.nav variants={navVariants} initial='hidden' animate='visible'>
       <motion.div variants={helloVariants} className="navLinks">
-        <Link href="/">
+        <Link href="/" passHref>
           <motion.div variants={sliderVariants} whileHover='hover' className="navMotion">
             <a className="home">
               <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -68,7 +68,7 @@ const Navbar = () => {
           </motion.div>
           
         </Link>
-        <Link href="/#About">
+        <Link href="/#About" passHref>
           <motion.div variants={sliderVariants} whileHover='hover' className="navMotion">
             <a className="about">
               <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -77,7 +77,7 @@ const Navbar = () => {
             </a>
           </motion.div>
         </Link>
-        <Link href="/#Skills">
+        <Link href="/#Skills" passHref>
           <motion.div variants={sliderVariants} whileHover='hover' className="navMotion">
             <a className="skills">
               <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -88,7 +88,7 @@ const Navbar = () => {
             </a>
           </motion.div>
         </Link>
-        <Link href="/#Projects">
+        <Link href="/#Projects" passHref>
           <motion.div variants={sliderVariants} whileHover='hover' className="navMotion">
             <a className="projects">
               <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">

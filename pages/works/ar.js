@@ -30,7 +30,7 @@ const appear = {
 
 
 
-const webdev = () => {
+const Ar = () => {
 
   const [hover, setHover] = useState(false);
   const [hover1, setHover1] = useState(false);
@@ -40,15 +40,15 @@ const webdev = () => {
     <motion.div variants={appear} initial='hidden' animate='visible' exit='hidden' className={styles.parentContainer}>
       <div className={styles.frame}>
         <motion.div variants={imageVariant} animate={hover ? 'visible': 'hidden'} className={styles.image1}>
-          <Image src='/ExCalibur.png' layout='fill' />
+          <Image src='/ExCalibur.png' layout='fill' alt='Excalibur' />
         </motion.div>
         <motion.div variants={imageVariant} animate={hover1 ? 'visible': 'hidden'} className={styles.image2}>
-          <Image src='/Scary_Mask.png' layout='fill' />
+          <Image src='/Scary_Mask.png' layout='fill' alt='Scary Mask' />
         </motion.div>        
       </div>
       <motion.ul>
-        <li><Link href="https://www.instagram.com/ar/770292486994019/"><motion.a href="https://www.instagram.com/ar/770292486994019/" target="_blank" rel="noopener noreferrer" onHoverStart={() => setHover(true)} onHoverEnd={() => setHover(false)}>ExCalibur</motion.a></Link></li>
-        <li><Link href="https://www.instagram.com/ar/265495934638851/"><motion.a href="https://www.instagram.com/ar/265495934638851/" target="_blank" rel="noopener noreferrer" onHoverStart={() => setHover1(true)} onHoverEnd={() => setHover1(false)}>Scary Mask</motion.a></Link></li>
+        <li><Link href="https://www.instagram.com/ar/770292486994019/" passHref><motion.a target="_blank" rel="noopener noreferrer" onHoverStart={() => setHover(true)} onHoverEnd={() => setHover(false)}>ExCalibur</motion.a></Link></li>
+        <li><Link href="https://www.instagram.com/ar/265495934638851/" passHref><motion.a target="_blank" rel="noopener noreferrer" onHoverStart={() => setHover1(true)} onHoverEnd={() => setHover1(false)}>Scary Mask</motion.a></Link></li>
         
 
       </motion.ul>
@@ -57,4 +57,4 @@ const webdev = () => {
    );
 }
  
-export default webdev;
+export default Ar;

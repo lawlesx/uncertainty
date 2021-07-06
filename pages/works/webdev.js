@@ -59,7 +59,7 @@ const appear = {
 
 
 
-const webdev = () => {
+const Webdev = () => {
 
   const [modal, setModal] = useState(false);
   const [modal1, setModal1] = useState(false);
@@ -101,10 +101,10 @@ const webdev = () => {
         <div className={styles.frame}>
           {!hover && <h1>Web Dev</h1>}
           <motion.div variants={imageVariant} animate={hover ? 'visible': 'hidden'} className={styles.image1}>
-            <Image src='/Homepage.png' layout='fill' />
+            <Image src='/Homepage.png' layout='fill' alt='Hack Club NMIT'/>
           </motion.div>
           <motion.div variants={imageVariant} animate={hover1 ? 'visible': 'hidden'} className={styles.image2}>
-            <Image src='/Portfolio.png' layout='fill' />
+            <Image src='/Portfolio.png' layout='fill' alt='Portfolio'/>
           </motion.div>        
         </div>
         <motion.ul>
@@ -120,4 +120,4 @@ const webdev = () => {
    );
 }
  
-export default webdev;
+export default Webdev;

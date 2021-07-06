@@ -65,7 +65,7 @@ const Intro = () => {
       <motion.div variants={buttonVariants} initial='hidden' animate='visible' className={styles.button}>
         <div className={styles.btntopleft}></div>
         <div className={styles.btnleft}></div>
-        <Link href='mailto:aniruddhasil109@gmail.com'>
+        <Link href='mailto:aniruddhasil109@gmail.com' passHref>
         <motion.h1 variants={btnh1Variant} whileHover='hover' className={styles.buttonContent}>GET IN TOUCH</motion.h1>
         </Link>
         <div className={styles.btnbotright}></div>

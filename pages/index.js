@@ -8,7 +8,6 @@ import Projects from '../components/Projects'
 import Skills from '../components/Skills'
 import Scroll from '../components/Scroll'
 import {AnimatePresence} from 'framer-motion'
-import Footer from '../components/Footer'
 
 const exitAnimation = {
   exit: {
@@ -40,7 +39,6 @@ export default function Home() {
       <AnimatePresence>
         <Projects />
       </AnimatePresence>
-      {/* <Footer/> */}
     </motion.div>
   )
 }

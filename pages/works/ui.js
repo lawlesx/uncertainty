@@ -30,7 +30,7 @@ const appear = {
 
 
 
-const ui = () => {
+const Ui = () => {
 
   const [hover, setHover] = useState(false);
   const [hover1, setHover1] = useState(false);
@@ -43,16 +43,16 @@ const ui = () => {
     <motion.div variants={appear} initial='hidden' animate='visible' exit='hidden' className={styles.parentContainer}>
       <div className={styles.frame}>
         <motion.div variants={imageVariant} animate={hover ? 'visible': 'hidden'} className={styles.image1}>
-          <Image src='/MarveloUnit.png' layout='fill' />
+          <Image src='/MarveloUnit.png' layout='fill' alt='MarveloUnit'/>
         </motion.div>
         <motion.div variants={imageVariant} animate={hover1 ? 'visible': 'hidden'} className={styles.image2}>
-          <Image src='/VerificationUi.png' layout='fill' />
+          <Image src='/VerificationUi.png' layout='fill' alt=''Verifyble/>
         </motion.div>
         <motion.div variants={imageVariant} animate={hover2 ? 'visible': 'hidden'} className={styles.image3}>
-          <Image src='/ChatUi.png' layout='fill' />
+          <Image src='/ChatUi.png' layout='fill' alt='Chat Ui'/>
         </motion.div>   
         <motion.div variants={imageVariant} animate={hover3 ? 'visible': 'hidden'} className={styles.image4}>
-          <Image src='/LastroClub.png' layout='fill' />
+          <Image src='/LastroClub.png' layout='fill' alt='Lastro Club'/>
         </motion.div>     
       </div>
       <motion.ul>
@@ -65,4 +65,4 @@ const ui = () => {
    );
 }
  
-export default ui;
+export default Ui;
