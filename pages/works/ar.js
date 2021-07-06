@@ -19,6 +19,14 @@ const imageVariant = {
     }
   }
 }
+const appear = {
+  hidden: {opacity: 0 },
+  visible: {opacity: 1,
+    transition : {
+      duration: 2
+    }
+  }
+}
 
 
 
@@ -29,7 +37,7 @@ const webdev = () => {
 
 
   return ( 
-    <div className={styles.parentContainer}>
+    <motion.div variants={appear} initial='hidden' animate='visible' exit='hidden' className={styles.parentContainer}>
       <div className={styles.frame}>
         <motion.div variants={imageVariant} animate={hover ? 'visible': 'hidden'} className={styles.image1}>
           <Image src='/ExCalibur.png' layout='fill' />
@@ -44,7 +52,7 @@ const webdev = () => {
         
 
       </motion.ul>
-    </div>
+    </motion.div>
     
    );
 }

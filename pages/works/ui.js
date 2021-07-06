@@ -19,6 +19,16 @@ const imageVariant = {
 }
 
 
+const appear = {
+  hidden: {opacity: 0 },
+  visible: {opacity: 1,
+    transition : {
+      duration: 2
+    }
+  }
+}
+
+
 
 const ui = () => {
 
@@ -30,7 +40,7 @@ const ui = () => {
 
 
   return ( 
-    <div className={styles.parentContainer}>
+    <motion.div variants={appear} initial='hidden' animate='visible' exit='hidden' className={styles.parentContainer}>
       <div className={styles.frame}>
         <motion.div variants={imageVariant} animate={hover ? 'visible': 'hidden'} className={styles.image1}>
           <Image src='/MarveloUnit.png' layout='fill' />
@@ -51,7 +61,7 @@ const ui = () => {
         <li><motion.a href="https://dribbble.com/shots/15978486-Verifyble" target="_blank" rel="noopener noreferrer" onHoverStart={() => setHover1(true)} onHoverEnd={() => setHover1(false)}>Verifyble</motion.a></li>
         <li><motion.a href="https://dribbble.com/shots/15978533-Gossips" target="_blank" rel="noopener noreferrer" onHoverStart={() => setHover2(true)} onHoverEnd={() => setHover2(false)}>Chat App</motion.a></li>
       </motion.ul>
-    </div>
+    </motion.div>
    );
 }
  

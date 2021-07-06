@@ -57,6 +57,15 @@
   display: grid;
   place-items: center;
 }
+.frame::after {
+  content: 'AR Effects';
+  color: #d3d3d3;
+  font-size: 3rem;
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+}
 
 .image2{
   width: 304.13px;
@@ -74,3 +83,8 @@
   box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.25);
 }
 
+@media screen and (max-width: 1000px) {
+  .frame{
+    visibility: hidden;
+  }
+}

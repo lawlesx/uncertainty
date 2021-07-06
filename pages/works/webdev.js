@@ -45,7 +45,11 @@ const crossVariants = {
 }
 
 const appear = {
-  hidden: {opacity: 0 },
+  hidden: {opacity: 0,
+    transition : {
+      duration:2,
+    }
+  },
   visible: {opacity: 1,
     transition : {
       duration: 2
@@ -65,8 +69,8 @@ const webdev = () => {
 
 
   return ( 
-    
-      <motion.div variants={appear} initial='hidden' animate='visible' className={styles.parentContainer}>
+      <AnimatePresence exitBeforeEnter>
+      <motion.div variants={appear} initial='hidden' animate='visible' exit='hidden' layoutId='webdev' className={styles.parentContainer}>
         
         <AnimatePresence>
         {
@@ -110,6 +114,7 @@ const webdev = () => {
 
         </motion.ul>
       </motion.div>
+      </AnimatePresence>
     
     
    );

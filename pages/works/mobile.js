@@ -42,6 +42,15 @@ const crossVariants = {
       rotate: 45
   }
 }
+const appear = {
+  hidden: {opacity: 0 },
+  visible: {opacity: 1,
+    transition : {
+      duration: 2
+    }
+  }
+}
+
 
 
 const webdev = () => {
@@ -50,7 +59,7 @@ const webdev = () => {
 
 
   return ( 
-    <div className={styles.parentContainer}>
+    <motion.div variants={appear} initial='hidden' animate='visible' exit='hidden' className={styles.parentContainer}>
               <AnimatePresence>
         {
           modal && <motion.div variants={backdrop} initial='hidden' animate='visible' exit='hidden' className={styles.backdrop}>
@@ -74,7 +83,7 @@ const webdev = () => {
       <motion.ul>
         <li><motion.a onClick={() => setModal(true)} onHoverStart={() => setHover(true)} onHoverEnd={() => setHover(false)}>Medicalow</motion.a></li>
       </motion.ul>
-    </div>
+    </motion.div>
     
    );
 }

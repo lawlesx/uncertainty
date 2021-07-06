@@ -10,7 +10,7 @@ const introVariants = {
   visible: {
     opacity: 1,
     transition : {
-      staggerChildren: 2,
+      staggerChildren: 1,
       duration: 2
     }
   }
@@ -34,7 +34,7 @@ const buttonVariants = {
   visible: {
     opacity: 1,
     transition : {
-      delay: 10,
+      delay: 3,
       duration: 3
     }
   }
@@ -44,7 +44,7 @@ const svgVariants = {
   visible: {
     opacity: 1,
     transition: { 
-      delay: 10,
+      delay: 3,
       duration: 2}
   },
   hover : { 
@@ -65,7 +65,9 @@ const Intro = () => {
       <motion.div variants={buttonVariants} initial='hidden' animate='visible' className={styles.button}>
         <div className={styles.btntopleft}></div>
         <div className={styles.btnleft}></div>
+        <Link href='mailto:aniruddhasil109@gmail.com'>
         <motion.h1 variants={btnh1Variant} whileHover='hover' className={styles.buttonContent}>GET IN TOUCH</motion.h1>
+        </Link>
         <div className={styles.btnbotright}></div>
         <div className={styles.btnbot}></div>
       </motion.div>

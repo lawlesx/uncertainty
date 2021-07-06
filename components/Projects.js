@@ -46,8 +46,10 @@ const Projects = () => {
     }
   })
 
+
+
   return ( 
-    <motion.div ref={ref} animate={animation} className={styles.projectsContainer}>
+    <motion.div ref={ref}  animate={animation}  className={styles.projectsContainer} id='Projects'>
       <div className={styles.header}>
         <h1>My Projects</h1>
         <p>Here are some of my recent works. Feel free to check them out</p>

@@ -18,6 +18,15 @@ const imageVariant = {
   }
 }
 
+const appear = {
+  hidden: {opacity: 0 },
+  visible: {opacity: 1,
+    transition : {
+      duration: 2
+    }
+  }
+}
+
 
 const ui = () => {
   const [hover, setHover] = useState(false);
@@ -30,7 +39,7 @@ const ui = () => {
 
 
   return ( 
-    <div className={styles.parentContainer}>
+    <motion.div variants={appear} initial='hidden' animate='visible' exit='hidden' className={styles.parentContainer}>
       <div className={styles.frame}>
         <motion.div variants={imageVariant} animate={hover ? 'visible': 'hidden'} className={styles.image1}>
           <Image src='/Red_Output.png' layout='fill' />
@@ -55,7 +64,7 @@ const ui = () => {
         <li><Link href="https://www.youtube.com/watch?v=buv4Sngms14&ab_channel=WelcomeToHell"><motion.a href="https://www.youtube.com/watch?v=buv4Sngms14&ab_channel=WelcomeToHell" target="_blank" rel="noopener noreferrer" onHoverStart={() => setHover3(true)} onHoverEnd={() => setHover3(false)}>Arm Cortex</motion.a></Link></li>
         <li><Link href="https://www.youtube.com/watch?v=lEbTlM7AnNI&ab_channel=WelcomeToHell"><motion.a href="https://www.youtube.com/watch?v=lEbTlM7AnNI&ab_channel=WelcomeToHell" target="_blank" rel="noopener noreferrer" onHoverStart={() => setHover4(true)} onHoverEnd={() => setHover4(false)}>Lost Sword</motion.a></Link></li>
       </motion.ul>
-    </div>
+    </motion.div>
    );
 }
  

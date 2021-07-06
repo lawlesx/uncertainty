@@ -11,10 +11,8 @@ const navVariants = {
     opacity: 1,
     x: 0,
     transition : {
-      // delayChildren: 2,
-      delay: 5,
       staggerChildren: 2,
-      duration: 5,
+      duration: 4,
       
     }
   }
@@ -26,10 +24,6 @@ const helloVariants = {
   },
   visible: {
     opacity: 1,
-    transition : {
-      delay: 10,
-      duration: 3
-    }
   }
 }
 const pathVariant = {
@@ -59,6 +53,8 @@ const sliderVariants = {
 
 
 const Navbar = () => {
+
+
   return ( 
     <motion.nav variants={navVariants} initial='hidden' animate='visible'>
       <motion.div variants={helloVariants} className="navLinks">
@@ -72,7 +68,7 @@ const Navbar = () => {
           </motion.div>
           
         </Link>
-        <Link href="#">
+        <Link href="/#About">
           <motion.div variants={sliderVariants} whileHover='hover' className="navMotion">
             <a className="about">
               <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -81,7 +77,7 @@ const Navbar = () => {
             </a>
           </motion.div>
         </Link>
-        <Link href="#">
+        <Link href="/#Skills">
           <motion.div variants={sliderVariants} whileHover='hover' className="navMotion">
             <a className="skills">
               <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -92,7 +88,7 @@ const Navbar = () => {
             </a>
           </motion.div>
         </Link>
-        <Link href="#">
+        <Link href="/#Projects">
           <motion.div variants={sliderVariants} whileHover='hover' className="navMotion">
             <a className="projects">
               <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">

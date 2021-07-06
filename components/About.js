@@ -48,7 +48,7 @@ const About = () => {
   })
 
   return ( 
-    <motion.div ref={ref} animate={animation} className="intro">
+    <motion.div ref={ref} animate={animation} className="intro" id="About">
       <div className={styles.about}>
         <h1>About Me</h1>
         <p>I am a Developer and Designer from India. The Uncertainty in Design fascinates me.</p>

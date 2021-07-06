@@ -34,7 +34,7 @@ const Skills = () => {
     }
   })
   return ( 
-    <motion.div ref={ref} animate={animation} className={styles.skillsContainer}>
+    <motion.div ref={ref} animate={animation} className={styles.skillsContainer} id='Skills'>
       <h1 className={styles.header}>Expertise</h1>
       <HTMLFlipBook width={400} height={500} maxShadowOpacity={0.5} showCover={true}>
           <div className={styles.page}>
