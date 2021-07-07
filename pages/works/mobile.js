@@ -1,6 +1,7 @@
 import {useState} from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import Head from 'next/head';
 import styles from '../../styles/Mobile.module.css';
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -60,6 +61,9 @@ const Mobile = () => {
 
   return ( 
     <motion.div variants={appear} initial='hidden' animate='visible' exit='hidden' className={styles.parentContainer}>
+      <Head>
+        <title>App Development</title>
+      </Head>
               <AnimatePresence>
         {
           modal && <motion.div variants={backdrop} initial='hidden' animate='visible' exit='hidden' className={styles.backdrop}>

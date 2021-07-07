@@ -1,6 +1,6 @@
 import {useState} from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
+import Head from 'next/head';
 import styles from '../../styles/Ui.module.css';
 import { motion, AnimatePresence} from "framer-motion";
 
@@ -41,6 +41,9 @@ const Ui = () => {
 
   return ( 
     <motion.div variants={appear} initial='hidden' animate='visible' exit='hidden' className={styles.parentContainer}>
+      <Head>
+        <title>UI/UX</title>
+      </Head>
       <div className={styles.frame}>
         <motion.div variants={imageVariant} animate={hover ? 'visible': 'hidden'} className={styles.image1}>
           <Image src='/MarveloUnit.png' layout='fill' alt='MarveloUnit'/>

@@ -1,6 +1,7 @@
 import {useState} from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import Head from 'next/head';
 import styles from '../../styles/Artwork.module.css';
 import { motion } from "framer-motion";
 
@@ -40,6 +41,9 @@ const Artwork = () => {
 
   return ( 
     <motion.div variants={appear} initial='hidden' animate='visible' exit='hidden' className={styles.parentContainer}>
+      <Head>
+        <title>3D Artwork</title>
+      </Head>
       <div className={styles.frame}>
         <motion.div variants={imageVariant} animate={hover ? 'visible': 'hidden'} className={styles.image1}>
           <Image src='/Red_Output.png' layout='fill' alt='Chained'/>

@@ -1,6 +1,7 @@
 import {useState} from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import Head from 'next/head';
 import styles from '../../styles/Works.module.css';
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -70,6 +71,9 @@ const Webdev = () => {
 
   return ( 
       <AnimatePresence exitBeforeEnter>
+        <Head>
+          <title>Web Development</title>
+        </Head>
       <motion.div variants={appear} initial='hidden' animate='visible' exit='hidden' layoutId='webdev' className={styles.parentContainer}>
         
         <AnimatePresence>
