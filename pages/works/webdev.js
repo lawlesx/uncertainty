@@ -92,7 +92,7 @@ const Webdev = () => {
         {
           modal1 && <motion.div variants={backdrop} initial='hidden' animate='visible' exit='hidden' className={styles.backdrop}>
             <Link href='https://github.com/lawlesx/uncertainty'><a target="_blank" rel="noopener noreferrer">Github Repo</a></Link>
-            <Link href='#'><a>Live Link</a></Link>
+            <Link href='/'><a>Live Link</a></Link>
               <motion.div variants={crossVariants} whileHover='hover' className={styles.crossSection}
                 onClick={() => setModal1(false)}
               >
