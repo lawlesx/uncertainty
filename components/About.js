@@ -51,17 +51,17 @@ const About = () => {
     <motion.div ref={ref} animate={animation} className="intro" id="About">
       <div className={styles.about}>
         <h1>About Me</h1>
-        <p>I am a Developer and Designer from India. The Uncertainty in Design fascinates me.</p>
+        <p>I am a developer and designer from India. The uncertainty in design fascinates me.</p>
         <p>I love technology and loves to explore different domains of technology.</p>
-        <p>Currently Designer and developer for the Hack club of Nmit.
-        Well experienced in Full stack web development using NEXTJs & Node and App development using React native.A video editor and motion graphics designer.Also a creator of 3D models and animation
+        <p>Currently developer and lead designer for the Hack Club of Nitte Meenakshi Institute of Technology.
+        Well experienced in full stack web development using NEXTjs & node and app development using React native. A video editor and motion graphics designer. Also a creator of 3D models and animation.
         </p>
-        <p className={styles.highlight}>Would love to work with someone with passion for design.</p>
+        <p className={styles.highlight}>Would love to work with someone having a passion for design.</p>
       </div>
       <motion.div variants={effectsVariants} animate='visible' className={styles.aboutEffects}>
-          <h1 className={styles.top}>FRONTEND</h1>
+          <h1 className={styles.top}>Frontend</h1>
           <h1 className={styles.vertTextLeft}>UI/UX Designer</h1>
-          <h1 className={styles.bottom}>Mobile APPs</h1>
+          <h1 className={styles.bottom}>Mobile Apps</h1>
           <h1 className={styles.vertTextRight}>3D Designer</h1>
       </motion.div>
     </motion.div>

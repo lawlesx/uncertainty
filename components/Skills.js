@@ -39,8 +39,8 @@ const Skills = () => {
       <HTMLFlipBook width={400} height={500} maxShadowOpacity={0.5} showCover={true}>
           <div className={styles.page}>
             <h1>Full Stack Developement</h1>
-            <p>Tech stack used by my is NEXTJs/Reactjs and Node</p>
-            <p>Framer Motion as the animation library</p>
+            <p>Tech stack used by me is NEXTJs/Reactjs and Node</p>
+            <p>Framer motion as the animation library</p>
           </div>
           <div className={styles.pageL}>
             <h1>App Development</h1>
