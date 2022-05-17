@@ -42,7 +42,7 @@ const pathVariant = {
 }
 const sliderVariants = {
   hover: {
-    x: '4rem',
+    x: '4.8rem',
     transition : {
       type: 'spring',
       damping: 10,

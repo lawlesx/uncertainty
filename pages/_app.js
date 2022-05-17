@@ -5,26 +5,11 @@ import Router from 'next/router'
 import Loader from '../components/Loader'
 import Screen from '../components/Screen'
 import { AnimatePresence, AnimateSharedLayout } from 'framer-motion';
-
-function useWindowSize() {
-  const [size, setSize] = useState([2000,2000]);
-  useLayoutEffect(() => {
-    const handleResize = () => {
-      setSize([window.innerHeight, window.innerWidth]);
-    };
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    }
-  },[]);
-  return size;
-}
+import useWindowSize from '../Hooks/useWindowSize';
 
 function MyApp({ Component, pageProps }) {
 
-  const [height,width] = useWindowSize();
-  console.log(width,height);
+  const [,width] = useWindowSize();
 
   const [loading, setLoading] = useState(false);
 
