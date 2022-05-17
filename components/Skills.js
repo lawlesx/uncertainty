@@ -41,6 +41,7 @@ const Skills = () => {
             <h1>Full Stack Developement</h1>
             <p>Tech stack used by me is NEXTJs/Reactjs and Node</p>
             <p>Framer motion as the animation library</p>
+            <p>Have experience in Web 3</p>
           </div>
           <div className={styles.pageL}>
             <h1>App Development</h1>
