@@ -39,6 +39,11 @@
   cursor: pointer;
 }
 
+.parentContainer h1{
+  text-decoration: none;
+  color: #d3d3d3;
+}
+
 .parentContainer a:hover{
   color: #3d3d3d;
   transition-timing-function: ease-in;
@@ -54,8 +59,9 @@
   background: #FFFFFF;
   box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.25);
   transform: rotate(-7.09deg);
-  display: grid;
-  place-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .frame h1{
   color: #d3d3d3;
@@ -81,6 +87,15 @@
   transform: rotate(-10.09deg);
   box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.25);
 }
+
+.image2{
+  width: 765px;
+  height: 478px;
+  position: absolute;
+  transform: rotate(13deg);
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.25);
+}
+
 
 .backdrop {
   position: fixed;
