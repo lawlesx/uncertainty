@@ -7,14 +7,14 @@
 }
 .parentContainer ul{
   position: fixed;
-  width: 55%;
+  width: 100%;
   height: 100vh;
   margin-left: 2rem;
   overflow: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none;
   /* background-color: #f6f6f6; */
-  padding-top: 20rem;
+  padding-top: 60vh;
 }
 .parentContainer ul::-webkit-scrollbar{
   display: none;
@@ -26,7 +26,7 @@
   font-family: 'Oswald';
   font-size: 9rem;
   min-height:20vh;
-  width: 60vw;
+  width: 100%;
   padding: 1rem;
   /* margin : 0.5rem; */
   /* background-color: aquamarine; */
@@ -88,7 +88,7 @@
   box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.25);
 }
 
-.image2{
+.image3{
   width: 765px;
   height: 478px;
   position: absolute;
@@ -96,6 +96,13 @@
   box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.25);
 }
 
+.image4{
+  width: 765px;
+  height: 478px;
+  position: absolute;
+  transform: rotate(-10deg);
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.25);
+}
 
 .backdrop {
   position: fixed;

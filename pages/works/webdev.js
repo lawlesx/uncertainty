@@ -66,10 +66,12 @@ const Webdev = () => {
   const [modal, setModal] = useState(false);
   const [modal1, setModal1] = useState(false);
   const [modal2, setModal2] = useState(false)
+  const [modal3, setModal3] = useState(false)
 
   const [hover, setHover] = useState(false);
   const [hover1, setHover1] = useState(false);
   const [hover2,setHover2] = useState(false)
+  const [hover3,setHover3] = useState(false)
 
 
   return ( 
@@ -116,6 +118,19 @@ const Webdev = () => {
               </motion.div>
             </motion.div>
         }
+        {
+          modal3 && <motion.div variants={backdrop} initial='hidden' animate='visible' exit='hidden' className={styles.backdrop}>
+            <h1>WIP: Social graph based on lens protocol</h1>
+            <Link href='https://github.com/lawlesx/social-eye'><a target="_blank" rel="noopener noreferrer">Github Repo</a></Link>
+            <Link href='https://social-eye.vercel.app/'><a target="_blank" rel="noopener noreferrer">Live Link</a></Link>
+              <motion.div variants={crossVariants} whileHover='hover' className={styles.crossSection}
+                onClick={() => setModal3(false)}
+              >
+                <div className={styles.cline1}></div>
+                <div className={styles.cline2}></div>
+              </motion.div>
+            </motion.div>
+        }
         </AnimatePresence>
         <div className={styles.frame}>
           {![!hover, !hover1 ,!hover2].includes(false) && <h1>Web Dev</h1>}
@@ -128,11 +143,15 @@ const Webdev = () => {
           <motion.div variants={imageVariant} animate={hover2 ? 'visible': 'hidden'} className={styles.image3}>
             <Image src='/The Witch Trials.png' layout='fill' alt='The Witch Trials'/>
           </motion.div>
+          <motion.div variants={imageVariant} animate={hover3 ? 'visible': 'hidden'} className={styles.image4}>
+            <Image src='/Social Eye.png' layout='fill' alt='Social Eye'/>
+          </motion.div>
         </div>
         <motion.ul>
           <li><motion.a onClick={() => setModal(true)} onHoverStart={() => setHover(true)} onHoverEnd={() => setHover(false)}>Hack Club Nmit</motion.a></li>
           <li><motion.a onClick={() => setModal1(true)} onHoverStart={() => setHover1(true)} onHoverEnd={() => setHover1(false)}>My Portfolio</motion.a></li>
           <li><motion.a onClick={() => setModal2(true)} onHoverStart={() => setHover2(true)} onHoverEnd={() => setHover2(false)}>NFT Auction</motion.a></li>
+          <li><motion.a onClick={() => setModal3(true)} onHoverStart={() => setHover3(true)} onHoverEnd={() => setHover3(false)}>Social Eye</motion.a></li>
         </motion.ul>
       </motion.div>
       </AnimatePresence>
