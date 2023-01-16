@@ -1,4 +1,6 @@
+'use client'
 import Link from 'next/link'
+import { motion } from 'framer-motion'
 
 interface NavLink {
   name: string
@@ -73,7 +75,7 @@ const navLinks: NavLink[] = [
     ),
   },
   {
-    name: 'Projects',
+    name: 'Works',
     href: '/uncertainty/projects',
     image: (
       <svg
@@ -95,7 +97,7 @@ const navLinks: NavLink[] = [
 const Navbar = () => {
   return (
     <nav
-      className="w-16 pt-14 bg-background h-screen fixed left-0 top-0 flex flex-col justify-between"
+      className="w-[4.4rem] pt-14 bg-background h-screen fixed left-0 top-0 flex flex-col justify-between overflow-hidden"
       style={{ boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.25)' }}
     >
       <div className="flex flex-col items-center gap-6">
@@ -105,7 +107,10 @@ const Navbar = () => {
             key={index}
             className="w-full py-4 grid place-items-center"
           >
-            {link.image}
+            <motion.div initial={{ x: '-60%' }} whileHover={{ x: 0 }} transition={{ type: 'spring', damping: 18 }} className={`h-full flex gap-8 items-center justify-end ${link.name === 'Skills' ? 'w-[7.8rem]' : 'w-32'}`}>
+              <h1 className='text-fade text-lg'>{link.name}</h1>
+              <div>{link.image}</div>
+            </motion.div>
           </Link>
         ))}
       </div>
