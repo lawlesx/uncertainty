@@ -12,7 +12,7 @@ module.exports = {
     extend: {
       fontFamily: {
         montserrat: ['var(--font-montserrat)', ...fontFamily.sans],
-        quick: ['--font-quicksand)', ...fontFamily.sans],
+        quick: ['var(--font-quicksand)', ...fontFamily.sans],
       },
       colors: {
         background: '#1a1a1a',
