@@ -1,3 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const { fontFamily } = require('tailwindcss/defaultTheme')
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -7,6 +10,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        montserrat: ['var(--font-montserrat)', ...fontFamily.sans],
+        quick: ['--font-quicksand)', ...fontFamily.sans],
+      },
       colors: {
         background: '#1a1a1a',
         primary: '#f6f6f6',
