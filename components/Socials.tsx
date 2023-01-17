@@ -50,7 +50,7 @@ const socials = [
 
 const Socials = () => {
   return (
-    <div className="flex flex-col justify-between items-center pt-20">
+    <div className="flex flex-col justify-between items-center py-20 h-screen">
       <div className="flex flex-col gap-8 pt-10">
         {socials.map((social, i) => (
           <Link href={social.href} key={i} target="_blank" rel="noopener noreferrer">

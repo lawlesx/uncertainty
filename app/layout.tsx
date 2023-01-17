@@ -17,7 +17,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html className={`${montserrat.variable} ${quicksand.variable}`}>
+    <html className={`${montserrat.variable} ${quicksand.variable} bg-background`}>
       <head />
       <body>{children}</body>
     </html>
