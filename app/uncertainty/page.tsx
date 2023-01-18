@@ -2,6 +2,7 @@ import About from "../../components/About";
 import Expertise from "../../components/Expertise";
 import GetInTouch from "../../components/GetInTouch";
 import Intro from "../../components/Intro";
+import Projects from "../../components/Projects";
 import Socials from "../../components/Socials";
 
 export default function Page() {
@@ -18,6 +19,7 @@ export default function Page() {
           <p className="text-base text-fade ml-24 my-20" style={{ writingMode: 'vertical-lr' }}>Scroll to Continue</p>
           <About />
           <Expertise />
+          <Projects />
         </div>
         <Socials />
       </div>

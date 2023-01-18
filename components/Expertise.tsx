@@ -47,7 +47,7 @@ const Expertise = () => {
     <div className="w-full h-screen flex flex-col gap-10 items-center justify-center pl-[5rem]">
       <h1 className="text-[4rem] font-normal text-primary">Expertise</h1>
       <div className="w-full flex gap-20 items-center justify-center">
-        <div className='flex flex-col items-end gap-2'>
+        <div className='flex flex-col items-start gap-2'>
           <motion.svg
             className="w-40 rotate-180"
             viewBox="0 0 112 40"
