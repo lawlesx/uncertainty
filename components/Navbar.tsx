@@ -50,7 +50,7 @@ const navLinks: NavLink[] = [
   },
   {
     name: 'Skills',
-    href: '/uncertainty/skills',
+    href: '/uncertainty/expertise',
     image: (
       <svg
         width="32"

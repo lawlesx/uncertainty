@@ -33,7 +33,7 @@ const domains = [
 
 const Projects = () => {
   return (
-    <div className="w-full pl-[5rem] flex items-center py-40">
+    <div className="w-full pl-[5rem] flex items-center py-20">
       <div className="flex flex-col w-2/5">
         <h1 className="text-[5rem] font-medium text-primary">My Projects</h1>
         <p className="text-lg tracking-widest text-primary">
