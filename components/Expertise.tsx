@@ -134,8 +134,8 @@ const Page: FC<PageProps> = ({ index, setExitX, setIndex, exitX, initial, animat
         transition: { duration: 0.2 },
       }}
     >
-      <motion.div className='w-[25rem] h-[25rem] rounded-3xl bg-primary flex items-center justify-center' style={{ scale }}>
-        <h1 className='text-3xl text-highlight'>Drag me left or right</h1>
+      <motion.div className='w-[15rem] h-[15rem] mx-auto rounded-3xl bg-primary flex items-center justify-center' style={{ scale }}>
+        <h1 className='text-base text-highlight text-center'>Drag me left or right</h1>
       </motion.div>
     </motion.div>
   )
