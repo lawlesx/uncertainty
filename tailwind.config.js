@@ -21,6 +21,9 @@ module.exports = {
         fade: '#626262',
         focus: '#FF4655',
       },
+      backgroundImage: {
+        gradient1: 'linear-gradient(136.35deg, #FF3055 0%, #EB54FE 100%)',
+      },
     },
   },
   plugins: [],

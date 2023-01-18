@@ -6,35 +6,34 @@ import {
   useMotionValue,
   useTransform,
 } from 'framer-motion'
-import { FC, useState } from 'react'
+import { FC, ReactNode, useState } from 'react'
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const expertises = [
-  <div className="pageRight" key={1}>
+  <div className="floatingCard" key={1}>
     <h1>Full Stack Developement</h1>
     <p>Tech stack used by me is NEXTJs/Reactjs and Node/Express.js</p>
     <p>Framer motion is the best animation library</p>
     <p>Have experience in Web 3. Worked with Etherjs.</p>
   </div>,
-  <div className="pageLeft" key={2}>
+  <div className="floatingCard" key={2}>
     <h1>App Development</h1>
     <p>Learning Tauri to create crossplatform desktop/mobile apps.</p>
   </div>,
-  <div className="pageRight" key={3}>
+  <div className="floatingCard" key={3}>
     <h1>UI/UX Designer</h1>
     <p>Use Figma to design web apps and mobile apps template.</p>
     <p>Loves to design.</p>
   </div>,
-  <div className="pageLeft" key={4}>
+  <div className="floatingCard" key={4}>
     <h1>3D Modelling and Animation</h1>
     <p>My vivid Imagination are brought to life using blender.</p>
     <p>Loves to reflect my fantasies to the world.</p>
   </div>,
-  <div className="pageRight" key={5}>
+  <div className="floatingCard" key={5}>
     <h1>AR Effects</h1>
     <p>Create Simple but artistic Ar effects using Spark AR.</p>
   </div>,
-  <div className="pageRight" key={6}>
+  <div className="floatingCard" key={6}>
     <h1>Learning in progress</h1>
     <p className="text-center">Thanks You</p>
   </div>,
@@ -53,7 +52,7 @@ const Expertise = () => {
             <Page
               key={index + 1}
               initial={{ scale: 0, y: 105, opacity: 0 }}
-              animate={{ scale: 0.75, y: 30, opacity: 0.5 }}
+              animate={{ scale: 0.75, y: 80, opacity: 0.5 }}
               transition={{
                 scale: { duration: 0.2 },
                 opacity: { duration: 0.4 },
@@ -63,7 +62,7 @@ const Expertise = () => {
               index={index}
               setIndex={setIndex}
               drag="x"
-            />
+            >{expertises[(index + 1) % expertises.length]}</Page>
             <Page
               key={index}
               animate={{ scale: 1, y: 0, opacity: 1 }}
@@ -78,7 +77,7 @@ const Expertise = () => {
               index={index}
               setIndex={setIndex}
               drag="x"
-            />
+            >{expertises[index % expertises.length]}</Page>
           </AnimatePresence>
         </motion.div>
       </div >
@@ -95,9 +94,10 @@ interface PageProps {
   animate: { [key: string]: number | string | { [key: string]: number | string } }
   transition: { [key: string]: number | string | { [key: string]: number | string } }
   drag: boolean | "x" | "y" | undefined
+  children: ReactNode
 }
 
-const Page: FC<PageProps> = ({ index, setExitX, setIndex, exitX, initial, animate, transition, drag }) => {
+const Page: FC<PageProps> = ({ index, setExitX, setIndex, exitX, initial, animate, transition, drag, children }) => {
   const x = useMotionValue(0)
   const scale = useTransform(x, [-150, 0, 150], [0.5, 1, 0.5])
   const rotate = useTransform(x, [-150, 0, 150], [-45, 0, 45], {
@@ -135,8 +135,10 @@ const Page: FC<PageProps> = ({ index, setExitX, setIndex, exitX, initial, animat
         transition: { duration: 0.2 },
       }}
     >
-      <motion.div className='w-[15rem] h-[15rem] mx-auto rounded-3xl bg-primary flex items-center justify-center' style={{ scale }}>
-        <h1 className='text-base text-highlight text-center'>Drag me left or right</h1>
+      <motion.div className='w-[25rem] h-[25rem] mx-auto rounded-3xl bg-gradient1 flex items-center justify-center p-4' style={{
+        scale,
+      }}>
+        {children}
       </motion.div>
     </motion.div>
   )

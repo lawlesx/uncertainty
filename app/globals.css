@@ -29,25 +29,14 @@ p {
   @apply font-quick;
 }
 
-.pageRight,
-.pageLeft {
-  @apply flex flex-col justify-around;
+.floatingCard {
+  @apply flex flex-col gap-2 items-center justify-center;
 }
 
-.pageRight {
-  background: url(../public/page.svg);
+.floatingCard h1 {
+  @apply text-4xl font-bold uppercase text-center text-transparent text-primary pb-6;
 }
 
-.pageLeft {
-  background: url(../public/pageright.svg);
-}
-
-.pageRight h1,
-.pageLeft h1 {
-  @apply text-3xl text-center p-[5rem] text-primary font-bold;
-}
-
-.pageRight p,
-.pageLeft p {
-  @apply text-base px-[5rem] py-1 tracking-[2px] text-primary;
+.floatingCard p {
+  @apply text-lg text-center text-transparent text-primary;
 }
