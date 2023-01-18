@@ -46,7 +46,27 @@ const Expertise = () => {
   return (
     <div className="w-full h-screen flex flex-col gap-10 items-center justify-center pl-[5rem]">
       <h1 className="text-[4rem] font-normal text-primary">Expertise</h1>
-      <div className="w-full flex items-center justify-center">
+      <div className="w-full flex gap-20 items-center justify-center">
+        <div className='flex flex-col items-end gap-2'>
+          <motion.svg
+            className="w-40 rotate-180"
+            viewBox="0 0 112 40"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <motion.path
+              initial={{ pathLength: 0 }}
+              animate={{ pathLength: 1 }}
+              transition={{ duration: 1.5, repeat: Infinity, repeatType: 'mirror' }}
+              d="M1.5 1.5C19 14.3333 65.3 35.1 110.5 15.5M110.5 15.5L84.5 6.5M110.5 15.5V38"
+              stroke="#626262"
+              strokeWidth="3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </motion.svg>
+          <p className='text-sm text-fade tracking-widest'>Drag this way</p>
+        </div>
         <motion.div className="w-[25rem] h-[25rem] relative">
           <AnimatePresence initial={false}>
             <Page
@@ -62,12 +82,14 @@ const Expertise = () => {
               index={index}
               setIndex={setIndex}
               drag="x"
-            >{expertises[(index + 1) % expertises.length]}</Page>
+            >
+              {expertises[(index + 1) % expertises.length]}
+            </Page>
             <Page
               key={index}
               animate={{ scale: 1, y: 0, opacity: 1 }}
               transition={{
-                type: "spring",
+                type: 'spring',
                 stiffness: 300,
                 damping: 20,
                 opacity: { duration: 0.2 },
@@ -77,11 +99,33 @@ const Expertise = () => {
               index={index}
               setIndex={setIndex}
               drag="x"
-            >{expertises[index % expertises.length]}</Page>
+            >
+              {expertises[index % expertises.length]}
+            </Page>
           </AnimatePresence>
         </motion.div>
-      </div >
-    </div >
+        <div className='flex flex-col items-end gap-2'>
+          <motion.svg
+            className="w-40"
+            viewBox="0 0 112 40"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <motion.path
+              initial={{ pathLength: 0 }}
+              animate={{ pathLength: 1 }}
+              transition={{ duration: 1.5, repeat: Infinity, repeatType: 'mirror' }}
+              d="M1.5 1.5C19 14.3333 65.3 35.1 110.5 15.5M110.5 15.5L84.5 6.5M110.5 15.5V38"
+              stroke="#626262"
+              strokeWidth="3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </motion.svg>
+          <p className='text-sm text-fade tracking-widest'>Drag this way</p>
+        </div>
+      </div>
+    </div>
   )
 }
 
@@ -90,21 +134,40 @@ interface PageProps {
   setIndex: (index: number) => void
   setExitX: (exitX: string | number) => void
   exitX: string | number
-  initial?: { [key: string]: number | string | { [key: string]: number | string } }
-  animate: { [key: string]: number | string | { [key: string]: number | string } }
-  transition: { [key: string]: number | string | { [key: string]: number | string } }
-  drag: boolean | "x" | "y" | undefined
+  initial?: {
+    [key: string]: number | string | { [key: string]: number | string }
+  }
+  animate: {
+    [key: string]: number | string | { [key: string]: number | string }
+  }
+  transition: {
+    [key: string]: number | string | { [key: string]: number | string }
+  }
+  drag: boolean | 'x' | 'y' | undefined
   children: ReactNode
 }
 
-const Page: FC<PageProps> = ({ index, setExitX, setIndex, exitX, initial, animate, transition, drag, children }) => {
+const Page: FC<PageProps> = ({
+  index,
+  setExitX,
+  setIndex,
+  exitX,
+  initial,
+  animate,
+  transition,
+  drag,
+  children,
+}) => {
   const x = useMotionValue(0)
   const scale = useTransform(x, [-150, 0, 150], [0.5, 1, 0.5])
   const rotate = useTransform(x, [-150, 0, 150], [-45, 0, 45], {
     clamp: false,
   })
 
-  const handleDragEnd = (event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
+  const handleDragEnd = (
+    event: MouseEvent | TouchEvent | PointerEvent,
+    info: PanInfo
+  ) => {
     if (info.offset.x < -100) {
       setExitX(-250)
       setIndex(index + 1)
@@ -119,7 +182,8 @@ const Page: FC<PageProps> = ({ index, setExitX, setIndex, exitX, initial, animat
     <motion.div
       className="w-[25rem] h-[25rem] absolute top-0 left-0 cursor-grab"
       style={{
-        x, rotate
+        x,
+        rotate,
       }}
       whileTap={{ cursor: 'grabbing' }}
       drag={drag}
@@ -135,9 +199,12 @@ const Page: FC<PageProps> = ({ index, setExitX, setIndex, exitX, initial, animat
         transition: { duration: 0.2 },
       }}
     >
-      <motion.div className='w-[25rem] h-[25rem] mx-auto rounded-3xl bg-gradient1 flex items-center justify-center p-4' style={{
-        scale,
-      }}>
+      <motion.div
+        className="w-[25rem] h-[25rem] mx-auto rounded-3xl bg-gradient1 flex items-center justify-center p-4"
+        style={{
+          scale,
+        }}
+      >
         {children}
       </motion.div>
     </motion.div>
