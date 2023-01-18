@@ -1,4 +1,5 @@
 import About from "../../components/About";
+import Expertise from "../../components/Expertise";
 import GetInTouch from "../../components/GetInTouch";
 import Intro from "../../components/Intro";
 import Socials from "../../components/Socials";
@@ -16,6 +17,7 @@ export default function Page() {
           <Intro />
           <p className="text-base text-fade ml-24 my-20" style={{ writingMode: 'vertical-lr' }}>Scroll to Continue</p>
           <About />
+          <Expertise />
         </div>
         <Socials />
       </div>
