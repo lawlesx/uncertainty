@@ -8,6 +8,7 @@ import {
 } from 'framer-motion'
 import { FC, useState } from 'react'
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const expertises = [
   <div className="pageRight" key={1}>
     <h1>Full Stack Developement</h1>
