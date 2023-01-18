@@ -97,7 +97,7 @@ const navLinks: NavLink[] = [
 const Navbar = () => {
   return (
     <nav
-      className="w-[4.4rem] pt-14 bg-background h-screen fixed left-0 top-0 flex flex-col justify-between overflow-hidden"
+      className="w-[4.4rem] pt-14 h-screen fixed left-0 top-0 flex flex-col justify-between overflow-hidden"
       style={{ boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.25)' }}
     >
       <div className="flex flex-col items-center gap-6">
