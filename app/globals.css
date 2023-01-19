@@ -57,3 +57,7 @@ p {
 .workModalNotes {
   @apply text-[3rem] text-lightGray font-quick;
 }
+
+.flipHorizontal {
+  transform: matrix(-1, 0, 0, 1, 0, 0);
+}
