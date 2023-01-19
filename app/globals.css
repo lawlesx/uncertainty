@@ -49,3 +49,11 @@ p {
 .floatingCard p {
   @apply text-lg text-center text-transparent text-primary;
 }
+
+.workModalLinks {
+  @apply text-[5rem] text-lightGray font-quick hover:text-fade transition-colors ease-in-out duration-300;
+}
+
+.workModalNotes {
+  @apply text-[3rem] text-lightGray font-quick;
+}
