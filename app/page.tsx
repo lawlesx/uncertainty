@@ -70,13 +70,12 @@ export default function Page() {
         <RedLine />
         <RedLine className="flipHorizontal" />
       </div>
-      <div className="w-full h-screen absolute flex items-end justify-between overflow-hidden pb-10">
+      <div className="w-full h-screen absolute hidden md:flex items-end justify-between overflow-hidden pb-10">
         <GreenLine delay={1} className="-translate-x-3" />
         <div className="translate-x-3">
           <GreenLine className="flipHorizontal" delay={1} />
         </div>
       </div>
-
       <div className="w-full h-screen flex flex-col gap-8 items-center justify-center relative">
         <motion.p
           initial={{
@@ -94,7 +93,7 @@ export default function Page() {
             duration: 1,
             bounce: 0.5,
           }}
-          className="text-primary text-[98px] font-bold">Welcome</motion.p>
+          className="text-primary text-[3rem] md:leading-[10rem] md:text-[98px] font-bold">Welcome</motion.p>
         <Link href="/uncertainty">
           <motion.h1
             initial={{
@@ -119,7 +118,7 @@ export default function Page() {
               duration: 0.5,
               ease: 'easeInOut',
             }}
-            className="py-10 px-20 rounded-full text-5xl font-semibold text-white"
+            className="py-5 md:py-10 px-10 md:px-20 rounded-full text-lg md:text-5xl font-semibold text-white"
           >{`Let's Dive In`}</motion.h1>
         </Link>
         <WelcomeInHindi />
@@ -133,12 +132,10 @@ const WelcomeInHindi = () => {
     <motion.svg
       initial="hidden"
       animate="visible"
-      width="594"
-      height="115"
       viewBox="0 0 594 115"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      className="mt-4"
+      className="mt-4 w-[300px] md:w-[600px] "
     >
       <motion.path
         variants={hindiTextVariant}
