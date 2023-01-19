@@ -3,12 +3,15 @@ import { AnimatePresence, motion } from 'framer-motion'
 import Link from 'next/link'
 import { useState } from 'react'
 import WorkSkeleton from '../../../components/WorkSkeleton'
+import Image from 'next/image'
 
 interface Works {
   title: string
   github: string
   link: string
   note?: string
+  image: string
+  rotation: number
 }
 
 const projects: Works[] = [
@@ -16,25 +19,45 @@ const projects: Works[] = [
     title: 'Hack Club Nmit',
     github: 'https://github.com/lawlesx/hackclubnmit-website',
     link: 'https://lawlesx.github.io/',
+    image: '/Homepage.png',
+    rotation: 6,
   },
   {
     title: 'My Portfolio',
     github: 'https://github.com/lawlesx/uncertainty',
     link: 'https://lawlesx.vercel.app/',
+    image: '/Portfolio.png',
+    rotation: -2,
   },
   {
     title: 'NFT Auction',
     github: 'https://github.com/lawlesx/the-witch-trials-frontend',
     link: 'https://the-witch-trials.vercel.app/',
     note: 'A concept website for a NFT auction',
+    image: '/The Witch Trials.png',
+    rotation: -10,
   },
   {
     title: 'Social Eye',
     github: 'https://github.com/lawlesx/social-eye',
     link: 'https://social-eye.vercel.app/',
     note: 'WIP: Social graph based on lens protocol',
+    image: '/Social Eye.png',
+    rotation: -15,
   },
 ]
+
+const imageVariant = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+    transition: {
+      duration: 1,
+    },
+  },
+}
 
 const backdrop = {
   hidden: {
@@ -55,10 +78,25 @@ const backdrop = {
 
 const Page = () => {
   const [modal, setModal] = useState(false)
+  const [hover, setHover] = useState(false)
   const [project, setProject] = useState<Works>()
 
   return (
     <WorkSkeleton title="Web Dev">
+      <AnimatePresence mode="wait">
+        {project && (
+          <motion.div
+            variants={imageVariant}
+            animate={hover ? 'visible' : 'hidden'}
+            className="w-[50vw] h-[60vh] absolute top-40 right-40 bg-black"
+            style={{
+              rotate: project?.rotation,
+            }}
+          >
+            <Image src={project?.image ?? ''} fill alt={project?.title || ''} />
+          </motion.div>
+        )}
+      </AnimatePresence>
       <ul className="w-full h-full pl-8 pt-[50vh] relative overflow-y-auto no-scroll-bar">
         {projects.map((item, i) => (
           <li
@@ -66,6 +104,11 @@ const Page = () => {
               setModal(true)
               setProject(item)
             }}
+            onMouseEnter={() => {
+              setHover(true)
+              setProject(item)
+            }}
+            onMouseLeave={() => setHover(false)}
             key={i}
             className="font-oswald py-6 text-[9rem] text-lightGray hover:text-fade transition-colors ease-in-out cursor-pointer duration-300 w-max truncate"
           >
