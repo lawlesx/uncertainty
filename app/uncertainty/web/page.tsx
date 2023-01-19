@@ -88,12 +88,12 @@ const Page = () => {
           <motion.div
             variants={imageVariant}
             animate={hover ? 'visible' : 'hidden'}
-            className="w-[50vw] h-[60vh] absolute top-40 right-40 bg-black"
+            className="w-[50vw] h-[60vh] absolute top-40 right-40"
             style={{
-              rotate: project?.rotation,
+              rotate: project.rotation,
             }}
           >
-            <Image src={project?.image ?? ''} fill alt={project?.title || ''} />
+            <Image src={project.image ?? ''} style={{ objectFit: 'contain' }} fill alt={project.title || ''} />
           </motion.div>
         )}
       </AnimatePresence>
