@@ -15,15 +15,6 @@ const expertises = [
     <p>Framer motion is the best animation library</p>
     <p>Have experience in Web 3. Worked with Etherjs.</p>
   </div>,
-  <div className="floatingCard" key={2}>
-    <h1>App Development</h1>
-    <p>Learning Tauri to create crossplatform desktop/mobile apps.</p>
-  </div>,
-  <div className="floatingCard" key={3}>
-    <h1>UI/UX Designer</h1>
-    <p>Use Figma to design web apps and mobile apps template.</p>
-    <p>Loves to design.</p>
-  </div>,
   <div className="floatingCard" key={4}>
     <h1>3D Modelling and Animation</h1>
     <p>My vivid Imagination are brought to life using blender.</p>
@@ -32,6 +23,15 @@ const expertises = [
   <div className="floatingCard" key={5}>
     <h1>AR Effects</h1>
     <p>Create Simple but artistic Ar effects using Spark AR.</p>
+  </div>,
+  <div className="floatingCard" key={3}>
+    <h1>UI/UX Designer</h1>
+    <p>Use Figma to design web apps and mobile apps template.</p>
+    <p>Loves to design.</p>
+  </div>,
+  <div className="floatingCard" key={2}>
+    <h1>App Development</h1>
+    <p>Learning Tauri to create crossplatform desktop/mobile apps.</p>
   </div>,
   <div className="floatingCard" key={6}>
     <h1>Learning in progress</h1>
@@ -47,7 +47,7 @@ const Expertise = () => {
     <div className="w-full h-screen flex flex-col gap-10 items-center justify-center pl-[5rem]">
       <h1 className="text-[4rem] font-normal text-primary">Expertise</h1>
       <div className="w-full flex gap-20 items-center justify-center">
-        <div className='flex flex-col items-start gap-2'>
+        <div className="flex flex-col items-start gap-2">
           <motion.svg
             className="w-40 rotate-180"
             viewBox="0 0 112 40"
@@ -57,7 +57,11 @@ const Expertise = () => {
             <motion.path
               initial={{ pathLength: 0 }}
               animate={{ pathLength: 1 }}
-              transition={{ duration: 1.5, repeat: Infinity, repeatType: 'mirror' }}
+              transition={{
+                duration: 1.5,
+                repeat: Infinity,
+                repeatType: 'mirror',
+              }}
               d="M1.5 1.5C19 14.3333 65.3 35.1 110.5 15.5M110.5 15.5L84.5 6.5M110.5 15.5V38"
               stroke="#626262"
               strokeWidth="3"
@@ -65,7 +69,7 @@ const Expertise = () => {
               strokeLinejoin="round"
             />
           </motion.svg>
-          <p className='text-sm text-fade tracking-widest'>Drag this way</p>
+          <p className="text-sm text-fade tracking-widest">Drag this way</p>
         </div>
         <motion.div className="w-[25rem] h-[25rem] relative">
           <AnimatePresence initial={false}>
@@ -104,7 +108,7 @@ const Expertise = () => {
             </Page>
           </AnimatePresence>
         </motion.div>
-        <div className='flex flex-col items-end gap-2'>
+        <div className="flex flex-col items-end gap-2">
           <motion.svg
             className="w-40"
             viewBox="0 0 112 40"
@@ -114,7 +118,11 @@ const Expertise = () => {
             <motion.path
               initial={{ pathLength: 0 }}
               animate={{ pathLength: 1 }}
-              transition={{ duration: 1.5, repeat: Infinity, repeatType: 'mirror' }}
+              transition={{
+                duration: 1.5,
+                repeat: Infinity,
+                repeatType: 'mirror',
+              }}
               d="M1.5 1.5C19 14.3333 65.3 35.1 110.5 15.5M110.5 15.5L84.5 6.5M110.5 15.5V38"
               stroke="#626262"
               strokeWidth="3"
@@ -122,7 +130,7 @@ const Expertise = () => {
               strokeLinejoin="round"
             />
           </motion.svg>
-          <p className='text-sm text-fade tracking-widest'>Drag this way</p>
+          <p className="text-sm text-fade tracking-widest">Drag this way</p>
         </div>
       </div>
     </div>
