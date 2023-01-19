@@ -10,11 +10,6 @@ const domains = [
     link: '/uncertainty/web',
   },
   {
-    name: 'App Dev',
-    image: '/projectsImages/App.png',
-    link: '/uncertainty/app',
-  },
-  {
     name: '3D Artwork',
     image: '/projectsImages/3D.png',
     link: '/uncertainty/artwork',
@@ -28,6 +23,11 @@ const domains = [
     name: 'AR Effects',
     image: '/projectsImages/AR.png',
     link: '/uncertainty/ar',
+  },
+  {
+    name: 'Blogs',
+    image: '/projectsImages/Blog.png',
+    link: '/uncertainty/blog',
   },
 ]
 
