@@ -94,11 +94,28 @@ const navLinks: NavLink[] = [
   },
 ]
 
+const navVariants = {
+  hidden: {
+    opacity: 0,
+    x: '-50vw',
+  },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      staggerChildren: 2,
+      duration: 4,
+
+    }
+  }
+}
+
 const Navbar = () => {
   const pathname = usePathname()
 
   return (
-    <nav
+    <motion.nav
+      variants={navVariants} initial='hidden' animate='visible'
       className="w-[4.4rem] pt-14 h-screen fixed left-0 top-0 flex flex-col justify-between overflow-hidden"
       style={{ boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.25)' }}
     >
@@ -139,7 +156,7 @@ const Navbar = () => {
           />
         </svg>
       </div>
-    </nav>
+    </motion.nav>
   )
 }
 
