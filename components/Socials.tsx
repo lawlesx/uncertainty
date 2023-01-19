@@ -64,7 +64,7 @@ const socialVariants = {
 
 const Socials = () => {
   return (
-    <motion.div variants={socialVariants} initial='hidden' animate='visible' className="flex flex-col justify-between items-center py-10 lg:py-20 lg:h-screen">
+    <motion.div variants={socialVariants} initial='hidden' animate='visible' className="flex flex-col justify-between items-center pb-28 lg:py-20 lg:h-screen">
       <div className="flex lg:flex-col gap-8 pt-10">
         {socials.map((social, i) => (
           <Link href={social.href} key={i} target="_blank" rel="noopener noreferrer">

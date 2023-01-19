@@ -1,8 +1,8 @@
 'use client'
 import { motion, Variants } from 'framer-motion'
 import Link from 'next/link'
-import { FC, useEffect } from 'react'
-import useWindowSize from '../hooks/useWindowSize'
+import { FC } from 'react'
+import FloatingWarning from '../components/FloatingWarning'
 
 const hindiTextVariant: Variants = {
   hidden: {
@@ -62,13 +62,6 @@ const uncertaintyTextVariant: Variants = {
 }
 
 export default function Page() {
-  const [, width] = useWindowSize()
-
-  useEffect(() => {
-    if (width < 1024) {
-      alert('Please use a desktop to view this website for best experience')
-    }
-  }, [])
 
 
   return (
@@ -133,6 +126,7 @@ export default function Page() {
         </Link>
         <WelcomeInHindi />
       </div>
+      <FloatingWarning />
     </div>
   )
 }

@@ -6,7 +6,7 @@ type Size = [number, number]
  * @returns {Size} [height, width]
  */
 const useWindowSize = (): Size => {
-  const [size, setSize] = useState<Size>([0, 0])
+  const [size, setSize] = useState<Size>([1200, 1200])
 
   const handleResize = (): void =>
     setSize([window.innerHeight, window.innerWidth])

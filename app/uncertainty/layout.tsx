@@ -1,3 +1,4 @@
+import FloatingWarning from "../../components/FloatingWarning";
 import Navbar from "../../components/Navbar";
 
 export default function UncertaintyLayout({
@@ -9,6 +10,7 @@ export default function UncertaintyLayout({
     <section>
       <Navbar />
       {children}
+      <FloatingWarning />
     </section>
   );
 }
