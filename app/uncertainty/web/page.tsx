@@ -110,7 +110,7 @@ const Page = () => {
             }}
             onMouseLeave={() => setHover(false)}
             key={i}
-            className="font-oswald py-6 text-[9rem] text-lightGray hover:text-fade transition-colors ease-in-out cursor-pointer duration-300 w-max truncate"
+            className="font-oswald py-2 lg:py-6 text-[2.5rem] lg:text-[9rem] text-lightGray hover:text-fade transition-colors ease-in-out cursor-pointer duration-300 w-max truncate"
           >
             {item.title}
           </li>
