@@ -5,6 +5,7 @@ const useAppearOnView = (amount?: number) => {
   const ref = useRef(null)
   const inView = useInView(ref, {
     amount: amount ?? 0.7,
+    once: true,
   })
 
   return {

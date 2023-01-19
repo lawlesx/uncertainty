@@ -1,7 +1,8 @@
 'use client'
 import { motion, Variants } from 'framer-motion'
 import Link from 'next/link'
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
+import useWindowSize from '../hooks/useWindowSize'
 
 const hindiTextVariant: Variants = {
   hidden: {
@@ -61,6 +62,15 @@ const uncertaintyTextVariant: Variants = {
 }
 
 export default function Page() {
+  const [, width] = useWindowSize()
+
+  useEffect(() => {
+    if (width < 1024) {
+      alert('Please use a desktop to view this website for best experience')
+    }
+  }, [])
+
+
   return (
     <div className="w-full bg-background h-screen overflow-hidden">
       <div className="w-full h-screen absolute flex items-center justify-center overflow-hidden pb-10">
