@@ -71,7 +71,7 @@ const Page = () => {
               src={project.image}
               style={{ objectFit: 'contain' }}
               fill
-              alt={project.title || ''}
+              alt={project.title}
             />
           </motion.div>
         )}
