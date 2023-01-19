@@ -21,6 +21,15 @@ body::-webkit-scrollbar-thumb {
   border: 3px solid #1a1a1a;
 }
 
+.no-scroll-bar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;
+}
+
+.no-scroll-bar::-webkit-scrollbar {
+  display: none; /* Safari */
+}
+
 h1 {
   @apply font-montserrat;
 }

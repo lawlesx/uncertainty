@@ -13,6 +13,7 @@ module.exports = {
       fontFamily: {
         montserrat: ['var(--font-montserrat)', ...fontFamily.sans],
         quick: ['var(--font-quicksand)', ...fontFamily.sans],
+        oswald: ['var(--font-oswald)', ...fontFamily.sans],
       },
       colors: {
         background: '#1a1a1a',
@@ -20,6 +21,7 @@ module.exports = {
         highlight: '#4cd963',
         fade: '#626262',
         focus: '#FF4655',
+        lightGray: '#d3d3d3',
       },
       backgroundImage: {
         gradient1: 'linear-gradient(136.35deg, #FF3055 0%, #EB54FE 100%)',

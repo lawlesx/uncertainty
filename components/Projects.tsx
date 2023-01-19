@@ -7,7 +7,7 @@ const domains = [
   {
     name: 'Web Dev',
     image: '/projectsImages/Webdev.png',
-    link: '/uncertainty/projects',
+    link: '/uncertainty/web',
   },
   {
     name: 'App Dev',
@@ -43,7 +43,7 @@ const Projects = () => {
       <div className="flex flex-col gap-5 w-3/5 pl-20">
         {domains.map((domain, index) => (
           <Link
-            href="/uncertainty/projects"
+            href={domain.link}
             className="w-full h-40 overflow-hidden"
             key={index}
           >
