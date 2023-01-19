@@ -2,6 +2,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { FC, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 export interface Works {
   title: string
@@ -29,6 +30,7 @@ const SubSkeleton: FC<{ projects: Works[] }> = ({ projects }) => {
   return (
     <>
       <AnimatePresence mode="wait">
+        <BackButton />
         {project && (
           <motion.div
             variants={imageVariant}
@@ -69,6 +71,36 @@ const SubSkeleton: FC<{ projects: Works[] }> = ({ projects }) => {
         ))}
       </ul>
     </>
+  )
+}
+
+/**
+ * 
+ * @returns Back Button with absolute position
+ */
+export const BackButton = () => {
+  const router = useRouter()
+  return (
+    <button
+      className="text-fade text-base absolute top-4 left-4 lg:hidden flex items-center justify-center gap-2 z-[1]"
+      onClick={() => router.back()}
+    >
+      <svg
+        className="w-4 h-4"
+        viewBox="0 0 35 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M12.5 22.5L2 12M2 12L12.5 1.5M2 12H33.5"
+          stroke="#626262"
+          strokeWidth="3"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+      Back
+    </button>
   )
 }
 

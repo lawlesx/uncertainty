@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 import WorkSkeleton from '../../../components/WorkSkeleton'
 import Image from 'next/image'
+import { BackButton } from '../../../components/SubSkeleton'
 
 interface Works {
   title: string
@@ -84,6 +85,7 @@ const Page = () => {
   return (
     <WorkSkeleton title="Web Dev">
       <AnimatePresence mode="wait">
+        <BackButton />
         {project && (
           <motion.div
             variants={imageVariant}
