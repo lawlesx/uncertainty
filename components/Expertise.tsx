@@ -50,12 +50,12 @@ const Expertise = () => {
       animate={animate}
       transition={transition}
       ref={ref}
-      className="w-full h-screen flex flex-col gap-10 items-center justify-center pl-[5rem]"
+      className="w-full h-screen flex flex-col gap-10 items-center justify-center lg:pl-[5rem]"
       id="expertise"
     >
       <h1 className="text-[4rem] font-normal text-primary">Expertise</h1>
-      <div className="w-full flex gap-20 items-center justify-center">
-        <div className="flex flex-col items-start gap-2">
+      <div className="w-full flex lg:gap-20 items-center justify-center">
+        <div className="hidden lg:flex flex-col items-start gap-2">
           <motion.svg
             className="w-40 rotate-180"
             viewBox="0 0 112 40"
@@ -79,7 +79,7 @@ const Expertise = () => {
           </motion.svg>
           <p className="text-sm text-fade tracking-widest">Drag this way</p>
         </div>
-        <motion.div className="w-[25rem] h-[25rem] relative">
+        <motion.div className="w-[25rem] h-[25rem] scale-75 lg:scale-100 relative">
           <AnimatePresence initial={false}>
             <Page
               key={index + 1}
@@ -116,7 +116,7 @@ const Expertise = () => {
             </Page>
           </AnimatePresence>
         </motion.div>
-        <div className="flex flex-col items-end gap-2">
+        <div className="hidden lg:flex flex-col items-end gap-2">
           <motion.svg
             className="w-40"
             viewBox="0 0 112 40"
@@ -196,7 +196,7 @@ const Page: FC<PageProps> = ({
 
   return (
     <motion.div
-      className="w-[25rem] h-[25rem] absolute top-0 left-0 cursor-grab"
+      className="w-[25rem] h-[25rem] scale-75 lg:scale-100 absolute top-0 left-0 cursor-grab"
       style={{
         x,
         rotate,
@@ -216,7 +216,7 @@ const Page: FC<PageProps> = ({
       }}
     >
       <motion.div
-        className="w-[25rem] h-[25rem] mx-auto rounded-3xl bg-gradient1 flex items-center justify-center p-4"
+        className="w-[25rem] h-[25rem] scale-75 lg:scale-100 mx-auto rounded-3xl bg-gradient1 flex items-center justify-center p-4"
         style={{
           scale,
         }}

@@ -8,11 +8,11 @@ import Socials from "../../components/Socials";
 export default function Page() {
 
   return (
-    <div className="w-full min-h-screen pl-16 pr-6" id="home">
-      <div className="flex">
+    <div className="w-full min-h-screen lg:pl-16 lg:pr-6" id="home">
+      <div className="flex flex-col lg:flex-row">
         <div className="flex flex-col w-full">
           {/* ------------------------------ Get in Touch ------------------------------ */}
-          <div className="w-full py-10 flex items-center justify-end px-[5rem]">
+          <div className="w-full py-10 lg:flex items-center justify-end px-[5rem] hidden">
             <GetInTouch />
           </div>
           <Intro />
@@ -20,6 +20,9 @@ export default function Page() {
           <About />
           <Expertise />
           <Projects />
+        </div>
+        <div className="w-full py-4 flex items-center justify-center lg:hidden">
+          <GetInTouch />
         </div>
         <Socials />
       </div>

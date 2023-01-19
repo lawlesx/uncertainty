@@ -33,24 +33,24 @@ const Intro = () => {
       variants={introVariants}
       initial="hidden"
       animate="visible"
-      className="w-full flex items-center justify-between pl-[5.5rem] py-8 pr-[5rem]"
+      className="w-full flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-0 lg:pl-[5.5rem] py-8 lg:pr-[5rem]"
     >
-      <div className="flex flex-col">
+      <div className="flex flex-col px-4 lg:px-0">
         <motion.h1
           variants={helloVariants}
-          className="text-primary text-[8rem] leading-[8rem]"
+          className="text-primary text-[4rem] lg:text-[8rem] lg:leading-[8rem]"
         >
           Hello
         </motion.h1>
         <motion.h1
           variants={helloVariants}
-          className="text-primary text-[3rem] pt-2 pl-2"
+          className="text-primary text-[1.5rem] lg:text-[3rem] pt-2 pl-2"
         >
           I am Aniruddha Sil
         </motion.h1>
         <motion.p
           variants={helloVariants}
-          className="text-primary text-[2.3rem] font-quick pl-2"
+          className="text-primary text-[1.5rem] lg:text-[2.3rem] font-quick pl-2"
         >
           And welcome to my Portfolio Website
         </motion.p>

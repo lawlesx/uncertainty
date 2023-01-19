@@ -39,20 +39,20 @@ const Projects = () => {
       animate={animate}
       transition={transition}
       ref={ref}
-      className="w-full pl-[5rem] flex items-center py-20"
+      className="w-full lg:pl-[5rem] flex flex-col lg:flex-row items-center py-20"
       id="projects"
     >
-      <div className="flex flex-col w-2/5">
-        <h1 className="text-[5rem] font-medium text-primary">My Projects</h1>
+      <div className="flex flex-col w-full lg:w-2/5 pb-6 px-4 lg:p-0">
+        <h1 className="text-[2.5rem] lg:text-[5rem] font-medium text-primary">My Projects</h1>
         <p className="text-lg tracking-widest text-primary">
           Here are some of my recent works. Feel free to check them out
         </p>
       </div>
-      <div className="flex flex-col gap-5 w-3/5 pl-20">
+      <div className="flex flex-col gap-5 w-full lg:w-3/5 px-4 lg:px-0 lg:pl-20">
         {domains.map((domain, index) => (
           <Link
             href={domain.link}
-            className="w-full h-40 overflow-hidden"
+            className="w-full h-28 lg:h-40 overflow-hidden"
             key={index}
           >
             <motion.div

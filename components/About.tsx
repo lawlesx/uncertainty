@@ -12,12 +12,12 @@ const About = () => {
     <motion.div
       animate={animate}
       transition={transition}
-      className="w-full pl-24 py-20 flex items-center justify-between h-screen"
+      className="w-full lg:pl-24 py-20 flex flex-col lg:flex-row items-center justify-between lg:h-screen gap-8 lg:gap-0"
       id="about"
       ref={ref}
     >
-      <div className="flex flex-col gap-2 w-1/2">
-        <h1 className="text-primary text-[4.5rem] font-semibold">About Me</h1>
+      <div className="flex flex-col gap-2 lg:w-1/2 px-4 lg:px-0">
+        <h1 className="text-primary text-[2rem] lg:text-[4.5rem] font-semibold">About Me</h1>
         <p className={p_style}>
           I am a developer and designer (for fun) from India. The uncertainty in
           design fascinates me.

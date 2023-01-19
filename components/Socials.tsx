@@ -64,15 +64,15 @@ const socialVariants = {
 
 const Socials = () => {
   return (
-    <motion.div variants={socialVariants} initial='hidden' animate='visible' className="flex flex-col justify-between items-center py-20 h-screen">
-      <div className="flex flex-col gap-8 pt-10">
+    <motion.div variants={socialVariants} initial='hidden' animate='visible' className="flex flex-col justify-between items-center py-10 lg:py-20 lg:h-screen">
+      <div className="flex lg:flex-col gap-8 pt-10">
         {socials.map((social, i) => (
           <Link href={social.href} key={i} target="_blank" rel="noopener noreferrer">
             <motion.div whileHover={{ scale: 1.4 }}>{social.icon}</motion.div>
           </Link>
         ))}
       </div>
-      <p className='text-highlight text-[1rem]' style={{ writingMode: 'vertical-lr' }}>Relish the Cosmic Uncertainty</p>
+      <p className='text-highlight text-[1rem] hidden lg:block' style={{ writingMode: 'vertical-lr' }}>Relish the Cosmic Uncertainty</p>
     </motion.div>
   )
 }
