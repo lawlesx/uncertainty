@@ -1,6 +1,6 @@
 'use client'
-import Link from 'next/link'
 import { motion } from 'framer-motion'
+import { usePathname } from 'next/navigation';
 
 interface NavLink {
   name: string
@@ -11,7 +11,7 @@ interface NavLink {
 const navLinks: NavLink[] = [
   {
     name: 'Home',
-    href: '/uncertainty',
+    href: '#home',
     image: (
       <svg
         width="32"
@@ -32,7 +32,7 @@ const navLinks: NavLink[] = [
   },
   {
     name: 'About',
-    href: '/uncertainty/about',
+    href: '#about',
     image: (
       <svg
         width="30"
@@ -50,7 +50,7 @@ const navLinks: NavLink[] = [
   },
   {
     name: 'Skills',
-    href: '/uncertainty/expertise',
+    href: '#expertise',
     image: (
       <svg
         width="32"
@@ -76,7 +76,7 @@ const navLinks: NavLink[] = [
   },
   {
     name: 'Works',
-    href: '/uncertainty/projects',
+    href: '#projects',
     image: (
       <svg
         width="30"
@@ -95,6 +95,8 @@ const navLinks: NavLink[] = [
 ]
 
 const Navbar = () => {
+  const pathname = usePathname()
+
   return (
     <nav
       className="w-[4.4rem] pt-14 h-screen fixed left-0 top-0 flex flex-col justify-between overflow-hidden"
@@ -102,8 +104,9 @@ const Navbar = () => {
     >
       <div className="flex flex-col items-center gap-6">
         {navLinks.map((link, index) => (
-          <Link
-            href={link.href}
+          //* Using a tag instead of Link tag because of the anchor link
+          <a
+            href={pathname === '/uncertainty' ? link.href : `/uncertainty${link.href}`}
             key={index}
             className="w-full py-4 grid place-items-center"
           >
@@ -111,7 +114,7 @@ const Navbar = () => {
               <h1 className='text-fade text-lg'>{link.name}</h1>
               <div>{link.image}</div>
             </motion.div>
-          </Link>
+          </a>
         ))}
       </div>
       <div className='-rotate-90 mb-10'>

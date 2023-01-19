@@ -4,7 +4,7 @@ const p_style = 'text-lg tracking-widest text-primary'
 
 const About = () => {
   return (
-    <div className="w-full pl-24 py-20 flex items-center justify-between h-screen">
+    <div className="w-full pl-24 py-20 flex items-center justify-between h-screen" id="about">
       <div className="flex flex-col gap-2 w-1/2">
         <h1 className="text-primary text-[4.5rem] font-semibold">About Me</h1>
         <p className={p_style}>I am a developer and designer (for fun) from India. The uncertainty in design fascinates me.</p>

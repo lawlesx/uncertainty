@@ -44,7 +44,7 @@ const Expertise = () => {
   const [exitX, setExitX] = useState<string | number>('100%')
 
   return (
-    <div className="w-full h-screen flex flex-col gap-10 items-center justify-center pl-[5rem]">
+    <div className="w-full h-screen flex flex-col gap-10 items-center justify-center pl-[5rem]" id="expertise">
       <h1 className="text-[4rem] font-normal text-primary">Expertise</h1>
       <div className="w-full flex gap-20 items-center justify-center">
         <div className="flex flex-col items-start gap-2">

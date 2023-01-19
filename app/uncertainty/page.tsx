@@ -8,7 +8,7 @@ import Socials from "../../components/Socials";
 export default function Page() {
 
   return (
-    <div className="w-full min-h-screen pl-16 pr-6">
+    <div className="w-full min-h-screen pl-16 pr-6" id="home">
       <div className="flex">
         <div className="flex flex-col w-full">
           {/* ------------------------------ Get in Touch ------------------------------ */}
