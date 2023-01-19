@@ -48,9 +48,23 @@ const socials = [
   },
 ]
 
+const socialVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      delay: 3,
+      duration: 2
+    }
+  },
+  hover: {
+    scale: 1.3
+  }
+}
+
 const Socials = () => {
   return (
-    <div className="flex flex-col justify-between items-center py-20 h-screen">
+    <motion.div variants={socialVariants} initial='hidden' animate='visible' className="flex flex-col justify-between items-center py-20 h-screen">
       <div className="flex flex-col gap-8 pt-10">
         {socials.map((social, i) => (
           <Link href={social.href} key={i} target="_blank" rel="noopener noreferrer">
@@ -59,7 +73,7 @@ const Socials = () => {
         ))}
       </div>
       <p className='text-highlight text-[1rem]' style={{ writingMode: 'vertical-lr' }}>Relish the Cosmic Uncertainty</p>
-    </div>
+    </motion.div>
   )
 }
 

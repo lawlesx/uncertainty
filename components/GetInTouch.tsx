@@ -1,16 +1,31 @@
 'use client'
-
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { useState } from 'react'
 
+const buttonVariants = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+    transition: {
+      delay: 3,
+      duration: 3,
+    },
+  },
+}
+
 const GetInTouch = () => {
   const [hover, setHover] = useState(false)
   return (
-    <Link href='mailto:aniruddhasil109@gmail.com'>
+    <Link href="mailto:aniruddhasil109@gmail.com">
       <motion.button
         onHoverStart={() => setHover(true)}
         onHoverEnd={() => setHover(false)}
+        variants={buttonVariants}
+        initial="hidden"
+        animate="visible"
         className="relative h-16 w-48 grid place-items-center p-1 overflow-hidden"
       >
         <div className="absolute h-[1px] w-2/5 bg-primary top-0 left-0" />
