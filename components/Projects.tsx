@@ -2,6 +2,7 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
+import useAppearOnView from '../hooks/useAppearOnView'
 
 const domains = [
   {
@@ -32,8 +33,15 @@ const domains = [
 ]
 
 const Projects = () => {
+  const { ref, animate, transition } = useAppearOnView(0.5)
   return (
-    <div className="w-full pl-[5rem] flex items-center py-20" id="projects">
+    <motion.div
+      animate={animate}
+      transition={transition}
+      ref={ref}
+      className="w-full pl-[5rem] flex items-center py-20"
+      id="projects"
+    >
       <div className="flex flex-col w-2/5">
         <h1 className="text-[5rem] font-medium text-primary">My Projects</h1>
         <p className="text-lg tracking-widest text-primary">
@@ -71,7 +79,7 @@ const Projects = () => {
           </Link>
         ))}
       </div>
-    </div>
+    </motion.div>
   )
 }
 

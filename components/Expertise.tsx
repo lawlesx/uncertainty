@@ -7,6 +7,7 @@ import {
   useTransform,
 } from 'framer-motion'
 import { FC, ReactNode, useState } from 'react'
+import useAppearOnView from '../hooks/useAppearOnView'
 
 const expertises = [
   <div className="floatingCard" key={1}>
@@ -42,9 +43,16 @@ const expertises = [
 const Expertise = () => {
   const [index, setIndex] = useState(0)
   const [exitX, setExitX] = useState<string | number>('100%')
+  const { ref, animate, transition } = useAppearOnView()
 
   return (
-    <div className="w-full h-screen flex flex-col gap-10 items-center justify-center pl-[5rem]" id="expertise">
+    <motion.div
+      animate={animate}
+      transition={transition}
+      ref={ref}
+      className="w-full h-screen flex flex-col gap-10 items-center justify-center pl-[5rem]"
+      id="expertise"
+    >
       <h1 className="text-[4rem] font-normal text-primary">Expertise</h1>
       <div className="w-full flex gap-20 items-center justify-center">
         <div className="flex flex-col items-start gap-2">
@@ -133,7 +141,7 @@ const Expertise = () => {
           <p className="text-sm text-fade tracking-widest">Drag this way</p>
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }
 
