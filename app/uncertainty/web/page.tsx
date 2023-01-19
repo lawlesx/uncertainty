@@ -88,7 +88,7 @@ const Page = () => {
           <motion.div
             variants={imageVariant}
             animate={hover ? 'visible' : 'hidden'}
-            className="w-[50vw] h-[60vh] absolute top-40 right-40"
+            className="w-[50vw] h-[60vh] absolute top-40 right-40 hidden lg:block"
             style={{
               rotate: project.rotation,
             }}
@@ -97,7 +97,7 @@ const Page = () => {
           </motion.div>
         )}
       </AnimatePresence>
-      <ul className="w-full h-full pl-8 pt-[50vh] relative overflow-y-auto no-scroll-bar">
+      <ul className="w-full h-full pl-8 pt-40 lg:pt-[50vh] relative overflow-y-auto no-scroll-bar">
         {projects.map((item, i) => (
           <li
             onClick={() => {

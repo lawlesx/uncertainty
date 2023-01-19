@@ -47,7 +47,7 @@ const SubSkeleton: FC<{ projects: Works[] }> = ({ projects }) => {
           </motion.div>
         )}
       </AnimatePresence>
-      <ul className="w-full h-full pl-8 pt-[50vh] relative overflow-y-auto no-scroll-bar">
+      <ul className="w-full h-full pl-8 pt-40 lg:pt-[50vh] relative overflow-y-auto no-scroll-bar">
         {projects.map((item, i) => (
           <Link
             href={item.link}
@@ -61,7 +61,7 @@ const SubSkeleton: FC<{ projects: Works[] }> = ({ projects }) => {
                 setProject(item)
               }}
               onMouseLeave={() => setHover(false)}
-              className="font-oswald py-6 text-[9rem] text-lightGray hover:text-fade transition-colors ease-in-out cursor-pointer duration-300 w-max truncate"
+              className="font-oswald py-2 lg:py-6 text-[2.5rem] lg:text-[9rem] text-lightGray hover:text-fade transition-colors ease-in-out cursor-pointer duration-300 w-max truncate"
             >
               {item.title}
             </li>

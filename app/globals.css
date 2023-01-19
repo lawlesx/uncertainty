@@ -51,11 +51,11 @@ p {
 }
 
 .workModalLinks {
-  @apply text-[5rem] text-lightGray font-quick hover:text-fade transition-colors ease-in-out duration-300;
+  @apply text-[2.5rem] lg:text-[5rem] text-lightGray font-quick hover:text-fade transition-colors ease-in-out duration-300;
 }
 
 .workModalNotes {
-  @apply text-[3rem] text-lightGray font-quick;
+  @apply text-[2rem] lg:text-[3rem] text-lightGray font-quick text-center;
 }
 
 .flipHorizontal {
