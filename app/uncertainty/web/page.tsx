@@ -95,7 +95,7 @@ const Page = () => {
               rotate: project.rotation,
             }}
           >
-            <Image src={project.image} style={{ objectFit: 'contain' }} fill alt={project.title} />
+            <Image src={project.image} style={{ objectFit: 'contain' }} fill alt={project.title} priority />
           </motion.div>
         )}
       </AnimatePresence>

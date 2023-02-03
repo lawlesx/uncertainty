@@ -45,6 +45,7 @@ const SubSkeleton: FC<{ projects: Works[] }> = ({ projects }) => {
               style={{ objectFit: 'contain' }}
               fill
               alt={project.title}
+              priority
             />
           </motion.div>
         )}
