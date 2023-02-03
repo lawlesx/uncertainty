@@ -1,5 +1,6 @@
 import './globals.css';
 import { Montserrat, Quicksand, Oswald } from '@next/font/google'
+import { AnalyticsWrapper } from './components/analytics';
 
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -25,6 +26,7 @@ export default function RootLayout({
     <html className={`${montserrat.variable} ${quicksand.variable} ${oswald.variable} bg-background`}>
       <head />
       <body>{children}</body>
+      <AnalyticsWrapper />
     </html>
   )
 }
