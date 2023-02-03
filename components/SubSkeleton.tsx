@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion'
-import { FC, useState } from 'react'
+import { FC, useMemo, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
@@ -25,7 +25,9 @@ const imageVariant = {
 
 const SubSkeleton: FC<{ projects: Works[] }> = ({ projects }) => {
   const [hover, setHover] = useState(false)
-  const [project, setProject] = useState<Works>()
+  const [project, setProject] = useState<Works & { index: number }>()
+
+  const images = useMemo(() => projects.map((item, i) => <Image key={i} src={item.image} style={{ objectFit: 'contain' }} fill alt={item.title} priority />), [projects])
 
   return (
     <>
@@ -40,13 +42,7 @@ const SubSkeleton: FC<{ projects: Works[] }> = ({ projects }) => {
               rotate: project.rotation,
             }}
           >
-            <Image
-              src={project.image}
-              style={{ objectFit: 'contain' }}
-              fill
-              alt={project.title}
-              priority
-            />
+            {images[project.index]}
           </motion.div>
         )}
       </AnimatePresence>
@@ -61,7 +57,7 @@ const SubSkeleton: FC<{ projects: Works[] }> = ({ projects }) => {
             <li
               onMouseEnter={() => {
                 setHover(true)
-                setProject(item)
+                setProject({ ...item, index: i })
               }}
               onMouseLeave={() => setHover(false)}
               className="font-oswald py-2 lg:py-6 text-[2.5rem] lg:text-[9rem] text-lightGray hover:text-fade transition-colors ease-in-out cursor-pointer duration-300 w-max truncate"

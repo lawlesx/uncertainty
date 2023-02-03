@@ -80,7 +80,7 @@ const backdrop = {
 const Page = () => {
   const [modal, setModal] = useState(false)
   const [hover, setHover] = useState(false)
-  const [project, setProject] = useState<Works>()
+  const [project, setProject] = useState<Works & { index: number }>()
 
   return (
     <WorkSkeleton title="Web Dev">
@@ -95,7 +95,7 @@ const Page = () => {
               rotate: project.rotation,
             }}
           >
-            <Image src={project.image} style={{ objectFit: 'contain' }} fill alt={project.title} priority />
+            {Images[project.index]}
           </motion.div>
         )}
       </AnimatePresence>
@@ -104,11 +104,11 @@ const Page = () => {
           <li
             onClick={() => {
               setModal(true)
-              setProject(item)
+              setProject({ ...item, index: i })
             }}
             onMouseEnter={() => {
               setHover(true)
-              setProject(item)
+              setProject({ ...item, index: i })
             }}
             onMouseLeave={() => setHover(false)}
             key={i}
@@ -158,5 +158,7 @@ const Page = () => {
     </WorkSkeleton>
   )
 }
+
+const Images = projects.map((item, i) => <Image key={i} src={item.image} style={{ objectFit: 'contain' }} fill alt={item.title} priority />)
 
 export default Page
