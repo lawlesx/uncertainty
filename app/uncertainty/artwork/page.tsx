@@ -16,28 +16,34 @@ const projects: Works[] = [
     rotation: -6,
   },
   {
-    title: 'Penta Pendulum',
-    link: 'https://www.instagram.com/p/CMC2qzxg_hG/',
-    image: '/PentaPendulum.png',
-    rotation: 0,
-  },
-  {
-    title: 'Arm Cortex',
-    link: 'https://www.youtube.com/watch?v=buv4Sngms14&ab_channel=WelcomeToHell',
-    image: '/Cortex.png',
-    rotation: -15,
-  },
-  {
     title: 'Remains',
     link: 'https://www.instagram.com/reel/CnZuIyerDE8/?utm_source=ig_web_copy_link',
     image: '/Remains.png',
     rotation: 7,
   },
   {
+    title: 'Penta Pendulum',
+    link: 'https://www.instagram.com/p/CMC2qzxg_hG/',
+    image: '/PentaPendulum.png',
+    rotation: -7,
+  },
+  {
+    title: 'Distorted Museum',
+    link: 'https://www.instagram.com/p/CuL1A1Hsz9v/',
+    image: '/DistortedMuseum.png',
+    rotation: 0,
+  },
+  {
     title: 'Lost Sword',
     link: 'https://www.youtube.com/watch?v=lEbTlM7AnNI&ab_channel=WelcomeToHell',
     image: '/Lost_Sword.jpg',
     rotation: -10,
+  },
+  {
+    title: 'Arm Cortex',
+    link: 'https://www.youtube.com/watch?v=buv4Sngms14&ab_channel=WelcomeToHell',
+    image: '/Cortex.png',
+    rotation: -15,
   },
 ]
 
