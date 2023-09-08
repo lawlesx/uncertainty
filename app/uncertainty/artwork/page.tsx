@@ -16,6 +16,12 @@ const projects: Works[] = [
     rotation: -6,
   },
   {
+    title: 'Red Room',
+    link: 'https://www.instagram.com/reel/Cwb5yp-NMDz/?utm_source=ig_web_copy_link&igshid=MzRlODBiNWFlZA==',
+    image: '/RedRoom.png',
+    rotation: 0,
+  },
+  {
     title: 'Remains',
     link: 'https://www.instagram.com/reel/CnZuIyerDE8/?utm_source=ig_web_copy_link',
     image: '/Remains.png',
