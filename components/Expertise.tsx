@@ -12,13 +12,13 @@ import useAppearOnView from '../hooks/useAppearOnView'
 const expertises = [
   <div className="floatingCard" key={1}>
     <h1>Full Stack Developement</h1>
-    <p>Tech stack used by me is NEXTJs/Reactjs and Node/Express.js</p>
-    <p>Framer motion is the best animation library</p>
-    <p>Have experience in Web 3. Worked with Etherjs.</p>
+    <p>Frontend Specialization using the Tech stacks - NEXTJs/Reactjs, Tailwind CSS, React Query, Zod</p>
+    <p>Animation library - Framer Motion</p>
+    <p>Backend Tech stacks - Nodejs/Express, MongoDB and Postgresql</p>
   </div>,
   <div className="floatingCard" key={4}>
     <h1>3D Modelling and Animation</h1>
-    <p>My vivid Imagination are brought to life using blender.</p>
+    <p>My vivid Imagination are brought to life using <strong>blender</strong>.</p>
     <p>Loves to reflect my fantasies to the world.</p>
   </div>,
   <div className="floatingCard" key={5}>
