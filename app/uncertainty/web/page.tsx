@@ -17,10 +17,11 @@ interface Works {
 
 const projects: Works[] = [
   {
-    title: 'Hack Club Nmit',
-    github: 'https://github.com/lawlesx/hackclubnmit-website',
-    link: 'https://lawlesx.github.io/',
-    image: '/Homepage.png',
+    title: 'First Leads (Freelance)',
+    github: 'https://github.com/lawlesx/first-leads',
+    link: 'https://first-leads.vercel.app/',
+    note: 'A freelance project for a lead generation company',
+    image: '/FirstLeads.png',
     rotation: 6,
   },
   {
@@ -28,7 +29,14 @@ const projects: Works[] = [
     github: 'https://github.com/lawlesx/uncertainty',
     link: 'https://lawlesx.vercel.app/',
     image: '/Portfolio.png',
-    rotation: -2,
+    rotation: 4,
+  },
+  {
+    title: 'Hack Club Nmit',
+    github: 'https://github.com/lawlesx/hackclubnmit-website',
+    link: 'https://lawlesx.github.io/',
+    image: '/Homepage.png',
+    rotation: 0,
   },
   {
     title: 'NFT Auction',
@@ -159,6 +167,16 @@ const Page = () => {
   )
 }
 
-const Images = projects.map((item, i) => <Image key={i} src={item.image} style={{ objectFit: 'contain' }} fill alt={item.title} priority />)
+const Images = projects.map((item, i) => (
+  <Image
+    key={i}
+    src={item.image}
+    style={{ objectFit: 'contain' }}
+    className="filter drop-shadow-lg"
+    fill
+    alt={item.title}
+    priority
+  />
+))
 
 export default Page
