@@ -32,6 +32,13 @@ const projects: Works[] = [
     rotation: 4,
   },
   {
+    title: 'Slider',
+    github: 'https://github.com/lawlesx/playground',
+    link: 'https://playground-gamma-seven.vercel.app/slider',
+    image: '/Slider.gif',
+    rotation: 0,
+  },
+  {
     title: 'Hack Club Nmit',
     github: 'https://github.com/lawlesx/hackclubnmit-website',
     link: 'https://lawlesx.github.io/',
