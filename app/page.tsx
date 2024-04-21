@@ -62,7 +62,10 @@ const uncertaintyTextVariant: Variants = {
 }
 
 export default function Page() {
-
+  const playHoverSound = () => {
+    const audio = new Audio('/audio/Skye.mp3')
+    audio.play()
+  }
 
   return (
     <div className="w-full bg-background h-screen overflow-hidden">
@@ -96,8 +99,15 @@ export default function Page() {
             duration: 1,
             bounce: 0.5,
           }}
-          className="text-primary text-[3rem] md:leading-[10rem] md:text-[98px] font-bold">Welcome</motion.p>
-        <Link href="/uncertainty">
+          className="text-primary text-[3rem] md:leading-[10rem] md:text-[98px] font-bold"
+        >
+          Welcome
+        </motion.p>
+        <Link
+          href="/uncertainty"
+          onMouseEnter={playHoverSound}
+          onTouchStart={playHoverSound}
+        >
           <motion.h1
             initial={{
               opacity: 0,
