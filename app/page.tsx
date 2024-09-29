@@ -100,10 +100,6 @@ export default function Page() {
         </motion.p>
         <Link
           href="/uncertainty"
-          onClick={() => {
-            const audio = new Audio('/audio/Skye.mp3')
-            audio.play()
-          }}
         >
           <motion.h1
             initial={{

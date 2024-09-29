@@ -17,6 +17,14 @@ interface Works {
 
 const projects: Works[] = [
   {
+    title: 'Acme',
+    github: 'https://github.com/lawlesx/acme',
+    link: 'https://acme-note-ruddy.vercel.app/',
+    note: 'A landing page designed to capture users attention for a SaaS platform(Concept) to take notes. ',
+    image: '/Acme.png',
+    rotation: 12,
+  },
+  {
     title: 'First Leads (Freelance)',
     github: 'https://github.com/lawlesx/first-leads',
     link: 'https://first-leads.vercel.app/',
@@ -25,26 +33,20 @@ const projects: Works[] = [
     rotation: 6,
   },
   {
+    title: 'Slider',
+    github: 'https://github.com/lawlesx/playground/slider',
+    link: 'https://playground-gamma-seven.vercel.app/slider',
+    image: '/Slider.gif',
+    rotation: 0,
+  },
+  {
     title: 'My Portfolio',
     github: 'https://github.com/lawlesx/uncertainty',
     link: 'https://lawlesx.vercel.app/',
     image: '/Portfolio.png',
     rotation: 4,
   },
-  {
-    title: 'Slider',
-    github: 'https://github.com/lawlesx/playground',
-    link: 'https://playground-gamma-seven.vercel.app/slider',
-    image: '/Slider.gif',
-    rotation: 0,
-  },
-  {
-    title: 'Hack Club Nmit',
-    github: 'https://github.com/lawlesx/hackclubnmit-website',
-    link: 'https://lawlesx.github.io/',
-    image: '/Homepage.png',
-    rotation: 0,
-  },
+
   {
     title: 'NFT Auction',
     github: 'https://github.com/lawlesx/the-witch-trials-frontend',
@@ -54,13 +56,20 @@ const projects: Works[] = [
     rotation: -10,
   },
   {
-    title: 'Social Eye',
-    github: 'https://github.com/lawlesx/social-eye',
-    link: 'https://social-eye.vercel.app/',
-    note: 'WIP: Social graph based on lens protocol',
-    image: '/Social Eye.png',
-    rotation: -15,
+    title: 'Hack Club Nmit',
+    github: 'https://github.com/lawlesx/hackclubnmit-website',
+    link: 'https://lawlesx.github.io/',
+    image: '/Homepage.png',
+    rotation: 0,
   },
+  // {
+  //   title: 'Social Eye',
+  //   github: 'https://github.com/lawlesx/social-eye',
+  //   link: 'https://social-eye.vercel.app/',
+  //   note: 'WIP: Social graph based on lens protocol',
+  //   image: '/Social Eye.png',
+  //   rotation: -15,
+  // },
 ]
 
 const imageVariant = {

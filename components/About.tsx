@@ -23,7 +23,10 @@ const About = () => {
           design fascinates me.
         </p>
         <p className={p_style}>
-          Currently Frontend Developer at <strong>Coinvise</strong>.
+          Currently Frontend Developer (SDE - 2) at <strong>ZopSmart</strong>.
+        </p>
+        <p className={p_style}>
+          Previously worked as a Frontend Developer at <strong>Coinvise</strong> for 2 years and 9 months.
         </p>
         <p className={p_style}>
           I love technology and loves to explore different domains of
