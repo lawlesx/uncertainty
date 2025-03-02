@@ -33,10 +33,10 @@ const projects: Works[] = [
     rotation: 6,
   },
   {
-    title: 'Slider',
-    github: 'https://github.com/lawlesx/playground/slider',
-    link: 'https://playground-gamma-seven.vercel.app/slider',
-    image: '/Slider.gif',
+    title: 'Mad Playground',
+    github: 'https://github.com/lawlesx/playground',
+    link: 'http://mad-playground.vercel.app/',
+    image: '/MadPlayground.png',
     rotation: 0,
   },
   {
