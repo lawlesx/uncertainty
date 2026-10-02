@@ -1,5 +1,8 @@
 // All site content lives here. Search for "TODO" to find placeholders.
 
+const CAREER_START = new Date('2022-07-01')
+const yearsShipping = Math.floor((Date.now() - CAREER_START.getTime()) / (365.25 * 24 * 3600 * 1000))
+
 export const profile = {
   name: 'Aniruddha Sil',
   firstName: 'Aniruddha',
@@ -19,10 +22,9 @@ export const profile = {
     'Outside of work I model, light and animate in Blender, and I am currently teaching myself game development in Unreal Engine.',
   ],
   stats: [
-    // TODO: confirm numbers
-    { value: '5+', label: 'Years shipping for the web' },
+    { value: `${yearsShipping}+`, label: 'Years shipping for the web' },
     { value: '3', label: 'Companies' },
-    { value: '20+', label: 'Blender renders' },
+    { value: '10+', label: 'Blender renders' },
   ],
 }
 
@@ -44,12 +46,12 @@ export type Job = {
   color: string
 }
 
-// TODO: fill in exact dates, titles and highlights (send the resume!)
+// TODO: exact Thoughtworks title and highlights (send the resume!)
 export const experience: Job[] = [
   {
     company: 'Thoughtworks',
     role: 'Frontend Developer', // TODO: exact title
-    period: '20XX — Now',
+    period: 'Oct 2025 — Now',
     summary: 'Global technology consultancy. Building frontend for client products.',
     points: ['TODO: highlight one', 'TODO: highlight two'],
     stack: ['React', 'TypeScript', 'Next.js'],
@@ -58,7 +60,7 @@ export const experience: Job[] = [
   {
     company: 'ZopSmart',
     role: 'Frontend Developer · SDE 2',
-    period: '20XX — 20XX',
+    period: 'Aug 2024 — Oct 2025',
     summary: 'Retail-tech product company. Shipped frontend features as an SDE 2.',
     points: ['TODO: highlight one', 'TODO: highlight two'],
     stack: ['React', 'Next.js', 'TypeScript'],
@@ -67,8 +69,8 @@ export const experience: Job[] = [
   {
     company: 'Coinvise',
     role: 'Frontend Developer',
-    period: '20XX — 20XX · 2 yrs 9 mos',
-    summary: 'Web3 tools for creators and communities. Frontend developer for almost three years.',
+    period: 'Jul 2022 — Apr 2024',
+    summary: 'Web3 tools for creators and communities. My first frontend role.',
     points: ['TODO: highlight one', 'TODO: highlight two'],
     stack: ['Next.js', 'Tailwind', 'React Query', 'Framer Motion'],
     color: '#c6ff3d',
@@ -81,13 +83,31 @@ export type Project = {
   year: string
   link: string
   github?: string
-  image: string
+  image?: string // without one, a generated cover is shown
   note: string
   color: string
 }
 
 // Years are when each project was added to the old portfolio.
 export const projects: Project[] = [
+  {
+    title: 'Clairvoyance',
+    kind: 'AI · Data analysis',
+    year: '2026',
+    link: 'https://github.com/lawlesx/clairvoyance', // TODO: live URL
+    github: 'https://github.com/lawlesx/clairvoyance',
+    note: 'Ask questions about any dataset in plain English. Upload a CSV or connect Postgres/MySQL — an AI agent writes the SQL, runs it and picks the right chart.',
+    color: '#22e1ff',
+  },
+  {
+    title: 'Fern',
+    kind: 'AI · Voice expense tracker',
+    year: '2026',
+    link: 'https://fern-five.vercel.app/',
+    github: 'https://github.com/lawlesx/fern',
+    note: 'Speak your expenses in English, Hindi, Bengali, Marathi or Hinglish and Fern turns them into structured, categorised logs in seconds.',
+    color: '#c6ff3d',
+  },
   {
     title: 'Mad Playground',
     kind: 'Creative dev · WebGL',
@@ -126,7 +146,7 @@ export const projects: Project[] = [
     github: 'https://github.com/lawlesx/the-witch-trials-frontend',
     image: '/images/work/WitchTrials.png',
     note: 'A concept NFT live-auction experience.',
-    color: '#c6ff3d',
+    color: '#ff3d81',
   },
   {
     title: 'Hack Club NMIT',

@@ -1,12 +1,12 @@
 'use client'
 
 import { motion, useMotionValue, useSpring, useTransform, useVelocity, type MotionValue } from 'motion/react'
-import Image from 'next/image'
 import { useState } from 'react'
 import { projects } from '@/lib/data'
 import SectionLabel from '../ui/SectionLabel'
 import SplitReveal from '../ui/SplitReveal'
 import Magnetic from '../ui/Magnetic'
+import ProjectCover from '../ui/ProjectCover'
 
 const EASE = [0.16, 1, 0.3, 1] as const
 
@@ -36,7 +36,7 @@ function FloatingPreview({ active, x, y }: { active: number | null; x: MotionVal
         >
           {projects.map((p) => (
             <div key={p.title} className="relative h-[260px] w-full">
-              <Image src={p.image} alt="" fill sizes="380px" className="object-cover object-top" />
+              <ProjectCover project={p} sizes="380px" />
             </div>
           ))}
         </motion.div>
@@ -129,7 +129,7 @@ export default function Work() {
                   </span>
                 </span>
                 <div className="relative col-span-3 aspect-[16/9] overflow-hidden rounded-xl md:hidden">
-                  <Image src={p.image} alt={`${p.title} screenshot`} fill sizes="90vw" className="object-cover object-top" />
+                  <ProjectCover project={p} sizes="90vw" />
                 </div>
                 <p className="col-span-3 text-sm text-paper/70 md:hidden">
                   <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-paper/50">{p.kind} · {p.year}</span>

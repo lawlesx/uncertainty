@@ -30,13 +30,14 @@ function JobItem({ job, index, onActive }: { job: Job; index: number; onActive: 
         }}
       />
       <motion.div
+        className="@container"
         initial={{ opacity: 0, y: 60 }}
         animate={seen ? { opacity: 1, y: 0 } : undefined}
         transition={{ duration: 1.1, ease: EASE }}
       >
         <p className="font-mono text-[11px] uppercase tracking-[0.25em] text-paper/60">{job.period}</p>
         <h3
-          className="mt-3 break-words bg-clip-text font-display text-[clamp(1.5rem,6.8vw,3rem)] font-extrabold leading-[0.95] tracking-tight transition-[color] duration-500 md:text-6xl xl:text-7xl"
+          className="mt-3 bg-clip-text font-display text-[min(3.5rem,8cqw)] font-extrabold leading-[0.95] tracking-tight transition-[color] duration-500"
           style={{
             backgroundImage: `linear-gradient(100deg, ${job.color}, #f5f2ff 70%)`,
             color: centered ? 'transparent' : '#f5f2ff',
