@@ -73,7 +73,7 @@ export default function AfterDark() {
 
   const cards = useRef<(HTMLDivElement | null)[]>([])
   // the card closest to the middle of the screen is the active one
-  useMotionValueEvent(x, 'change', () => {
+  const pick = () => {
     const mid = window.innerWidth / 2
     let best = 0
     let bestDist = Infinity
@@ -87,7 +87,9 @@ export default function AfterDark() {
       }
     })
     setActive(best)
-  })
+  }
+  // measure after motion has applied this frame's transform
+  useMotionValueEvent(scrollYProgress, 'change', () => requestAnimationFrame(pick))
 
   const instagram = socials.find((s) => s.label === 'Instagram')?.href
   const youtube = socials.find((s) => s.label === 'YouTube')?.href
