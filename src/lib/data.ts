@@ -1,6 +1,6 @@
 // All site content lives here. Search for "TODO" to find placeholders.
 
-const CAREER_START = new Date('2022-07-01')
+const CAREER_START = new Date('2021-08-01') // Coinvise internship
 const yearsShipping = Math.floor((Date.now() - CAREER_START.getTime()) / (365.25 * 24 * 3600 * 1000))
 
 export const profile = {
@@ -44,6 +44,7 @@ export type Job = {
   points: string[]
   stack: string[]
   color: string
+  stints?: { role: string; period: string }[] // progression within one company, newest first
 }
 
 // TODO: exact Thoughtworks title and highlights (send the resume!)
@@ -69,8 +70,12 @@ export const experience: Job[] = [
   {
     company: 'Coinvise',
     role: 'Frontend Developer',
-    period: 'Jul 2022 — Apr 2024',
-    summary: 'Web3 tools for creators and communities. My first frontend role.',
+    period: 'Aug 2021 — Apr 2024',
+    summary: 'Web3 tools for creators and communities. Joined as an intern in my third year of college, then went full-time.',
+    stints: [
+      { role: 'Frontend Developer', period: 'Jul 2022 — Apr 2024' },
+      { role: 'Frontend Intern', period: 'Aug 2021 — Jun 2022' },
+    ],
     points: ['TODO: highlight one', 'TODO: highlight two'],
     stack: ['Next.js', 'Tailwind', 'React Query', 'Framer Motion'],
     color: '#c6ff3d',

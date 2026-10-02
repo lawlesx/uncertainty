@@ -46,7 +46,19 @@ function JobItem({ job, index, onActive }: { job: Job; index: number; onActive: 
         >
           {job.company}
         </h3>
-        <p className="mt-4 font-display text-xl font-semibold md:text-2xl">{job.role}</p>
+        {!job.stints && <p className="mt-4 font-display text-xl font-semibold md:text-2xl">{job.role}</p>}
+        {job.stints && (
+          <ol className="mt-4 space-y-2 border-l pl-4" style={{ borderColor: `${job.color}66` }}>
+            {job.stints.map((st) => (
+              <li key={st.role} className="flex flex-wrap items-baseline gap-x-3">
+                <span className="font-display text-lg font-semibold md:text-xl">{st.role}</span>
+                <span className="font-mono text-[11px] uppercase tracking-[0.15em]" style={{ color: job.color }}>
+                  {st.period}
+                </span>
+              </li>
+            ))}
+          </ol>
+        )}
         <p className="mt-3 max-w-xl text-base leading-relaxed text-paper/75">{job.summary}</p>
         <ul className="mt-5 space-y-2 text-sm text-paper/70">
           {job.points.map((p) => (
