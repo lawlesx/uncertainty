@@ -6,15 +6,19 @@ import * as THREE from 'three'
 import { palettes, pointer, scene } from '@/lib/store'
 import { backgroundFragment, fullscreenVertex, trailFragment } from './shaders'
 
-const TRAIL_SIZE = 256
+// Trail resolution: a third of the screen, so each texel covers a square patch of pixels.
+function trailSize(width: number, height: number) {
+  const scale = Math.min(1 / 3, 640 / Math.max(width, height))
+  return [Math.max(64, Math.round(width * scale)), Math.max(64, Math.round(height * scale))] as const
+}
 
 function makeTarget() {
-  return new THREE.WebGLRenderTarget(TRAIL_SIZE, TRAIL_SIZE, {
+  // half-float textures are linearly filterable in WebGL2; the background adds a bicubic pass on top
+  return new THREE.WebGLRenderTarget(256, 256, {
     type: THREE.HalfFloatType,
     format: THREE.RGBAFormat,
-    // filtered manually in the shaders (see sampleSmooth)
-    minFilter: THREE.NearestFilter,
-    magFilter: THREE.NearestFilter,
+    minFilter: THREE.LinearFilter,
+    magFilter: THREE.LinearFilter,
     depthBuffer: false,
     stencilBuffer: false,
   })
@@ -37,7 +41,6 @@ export default function FluidBackground({ octaves = 3 }: { octaves?: number }) {
         uRadius: { value: 0.005 },
         uDecay: { value: 0.965 },
         uDt: { value: 0.016 },
-        uTexel: { value: new THREE.Vector2(1 / TRAIL_SIZE, 1 / TRAIL_SIZE) },
       },
       depthTest: false,
       depthWrite: false,
@@ -57,7 +60,7 @@ export default function FluidBackground({ octaves = 3 }: { octaves?: number }) {
       defines: { OCTAVES: octaves },
       uniforms: {
         uTrail: { value: trail.targets[0].texture },
-        uTexel: { value: new THREE.Vector2(1 / TRAIL_SIZE, 1 / TRAIL_SIZE) },
+        uTrailSize: { value: new THREE.Vector2(256, 256) },
         uTime: { value: 0 },
         uRes: { value: new THREE.Vector2(1, 1) },
         uA: { value: new THREE.Color(p.a) },
@@ -76,6 +79,12 @@ export default function FluidBackground({ octaves = 3 }: { octaves?: number }) {
     () => palettes.map((p) => ({ a: new THREE.Color(p.a), b: new THREE.Color(p.b), c: new THREE.Color(p.c), bg: new THREE.Color(p.bg), intensity: p.intensity })),
     [],
   )
+
+  useEffect(() => {
+    const [w, h] = trailSize(size.width, size.height)
+    trail.targets.forEach((t) => t.setSize(w, h))
+    background.uniforms.uTrailSize.value.set(w, h)
+  }, [size.width, size.height, trail, background])
 
   useEffect(() => {
     return () => {

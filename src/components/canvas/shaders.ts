@@ -1,17 +1,34 @@
-const bilinear = /* glsl */ `
-  // Manual bilinear filtering. Half-float textures aren't linearly filterable on every
-  // GPU, and nearest sampling of the 256px trail shows up as blocky square edges.
-  vec4 sampleSmooth(sampler2D tex, vec2 uv, vec2 texel) {
-    vec2 st = uv / texel - 0.5;
-    vec2 i = floor(st);
-    vec2 f = fract(st);
-    f = f * f * (3.0 - 2.0 * f);
-    vec2 b = (i + 0.5) * texel;
-    vec4 a = texture2D(tex, b);
-    vec4 c = texture2D(tex, b + vec2(texel.x, 0.0));
-    vec4 d = texture2D(tex, b + vec2(0.0, texel.y));
-    vec4 e = texture2D(tex, b + texel);
-    return mix(mix(a, c, f.x), mix(d, e, f.x), f.y);
+const bicubic = /* glsl */ `
+  // B-spline bicubic sampling built from 4 hardware-bilinear taps. The trail is stored at
+  // low resolution; plain bilinear upscaling leaves a visible grid (square-edged blobs)
+  // once the value is pushed through a threshold. The cubic B-spline is smooth across texels.
+  vec4 cubicWeights(float v) {
+    vec4 n = vec4(1.0, 2.0, 3.0, 4.0) - v;
+    vec4 s = n * n * n;
+    float x = s.x;
+    float y = s.y - 4.0 * s.x;
+    float z = s.z - 4.0 * s.y + 6.0 * s.x;
+    float w = 6.0 - x - y - z;
+    return vec4(x, y, z, w) * (1.0 / 6.0);
+  }
+
+  vec4 sampleSmooth(sampler2D tex, vec2 uv, vec2 texSize) {
+    vec2 inv = 1.0 / texSize;
+    uv = uv * texSize - 0.5;
+    vec2 f = fract(uv);
+    uv -= f;
+    vec4 xc = cubicWeights(f.x);
+    vec4 yc = cubicWeights(f.y);
+    vec4 c = uv.xxyy + vec2(-0.5, 1.5).xyxy;
+    vec4 s = vec4(xc.xz + xc.yw, yc.xz + yc.yw);
+    vec4 o = (c + vec4(xc.yw, yc.yw) / s) * inv.xxyy;
+    vec4 s0 = texture2D(tex, o.xz);
+    vec4 s1 = texture2D(tex, o.yz);
+    vec4 s2 = texture2D(tex, o.xw);
+    vec4 s3 = texture2D(tex, o.yw);
+    float sx = s.x / (s.x + s.y);
+    float sy = s.z / (s.z + s.w);
+    return mix(mix(s3, s2, sx), mix(s1, s0, sx), sy);
   }
 `
 
@@ -35,13 +52,10 @@ export const trailFragment = /* glsl */ `
   uniform float uRadius;
   uniform float uDecay;
   uniform float uDt;
-  uniform vec2 uTexel;
-
-  ${bilinear}
 
   void main() {
-    vec4 here = sampleSmooth(uPrev, vUv, uTexel);
-    vec4 prev = sampleSmooth(uPrev, vUv - here.xy * uDt * 0.35, uTexel);
+    vec4 here = texture2D(uPrev, vUv);
+    vec4 prev = texture2D(uPrev, vUv - here.xy * uDt * 0.35);
     prev.xyz *= uDecay;
 
     vec2 d = vUv - uMouse;
@@ -49,8 +63,10 @@ export const trailFragment = /* glsl */ `
     float speed = clamp(length(uVel), 0.0, 6.0);
     float splat = exp(-dot(d, d) / uRadius) * smoothstep(0.0, 0.6, speed);
 
-    prev.xy += uVel * splat * 0.6;
-    prev.z += splat * 0.35;
+    // scale deposits by frame time so the wake looks the same at 30, 60 or 120 Hz
+    float frames = uDt * 60.0;
+    prev.xy += uVel * splat * 0.6 * frames;
+    prev.z += splat * 0.45 * frames;
     prev.xy = clamp(prev.xy, vec2(-3.0), vec2(3.0));
     prev.z = clamp(prev.z, 0.0, 1.5);
     gl_FragColor = vec4(prev.xyz, 1.0);
@@ -103,7 +119,7 @@ export const backgroundFragment = /* glsl */ `
   precision highp float;
   varying vec2 vUv;
   uniform sampler2D uTrail;
-  uniform vec2 uTexel;
+  uniform vec2 uTrailSize;
   uniform float uTime;
   uniform vec2 uRes;
   uniform vec3 uA;
@@ -114,17 +130,17 @@ export const backgroundFragment = /* glsl */ `
   uniform float uScroll;
 
   ${noise}
-  ${bilinear}
+  ${bicubic}
 
   float hash(vec2 p) {
     return fract(sin(dot(p, vec2(12.9898, 78.233))) * 43758.5453);
   }
 
   void main() {
-    vec4 trail = sampleSmooth(uTrail, vUv, uTexel);
-    float ink = smoothstep(0.0, 1.0, clamp(trail.z, 0.0, 1.0));
+    vec4 trail = sampleSmooth(uTrail, vUv, uTrailSize);
+    float ink = smoothstep(0.0, 0.9, trail.z);
     // the cursor pushes the liquid around rather than painting on top of it
-    vec2 uv = vUv - trail.xy * 0.07;
+    vec2 uv = vUv - trail.xy * 0.05;
 
     float aspect = uRes.x / uRes.y;
     vec2 p = (uv - 0.5) * vec2(aspect, 1.0) * 0.85;
@@ -148,17 +164,15 @@ export const backgroundFragment = /* glsl */ `
     float ridge = pow(1.0 - abs(f - 0.35), 8.0);
     col += mix(uB, uC, q.y * 0.5 + 0.5) * ridge * 0.18;
 
-    // pointer wake: rotate the hue of whatever it passes through (no white glow),
-    // with a faint coloured rim where the wake fades out
-    vec3 rotated = col.brg * 1.25;
-    col = mix(col, rotated, ink * 0.75);
-    float rim = smoothstep(0.05, 0.22, ink) * (1.0 - smoothstep(0.22, 0.55, ink));
-    col += mix(uB, uC, smoothstep(-1.0, 1.0, trail.x)) * rim * 0.22;
-
     // keep the middle-left darker for text; vignette edges
     vec2 c = vUv - vec2(0.5);
     float vig = smoothstep(1.05, 0.2, length(c * vec2(aspect * 0.85, 1.0)));
     col = mix(uBg, col, uIntensity * mix(0.35, 1.0, vig));
+
+    // pointer wake: drains the colour out of whatever it passes through (applied last,
+    // after the section tint, so it reads as true grayscale)
+    float luma = dot(col, vec3(0.2126, 0.7152, 0.0722));
+    col = mix(col, vec3(luma) * 1.25, ink * 0.92);
 
     // film grain
     float g = hash(vUv * uRes + fract(uTime) * 100.0) - 0.5;
