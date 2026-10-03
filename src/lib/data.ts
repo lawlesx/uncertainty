@@ -31,9 +31,6 @@ export const profile = {
 export const socials = [
   { label: 'GitHub', href: 'https://github.com/lawlesx' },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/aniruddhasil' },
-  // TODO: replace with your profile URLs
-  { label: 'Instagram', href: 'https://www.instagram.com/' },
-  { label: 'YouTube', href: 'https://www.youtube.com/' },
 ]
 
 export type Job = {
@@ -96,7 +93,7 @@ export type Project = {
   title: string
   kind: string
   year: string
-  link: string
+  link?: string // live site; without one the row opens the GitHub repo
   github?: string
   image?: string // without one, a generated cover is shown
   note: string
@@ -109,9 +106,9 @@ export const projects: Project[] = [
     title: 'Clairvoyance',
     kind: 'AI · Data analysis',
     year: '2026',
-    link: 'https://github.com/lawlesx/clairvoyance', // TODO: live URL
-    github: 'https://github.com/lawlesx/clairvoyance',
-    note: 'Ask questions about any dataset in plain English. Upload a CSV or connect Postgres/MySQL — an AI agent writes the SQL, runs it and picks the right chart.',
+    github: 'https://github.com/lawlesx/clairvoyance', // not deployed (hosting costs)
+    image: '/images/work/Clairvoyance.webp',
+    note: 'Ask questions about any dataset in plain English. Upload a CSV or connect Postgres/MySQL — an AI agent writes the SQL, runs it and picks the right chart. Not deployed; the code is on GitHub.',
     color: '#22e1ff',
   },
   {
@@ -120,6 +117,7 @@ export const projects: Project[] = [
     year: '2026',
     link: 'https://fern-five.vercel.app/',
     github: 'https://github.com/lawlesx/fern',
+    image: '/images/work/Fern.webp',
     note: 'Speak your expenses in English, Hindi, Bengali, Marathi or Hinglish and Fern turns them into structured, categorised logs in seconds.',
     color: '#c6ff3d',
   },
@@ -178,7 +176,7 @@ export const projects: Project[] = [
 export type Render = {
   title: string
   medium: string
-  link: string
+  link?: string // Instagram is deactivated, so those pieces have no link
   image: string
   tall?: boolean
 }
@@ -205,7 +203,6 @@ export const renders: Render[] = [
   {
     title: 'Red Room',
     medium: 'Blender · Reel',
-    link: 'https://www.instagram.com/reel/Cwb5yp-NMDz/',
     image: '/images/renders/RedRoom.png',
     tall: true,
   },
@@ -218,20 +215,17 @@ export const renders: Render[] = [
   {
     title: 'Distorted Museum',
     medium: 'Blender · Still',
-    link: 'https://www.instagram.com/p/CuL1A1Hsz9v/',
     image: '/images/renders/DistortedMuseum.png',
     tall: true,
   },
   {
     title: 'Remains',
     medium: 'Blender · Reel',
-    link: 'https://www.instagram.com/reel/CnZuIyerDE8/',
     image: '/images/renders/Remains.png',
   },
   {
     title: 'Penta Pendulum',
     medium: 'Blender · Still',
-    link: 'https://www.instagram.com/p/CMC2qzxg_hG/',
     image: '/images/renders/PentaPendulum.png',
     tall: true,
   },

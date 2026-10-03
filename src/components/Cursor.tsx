@@ -22,25 +22,37 @@ export default function Cursor() {
     setEnabled(true)
     document.documentElement.classList.add('has-cursor')
 
+    const sync = (el: Element | null) => {
+      const target = el?.closest<HTMLElement>('[data-cursor], a, button')
+      setHovering(!!target)
+      setLabel(target?.dataset.cursor ?? null)
+    }
     const move = (e: PointerEvent) => {
       x.set(e.clientX)
       y.set(e.clientY)
       setVisible(true)
-      const target = (e.target as HTMLElement | null)?.closest<HTMLElement>('[data-cursor], a, button')
-      setHovering(!!target)
-      setLabel(target?.dataset.cursor ?? null)
+      sync(e.target as Element | null)
+    }
+    // scrolling moves content under a still pointer: re-check what it's over
+    let raf = 0
+    const scroll = () => {
+      cancelAnimationFrame(raf)
+      raf = requestAnimationFrame(() => sync(document.elementFromPoint(x.get(), y.get())))
     }
     const leave = () => setVisible(false)
     const press = () => setDown(true)
     const release = () => setDown(false)
 
     window.addEventListener('pointermove', move, { passive: true })
+    window.addEventListener('scroll', scroll, { passive: true })
     document.addEventListener('pointerleave', leave)
     window.addEventListener('pointerdown', press)
     window.addEventListener('pointerup', release)
     return () => {
       document.documentElement.classList.remove('has-cursor')
+      cancelAnimationFrame(raf)
       window.removeEventListener('pointermove', move)
+      window.removeEventListener('scroll', scroll)
       document.removeEventListener('pointerleave', leave)
       window.removeEventListener('pointerdown', press)
       window.removeEventListener('pointerup', release)

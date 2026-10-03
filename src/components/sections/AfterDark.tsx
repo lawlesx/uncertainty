@@ -3,7 +3,7 @@
 import { AnimatePresence, motion, useMotionValueEvent, useScroll, useTransform } from 'motion/react'
 import Image from 'next/image'
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
-import { renders, socials, type Render } from '@/lib/data'
+import { renders, type Render } from '@/lib/data'
 import SectionLabel from '../ui/SectionLabel'
 import Icon from '../ui/Icon'
 
@@ -11,17 +11,13 @@ const EASE = [0.16, 1, 0.3, 1] as const
 const useIsoLayoutEffect = typeof window === 'undefined' ? useEffect : useLayoutEffect
 
 function RenderCard({ item, index, active }: { item: Render; index: number; active: boolean }) {
-  const isVideo = /youtube|reel/.test(item.link)
-  return (
-    <a
-      href={item.link}
-      target="_blank"
-      rel="noreferrer"
-      data-cursor={isVideo ? 'Watch' : 'View'}
-      className={`group relative block shrink-0 overflow-hidden rounded-2xl border border-paper/10 transition-[filter,opacity] duration-700 ${
-        item.tall ? 'aspect-[9/16]' : 'aspect-[16/10]'
-      } h-[48svh] md:h-[58svh] ${active ? 'opacity-100' : 'opacity-60 saturate-50'}`}
-    >
+  const isVideo = !!item.link && /youtube/.test(item.link)
+  const className = `group relative block shrink-0 overflow-hidden rounded-2xl border border-paper/10 transition-[filter,opacity] duration-700 ${
+    item.tall ? 'aspect-[9/16]' : 'aspect-[16/10]'
+  } h-[48svh] md:h-[58svh] ${active ? 'opacity-100' : 'opacity-60 saturate-50'}`
+
+  const body = (
+    <>
       <Image
         src={item.image}
         alt={`${item.title} — ${item.medium}`}
@@ -38,10 +34,19 @@ function RenderCard({ item, index, active }: { item: Render; index: number; acti
           <h3 className="font-display text-2xl font-bold uppercase leading-none tracking-tight md:text-4xl">{item.title}</h3>
           <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.25em] text-paper/70">{item.medium}</p>
         </div>
-        <span className="grid h-10 w-10 shrink-0 translate-y-3 place-items-center rounded-full bg-blood text-paper opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
-          <Icon name={isVideo ? 'play' : 'up-right'} className="h-4 w-4" />
-        </span>
+        {item.link && (
+          <span className="grid h-10 w-10 shrink-0 translate-y-3 place-items-center rounded-full bg-blood text-paper opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+            <Icon name={isVideo ? 'play' : 'up-right'} className="h-4 w-4" />
+          </span>
+        )}
       </div>
+    </>
+  )
+
+  if (!item.link) return <figure className={className}>{body}</figure>
+  return (
+    <a href={item.link} target="_blank" rel="noreferrer" data-cursor={isVideo ? 'Watch' : 'View'} className={className}>
+      {body}
     </a>
   )
 }
@@ -92,9 +97,6 @@ export default function AfterDark() {
   // measure after motion has applied this frame's transform
   useMotionValueEvent(scrollYProgress, 'change', () => requestAnimationFrame(pick))
 
-  const instagram = socials.find((s) => s.label === 'Instagram')?.href
-  const youtube = socials.find((s) => s.label === 'YouTube')?.href
-
   return (
     <section
       id="after-dark"
@@ -139,18 +141,6 @@ export default function AfterDark() {
               When the editor closes, Blender opens. Short films, moody stills and odd little loops — modelled, lit and
               rendered for fun. Scroll sideways through the night shift.
             </p>
-            <div className="mt-8 flex gap-3 font-mono text-[11px] uppercase tracking-[0.2em]">
-              {youtube && (
-                <a href={youtube} target="_blank" rel="noreferrer" className="rounded-full bg-blood px-5 py-3 transition-colors hover:bg-paper hover:text-ink">
-                  YouTube ↗
-                </a>
-              )}
-              {instagram && (
-                <a href={instagram} target="_blank" rel="noreferrer" className="glass rounded-full px-5 py-3 transition-colors hover:bg-paper hover:text-ink">
-                  Instagram ↗
-                </a>
-              )}
-            </div>
           </div>
 
           {renders.map((r, i) => (
@@ -166,17 +156,13 @@ export default function AfterDark() {
           ))}
 
           <div className="flex w-[60vw] shrink-0 flex-col items-start justify-center md:w-[28vw]">
-            <p className="font-display text-4xl font-bold leading-tight md:text-5xl">More renders, reels & breakdowns on my socials.</p>
-            {instagram && (
-              <a
-                href={instagram}
-                target="_blank"
-                rel="noreferrer"
-                className="mt-6 font-mono text-xs uppercase tracking-[0.2em] text-blood underline decoration-1 underline-offset-8"
-              >
-                Follow along ↗
-              </a>
-            )}
+            <p className="font-display text-4xl font-bold leading-tight md:text-5xl">Next up: these worlds become playable.</p>
+            <a
+              href="#now-building"
+              className="mt-6 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-blood underline decoration-1 underline-offset-8"
+            >
+              See what I&apos;m building <Icon name="right" className="h-3.5 w-3.5" />
+            </a>
           </div>
         </motion.div>
 

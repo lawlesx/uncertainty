@@ -104,10 +104,10 @@ export default function Work() {
                 <span className="font-mono text-xs text-paper/50 transition-colors group-hover:text-ink/70">0{i + 1}</span>
                 <h3 className="font-display text-3xl font-bold tracking-tight transition-transform duration-500 ease-[var(--ease-expo)] group-hover:translate-x-3 md:text-5xl xl:text-6xl">
                   <a
-                    href={p.link}
+                    href={p.link ?? p.github}
                     target="_blank"
                     rel="noreferrer"
-                    data-cursor="Visit"
+                    data-cursor={p.link ? 'Visit' : 'Code'}
                     className="after:absolute after:inset-0 after:content-['']"
                   >
                     {p.title}
@@ -134,12 +134,14 @@ export default function Work() {
                       <Icon name="github" className="h-4 w-4 md:h-5 md:w-5" />
                     </a>
                   )}
-                  <span
-                    className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-current transition-transform duration-500 group-hover:-rotate-45 md:h-12 md:w-12"
-                    aria-hidden
-                  >
-                    <Icon name="right" className="h-4 w-4 md:h-5 md:w-5" />
-                  </span>
+                  {p.link && (
+                    <span
+                      className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-current transition-transform duration-500 group-hover:-rotate-45 md:h-12 md:w-12"
+                      aria-hidden
+                    >
+                      <Icon name="right" className="h-4 w-4 md:h-5 md:w-5" />
+                    </span>
+                  )}
                 </span>
                 <div className="relative col-span-3 aspect-[16/9] overflow-hidden rounded-xl md:hidden">
                   <ProjectCover project={p} sizes="90vw" />
