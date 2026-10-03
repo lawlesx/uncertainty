@@ -189,11 +189,10 @@ const yt = (id: string) => ({ youtube: id, link: `https://www.youtube.com/watch?
 
 // Newest first.
 export const renders: Render[] = [
-  // TODO: titles for the four newest videos
-  { title: 'Untitled IV', medium: 'Blender · Animation', ...yt('jbqC7HRmse4') },
-  { title: 'Untitled III', medium: 'Blender · Animation', ...yt('w2-84Xhq85A') },
-  { title: 'Untitled II', medium: 'Blender · Animation', ...yt('Pis-viimY9U') },
-  { title: 'Untitled I', medium: 'Blender · Animation', ...yt('5NsJ_MCaXSA') },
+  { title: 'The Silent Throne', medium: 'Unreal Engine · Animation', ...yt('jbqC7HRmse4') },
+  { title: 'Rift of the Fractured Light', medium: 'Unreal Engine · Animation', ...yt('w2-84Xhq85A') },
+  { title: 'The Ruined Throne', medium: 'Unreal Engine · Animation', ...yt('Pis-viimY9U') },
+  { title: 'The Highway', medium: 'Unreal Engine · Animation', ...yt('5NsJ_MCaXSA') },
   {
     title: 'Cave',
     medium: 'Blender · Animation',
