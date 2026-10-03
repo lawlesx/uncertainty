@@ -256,7 +256,7 @@ export const game = {
   log: [
     { label: 'Engine', value: 'Unreal Engine 5' },
     { label: 'Assets', value: 'Blender' },
-    { label: 'Genre', value: 'TODO' },
+    { label: 'Genre', value: 'Under wraps' },
     { label: 'Status', value: 'Prototyping' },
   ],
 }
