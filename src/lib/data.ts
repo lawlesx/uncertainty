@@ -44,17 +44,16 @@ export type Job = {
   stints?: { role: string; period: string }[] // progression within one company, newest first
 }
 
-// Highlights from the resume and chat. TODO: confirm the exact Thoughtworks title.
+// Highlights from the resume and chat.
 export const experience: Job[] = [
   {
     company: 'Thoughtworks',
-    role: 'Frontend Developer', // TODO: exact title
+    role: 'Frontend Developer',
     period: 'Oct 2025 — Now',
     summary: 'Global technology consultancy. On the National Grid account, building the frontend of a platform for gas-pipeline operations in the US.',
     points: [
-      'Work mainly on the frontend of a Next.js app with a .NET backend.',
-      'Set up OpenTelemetry to give the team observability into the app.',
-      'Improved accessibility across the product.',
+      'Work mainly on the frontend of a Next.js app with a .NET backend, shipping features as they roll out.',
+      'Features I owned along the way include the OpenTelemetry setup for observability and accessibility improvements.',
     ],
     stack: ['Next.js', 'React', '.NET', 'OpenTelemetry'],
     color: '#ff3d81',
