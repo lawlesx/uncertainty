@@ -5,8 +5,8 @@ import { useEffect, useRef, useState } from 'react'
 import { profile } from '@/lib/data'
 import { useApp } from '../Providers'
 
-// Software first, then the 3D and game side
-const ROLES = ['web apps', 'interfaces', 'experiences', '3D worlds', 'games']
+// Web apps lead (fixed); the rest of the craft rotates underneath
+const ROLES = ['interfaces', 'experiences', '3D worlds', 'games']
 const HOVER_COLORS = ['#ff3d81', '#22e1ff', '#c6ff3d', '#ff8a3d', '#7b5cff']
 const EASE = [0.16, 1, 0.3, 1] as const
 
@@ -46,7 +46,7 @@ function RotatingRole({ play }: { play: boolean }) {
     return () => clearInterval(id)
   }, [play])
   return (
-    <span className="relative inline-flex h-[1.15em] overflow-hidden align-bottom">
+    <span className="relative inline-flex h-[1.35em] items-end overflow-hidden align-baseline">
       <AnimatePresence mode="popLayout" initial={false}>
         <motion.span
           key={ROLES[i]}
@@ -140,7 +140,10 @@ export default function Hero() {
 
       <div className="mt-6 grid grid-cols-1 items-end gap-6 md:mt-10 md:grid-cols-3">
         <motion.p {...fade(1.2)} className="font-display text-2xl leading-tight md:text-3xl">
-          I design &amp; build <RotatingRole play={ready} />
+          I design &amp; build <span className="font-semibold">web apps</span>
+          <span className="mt-1 block text-lg text-paper/70 md:text-xl">
+            along with <RotatingRole play={ready} />
+          </span>
         </motion.p>
         <motion.p {...fade(1.25)} className="text-sm leading-relaxed text-paper/80 md:hidden">
           {profile.intro}
