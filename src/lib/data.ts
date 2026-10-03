@@ -8,7 +8,7 @@ export const profile = {
   firstName: 'Aniruddha',
   lastName: 'Sil',
   handle: 'lawlesx',
-  role: 'Frontend Engineer',
+  role: 'Frontend Developer',
   location: 'Bangalore, India',
   timezone: 'Asia/Kolkata',
   email: 'aniruddhasil109@gmail.com',
