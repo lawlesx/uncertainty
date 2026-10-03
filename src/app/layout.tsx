@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     description: 'Websites, motion and tiny 3D worlds.',
     url: 'https://lawlesx.vercel.app',
     siteName: 'Aniruddha Sil',
-    images: [{ url: '/images/renders/Cave.png', width: 1920, height: 1080 }],
+    images: [{ url: '/images/og.jpg', width: 1200, height: 630 }],
     type: 'website',
   },
   twitter: { card: 'summary_large_image' },
