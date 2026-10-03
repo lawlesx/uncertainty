@@ -44,15 +44,19 @@ export type Job = {
   stints?: { role: string; period: string }[] // progression within one company, newest first
 }
 
-// Highlights from the resume. TODO: Thoughtworks title and highlights.
+// Highlights from the resume and chat. TODO: confirm the exact Thoughtworks title.
 export const experience: Job[] = [
   {
     company: 'Thoughtworks',
     role: 'Frontend Developer', // TODO: exact title
     period: 'Oct 2025 — Now',
-    summary: 'Global technology consultancy. Building frontend for client products.',
-    points: [], // TODO: add highlights
-    stack: ['React', 'TypeScript', 'Next.js'],
+    summary: 'Global technology consultancy. On the National Grid account, building the frontend of a platform for gas-pipeline operations in the US.',
+    points: [
+      'Work mainly on the frontend of a Next.js app with a .NET backend.',
+      'Set up OpenTelemetry to give the team observability into the app.',
+      'Improved accessibility across the product.',
+    ],
+    stack: ['Next.js', 'React', '.NET', 'OpenTelemetry'],
     color: '#ff3d81',
   },
   {
@@ -176,7 +180,7 @@ export const projects: Project[] = [
 export type Render = {
   title: string
   medium: string
-  link?: string // Instagram is deactivated, so those pieces have no link
+  link?: string
   image: string
   tall?: boolean
 }
@@ -203,6 +207,7 @@ export const renders: Render[] = [
   {
     title: 'Red Room',
     medium: 'Blender · Reel',
+    link: 'https://www.instagram.com/reel/Cwb5yp-NMDz/',
     image: '/images/renders/RedRoom.png',
     tall: true,
   },
@@ -215,17 +220,20 @@ export const renders: Render[] = [
   {
     title: 'Distorted Museum',
     medium: 'Blender · Still',
+    link: 'https://www.instagram.com/p/CuL1A1Hsz9v/',
     image: '/images/renders/DistortedMuseum.png',
     tall: true,
   },
   {
     title: 'Remains',
     medium: 'Blender · Reel',
+    link: 'https://www.instagram.com/reel/CnZuIyerDE8/',
     image: '/images/renders/Remains.png',
   },
   {
     title: 'Penta Pendulum',
     medium: 'Blender · Still',
+    link: 'https://www.instagram.com/p/CMC2qzxg_hG/',
     image: '/images/renders/PentaPendulum.png',
     tall: true,
   },
