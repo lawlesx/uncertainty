@@ -12,8 +12,9 @@ function makeTarget() {
   return new THREE.WebGLRenderTarget(TRAIL_SIZE, TRAIL_SIZE, {
     type: THREE.HalfFloatType,
     format: THREE.RGBAFormat,
-    minFilter: THREE.LinearFilter,
-    magFilter: THREE.LinearFilter,
+    // filtered manually in the shaders (see sampleSmooth)
+    minFilter: THREE.NearestFilter,
+    magFilter: THREE.NearestFilter,
     depthBuffer: false,
     stencilBuffer: false,
   })
@@ -33,9 +34,10 @@ export default function FluidBackground({ octaves = 3 }: { octaves?: number }) {
         uMouse: { value: new THREE.Vector2(0.5, 0.5) },
         uVel: { value: new THREE.Vector2() },
         uAspect: { value: 1 },
-        uRadius: { value: 0.006 },
+        uRadius: { value: 0.005 },
         uDecay: { value: 0.965 },
         uDt: { value: 0.016 },
+        uTexel: { value: new THREE.Vector2(1 / TRAIL_SIZE, 1 / TRAIL_SIZE) },
       },
       depthTest: false,
       depthWrite: false,
@@ -55,6 +57,7 @@ export default function FluidBackground({ octaves = 3 }: { octaves?: number }) {
       defines: { OCTAVES: octaves },
       uniforms: {
         uTrail: { value: trail.targets[0].texture },
+        uTexel: { value: new THREE.Vector2(1 / TRAIL_SIZE, 1 / TRAIL_SIZE) },
         uTime: { value: 0 },
         uRes: { value: new THREE.Vector2(1, 1) },
         uA: { value: new THREE.Color(p.a) },

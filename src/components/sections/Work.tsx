@@ -1,7 +1,7 @@
 'use client'
 
 import { motion, useMotionValue, useSpring, useTransform, useVelocity, type MotionValue } from 'motion/react'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { projects } from '@/lib/data'
 import SectionLabel from '../ui/SectionLabel'
 import SplitReveal from '../ui/SplitReveal'
@@ -52,6 +52,8 @@ function FloatingPreview({ active, x, y }: { active: number | null; x: MotionVal
 
 export default function Work() {
   const [active, setActive] = useState<number | null>(null)
+  const [overActions, setOverActions] = useState(false)
+  const list = useRef<HTMLUListElement>(null)
   const x = useMotionValue(0)
   const y = useMotionValue(0)
 
@@ -61,7 +63,9 @@ export default function Work() {
       data-theme="3"
       className="relative px-5 py-28 md:px-10 md:py-40"
       onPointerMove={(e) => {
-        x.set(e.clientX)
+        // keep the preview card left of the action buttons so it never covers them
+        const right = list.current?.getBoundingClientRect().right ?? window.innerWidth
+        x.set(Math.min(e.clientX, right - 380))
         y.set(e.clientY)
       }}
     >
@@ -80,7 +84,7 @@ export default function Work() {
           </p>
         </div>
 
-        <ul className="border-t border-line" onPointerLeave={() => setActive(null)}>
+        <ul ref={list} className="border-t border-line" onPointerLeave={() => setActive(null)}>
           {projects.map((p, i) => (
             <motion.li
               key={p.title}
@@ -113,19 +117,27 @@ export default function Work() {
                   {p.kind}
                 </span>
                 <span className="hidden font-mono text-xs text-paper/60 transition-colors group-hover:text-ink/70 md:block">{p.year}</span>
-                <span className="flex items-center gap-3">
+                <span
+                  className="flex items-center gap-2 md:gap-3"
+                  onPointerEnter={() => setOverActions(true)}
+                  onPointerLeave={() => setOverActions(false)}
+                >
                   {p.github && (
                     <a
                       href={p.github}
                       target="_blank"
                       rel="noreferrer"
-                      className="relative z-10 hidden rounded-full border border-current px-3 py-1 font-mono text-[10px] uppercase tracking-[0.2em] opacity-70 transition-opacity hover:opacity-100 md:inline-block"
+                      aria-label={`${p.title} source code on GitHub`}
                       data-cursor="Code"
+                      className="relative z-10 grid h-10 w-10 shrink-0 place-items-center rounded-full border border-current transition-colors duration-300 hover:bg-ink hover:text-paper md:h-12 md:w-12"
                     >
-                      Code
+                      <Icon name="github" className="h-4 w-4 md:h-5 md:w-5" />
                     </a>
                   )}
-                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-current transition-transform duration-500 group-hover:-rotate-45 md:h-12 md:w-12">
+                  <span
+                    className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-current transition-transform duration-500 group-hover:-rotate-45 md:h-12 md:w-12"
+                    aria-hidden
+                  >
                     <Icon name="right" className="h-4 w-4 md:h-5 md:w-5" />
                   </span>
                 </span>
@@ -156,7 +168,7 @@ export default function Work() {
         </div>
       </div>
 
-      <FloatingPreview active={active} x={x} y={y} />
+      <FloatingPreview active={overActions ? null : active} x={x} y={y} />
     </section>
   )
 }

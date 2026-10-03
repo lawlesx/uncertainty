@@ -1,3 +1,20 @@
+const bilinear = /* glsl */ `
+  // Manual bilinear filtering. Half-float textures aren't linearly filterable on every
+  // GPU, and nearest sampling of the 256px trail shows up as blocky square edges.
+  vec4 sampleSmooth(sampler2D tex, vec2 uv, vec2 texel) {
+    vec2 st = uv / texel - 0.5;
+    vec2 i = floor(st);
+    vec2 f = fract(st);
+    f = f * f * (3.0 - 2.0 * f);
+    vec2 b = (i + 0.5) * texel;
+    vec4 a = texture2D(tex, b);
+    vec4 c = texture2D(tex, b + vec2(texel.x, 0.0));
+    vec4 d = texture2D(tex, b + vec2(0.0, texel.y));
+    vec4 e = texture2D(tex, b + texel);
+    return mix(mix(a, c, f.x), mix(d, e, f.x), f.y);
+  }
+`
+
 export const fullscreenVertex = /* glsl */ `
   varying vec2 vUv;
   void main() {
@@ -18,10 +35,13 @@ export const trailFragment = /* glsl */ `
   uniform float uRadius;
   uniform float uDecay;
   uniform float uDt;
+  uniform vec2 uTexel;
+
+  ${bilinear}
 
   void main() {
-    vec4 here = texture2D(uPrev, vUv);
-    vec4 prev = texture2D(uPrev, vUv - here.xy * uDt * 0.35);
+    vec4 here = sampleSmooth(uPrev, vUv, uTexel);
+    vec4 prev = sampleSmooth(uPrev, vUv - here.xy * uDt * 0.35, uTexel);
     prev.xyz *= uDecay;
 
     vec2 d = vUv - uMouse;
@@ -30,7 +50,7 @@ export const trailFragment = /* glsl */ `
     float splat = exp(-dot(d, d) / uRadius) * smoothstep(0.0, 0.6, speed);
 
     prev.xy += uVel * splat * 0.6;
-    prev.z += splat * 0.45;
+    prev.z += splat * 0.35;
     prev.xy = clamp(prev.xy, vec2(-3.0), vec2(3.0));
     prev.z = clamp(prev.z, 0.0, 1.5);
     gl_FragColor = vec4(prev.xyz, 1.0);
@@ -83,6 +103,7 @@ export const backgroundFragment = /* glsl */ `
   precision highp float;
   varying vec2 vUv;
   uniform sampler2D uTrail;
+  uniform vec2 uTexel;
   uniform float uTime;
   uniform vec2 uRes;
   uniform vec3 uA;
@@ -93,15 +114,17 @@ export const backgroundFragment = /* glsl */ `
   uniform float uScroll;
 
   ${noise}
+  ${bilinear}
 
   float hash(vec2 p) {
     return fract(sin(dot(p, vec2(12.9898, 78.233))) * 43758.5453);
   }
 
   void main() {
-    vec4 trail = texture2D(uTrail, vUv);
-    float ink = trail.z;
-    vec2 uv = vUv - trail.xy * 0.045;
+    vec4 trail = sampleSmooth(uTrail, vUv, uTexel);
+    float ink = smoothstep(0.0, 1.0, clamp(trail.z, 0.0, 1.0));
+    // the cursor pushes the liquid around rather than painting on top of it
+    vec2 uv = vUv - trail.xy * 0.07;
 
     float aspect = uRes.x / uRes.y;
     vec2 p = (uv - 0.5) * vec2(aspect, 1.0) * 0.85;
@@ -125,10 +148,12 @@ export const backgroundFragment = /* glsl */ `
     float ridge = pow(1.0 - abs(f - 0.35), 8.0);
     col += mix(uB, uC, q.y * 0.5 + 0.5) * ridge * 0.18;
 
-    // pointer ink: hue-shifted glow and a bright rim
-    vec3 inkCol = mix(uC, uB, smoothstep(-1.0, 1.0, trail.x));
-    col += inkCol * ink * 0.55;
-    col += vec3(1.0) * smoothstep(0.35, 0.9, ink) * 0.12;
+    // pointer wake: rotate the hue of whatever it passes through (no white glow),
+    // with a faint coloured rim where the wake fades out
+    vec3 rotated = col.brg * 1.25;
+    col = mix(col, rotated, ink * 0.75);
+    float rim = smoothstep(0.05, 0.22, ink) * (1.0 - smoothstep(0.22, 0.55, ink));
+    col += mix(uB, uC, smoothstep(-1.0, 1.0, trail.x)) * rim * 0.22;
 
     // keep the middle-left darker for text; vignette edges
     vec2 c = vUv - vec2(0.5);

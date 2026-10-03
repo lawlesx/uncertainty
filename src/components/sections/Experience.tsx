@@ -60,14 +60,16 @@ function JobItem({ job, index, onActive }: { job: Job; index: number; onActive: 
           </ol>
         )}
         <p className="mt-3 max-w-xl text-base leading-relaxed text-paper/75">{job.summary}</p>
-        <ul className="mt-5 space-y-2 text-sm text-paper/70">
-          {job.points.map((p) => (
-            <li key={p} className="flex gap-3">
-              <span style={{ color: job.color }}>→</span>
-              {p}
-            </li>
-          ))}
-        </ul>
+        {job.points.length > 0 && (
+          <ul className="mt-5 max-w-xl space-y-2 text-sm leading-relaxed text-paper/75">
+            {job.points.map((p) => (
+              <li key={p} className="flex gap-3">
+                <span style={{ color: job.color }}>→</span>
+                {p}
+              </li>
+            ))}
+          </ul>
+        )}
         <ul className="mt-6 flex flex-wrap gap-2">
           {job.stack.map((s) => (
             <li

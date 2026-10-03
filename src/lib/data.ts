@@ -9,7 +9,7 @@ export const profile = {
   lastName: 'Sil',
   handle: 'lawlesx',
   role: 'Frontend Engineer',
-  location: 'India',
+  location: 'Bangalore, India',
   timezone: 'Asia/Kolkata',
   email: 'aniruddhasil109@gmail.com',
   photo: '/images/me/profile.png',
@@ -17,8 +17,8 @@ export const profile = {
   intro:
     'I build fast, expressive interfaces for the web — and when the laptop lid should be closed, I am in Blender or Unreal Engine making strange little worlds.',
   about: [
-    'I am a frontend developer from India who cares about the part of software people actually touch — motion, feel, and the tiny details that make an interface feel alive.',
-    'Over the years I have shipped products at Coinvise, ZopSmart and now Thoughtworks, mostly with React, Next.js and TypeScript.',
+    'I am a frontend developer from Bangalore who cares about the part of software people actually touch — motion, feel, and the tiny details that make an interface feel alive. Static websites bore me; my goal is to inject life into them.',
+    'I studied Computer Science at NMIT Bangalore, where I led design for Hack Club. Since then I have shipped products at Coinvise, ZopSmart and now Thoughtworks — mostly React, Next.js and TypeScript, with Motion as my playground.',
     'Outside of work I model, light and animate in Blender, and I am currently teaching myself game development in Unreal Engine.',
   ],
   stats: [
@@ -47,14 +47,14 @@ export type Job = {
   stints?: { role: string; period: string }[] // progression within one company, newest first
 }
 
-// TODO: exact Thoughtworks title and highlights (send the resume!)
+// Highlights from the resume. TODO: Thoughtworks title and highlights.
 export const experience: Job[] = [
   {
     company: 'Thoughtworks',
     role: 'Frontend Developer', // TODO: exact title
     period: 'Oct 2025 — Now',
     summary: 'Global technology consultancy. Building frontend for client products.',
-    points: ['TODO: highlight one', 'TODO: highlight two'],
+    points: [], // TODO: add highlights
     stack: ['React', 'TypeScript', 'Next.js'],
     color: '#ff3d81',
   },
@@ -62,9 +62,14 @@ export const experience: Job[] = [
     company: 'ZopSmart',
     role: 'Frontend Developer · SDE 2',
     period: 'Aug 2024 — Oct 2025',
-    summary: 'Retail-tech product company. Shipped frontend features as an SDE 2.',
-    points: ['TODO: highlight one', 'TODO: highlight two'],
-    stack: ['React', 'Next.js', 'TypeScript'],
+    summary: 'Retail-tech product company. Worked on Zopping, an in-house Shopify-like platform, and on client work for Kroger (US).',
+    points: [
+      'Designed a frontend architecture for Zopping that scaled themes 10 → 1000 with zero impact on bundle size.',
+      'Lifted Lighthouse scores by 40% by reworking dynamic imports and code structure.',
+      'Built collaborative dashboards for Kroger’s Item Watchtower team, cutting task identification time by 30%.',
+      'Replaced native fetch with React Query, cutting redundant API calls by 40%.',
+    ],
+    stack: ['Next.js', 'React', 'TypeScript', 'React Query'],
     color: '#22e1ff',
   },
   {
@@ -76,8 +81,13 @@ export const experience: Job[] = [
       { role: 'Frontend Developer', period: 'Jul 2022 — Apr 2024' },
       { role: 'Frontend Intern', period: 'Aug 2021 — Jun 2022' },
     ],
-    points: ['TODO: highlight one', 'TODO: highlight two'],
-    stack: ['Next.js', 'Tailwind', 'React Query', 'Framer Motion'],
+    points: [
+      'Improved Time to Interactive by 45% with Next.js SSR and aggressive route-based code splitting.',
+      'Cut redundant API calls by 60% with React Query.',
+      'Built responsive, animated UIs with Tailwind, Chakra UI and Framer Motion.',
+      'Used Google Analytics behaviour data to steer UI/UX decisions.',
+    ],
+    stack: ['Next.js', 'React Query', 'Tailwind', 'Chakra UI', 'Framer Motion'],
     color: '#c6ff3d',
   },
 ]
@@ -140,7 +150,7 @@ export const projects: Project[] = [
     link: 'https://first-leads.vercel.app/',
     github: 'https://github.com/lawlesx/first-leads',
     image: '/images/work/FirstLeads.png',
-    note: 'Marketing site for a lead-generation company.',
+    note: 'Freelance: a lead-generation platform built from scratch in Next.js, TypeScript and React Query. Average session duration went up 25%.',
     color: '#7b5cff',
   },
   {
@@ -156,7 +166,7 @@ export const projects: Project[] = [
   {
     title: 'Hack Club NMIT',
     kind: 'Community site',
-    year: '2022', // TODO: verify year
+    year: '2021',
     link: 'https://lawlesx.github.io/',
     github: 'https://github.com/lawlesx/hackclubnmit-website',
     image: '/images/work/Homepage.png',
@@ -249,15 +259,20 @@ export const toolkit = [
       'React',
       'Next.js',
       'TypeScript',
-      'TanStack Query',
+      'React Query',
+      'Redux',
+      'GraphQL',
       'Tailwind CSS',
+      'Chakra UI',
       'Zod',
       'Motion',
+      'Jest',
+      'Testing Library',
     ],
   },
   {
     group: 'Backend',
-    items: ['Node.js', 'Bun', 'Hono', 'Elysia', 'PostgreSQL', 'Drizzle ORM'],
+    items: ['Node.js', 'Express', 'Bun', 'Hono', 'Elysia', 'PostgreSQL', 'MySQL', 'Prisma', 'Drizzle ORM'],
   },
   {
     group: 'Creative',
