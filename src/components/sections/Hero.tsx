@@ -5,7 +5,8 @@ import { useEffect, useRef, useState } from 'react'
 import { profile } from '@/lib/data'
 import { useApp } from '../Providers'
 
-const ROLES = ['interfaces', 'motion', 'experiences', '3D worlds', 'games']
+// Software first, then the 3D and game side
+const ROLES = ['web apps', 'interfaces', 'experiences', '3D worlds', 'games']
 const HOVER_COLORS = ['#ff3d81', '#22e1ff', '#c6ff3d', '#ff8a3d', '#7b5cff']
 const EASE = [0.16, 1, 0.3, 1] as const
 
