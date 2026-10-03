@@ -41,7 +41,14 @@ export default function Providers({ children }: { children: ReactNode }) {
   // smooth scroll + scroll-derived scene state
   useEffect(() => {
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    const contact = () => document.getElementById('contact')
+    let contactTop = Infinity
+    const measure = () => {
+      const el = document.getElementById('contact')
+      if (el) contactTop = el.getBoundingClientRect().top + window.scrollY
+    }
+    measure()
+    const ro = new ResizeObserver(measure)
+    ro.observe(document.body)
 
     const update = (scrollY: number, velocity: number) => {
       const h = window.innerHeight
@@ -50,18 +57,17 @@ export default function Providers({ children }: { children: ReactNode }) {
       scene.scroll = scrollY / max
       scene.velocity = velocity
       scene.heroProgress = Math.min(1, Math.max(0, scrollY / (h * 0.9)))
-      const el = contact()
-      if (el) {
-        const top = el.getBoundingClientRect().top
-        scene.contactProgress = Math.min(1, Math.max(0, (h - top) / h))
-      }
+      scene.contactProgress = Math.min(1, Math.max(0, (scrollY + h - contactTop) / h))
     }
 
     if (reduce) {
       const onScroll = () => update(window.scrollY, 0)
       window.addEventListener('scroll', onScroll, { passive: true })
       onScroll()
-      return () => window.removeEventListener('scroll', onScroll)
+      return () => {
+        ro.disconnect()
+        window.removeEventListener('scroll', onScroll)
+      }
     }
 
     const instance = new Lenis({ autoRaf: true, lerp: 0.09, anchors: true })
@@ -69,6 +75,7 @@ export default function Providers({ children }: { children: ReactNode }) {
     instance.on('scroll', (l: Lenis) => update(l.scroll, l.velocity))
     update(window.scrollY, 0)
     return () => {
+      ro.disconnect()
       instance.destroy()
       lenis.current = null
     }

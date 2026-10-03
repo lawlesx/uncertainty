@@ -253,8 +253,11 @@ export const toolkit = [
       'Tailwind CSS',
       'Zod',
       'Motion',
-      'Node.js',
     ],
+  },
+  {
+    group: 'Backend',
+    items: ['Node.js', 'Bun', 'Hono', 'Elysia', 'PostgreSQL', 'Drizzle ORM'],
   },
   {
     group: 'Creative',

@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 import { profile, socials } from '@/lib/data'
 import { useApp } from '../Providers'
 import Magnetic from '../ui/Magnetic'
+import Icon from '../ui/Icon'
 import SplitReveal from '../ui/SplitReveal'
 
 function EmailButton() {
@@ -30,13 +31,13 @@ function EmailButton() {
       <Magnetic strength={0.2}>
         <a
           href={`mailto:${profile.email}`}
-          className="group relative inline-flex items-center gap-4 overflow-hidden rounded-full bg-paper py-4 pl-7 pr-4 text-ink md:py-5 md:pl-9"
+          className="group relative inline-flex max-w-full items-center gap-3 overflow-hidden rounded-full bg-paper py-3.5 pl-5 pr-3 text-ink sm:gap-4 sm:pl-7 sm:pr-4 md:py-5 md:pl-9"
           data-cursor="Say hi"
         >
           <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-lime via-cyan to-magenta transition-transform duration-700 ease-[var(--ease-expo)] group-hover:translate-x-0" />
-          <span className="relative font-display text-lg font-bold md:text-2xl">{profile.email}</span>
-          <span className="relative grid h-10 w-10 place-items-center rounded-full bg-ink text-paper transition-transform duration-500 group-hover:rotate-45 md:h-12 md:w-12">
-            ↗
+          <span className="relative font-display text-[clamp(0.9rem,4.1vw,1.5rem)] font-bold">{profile.email}</span>
+          <span className="relative grid h-10 w-10 shrink-0 place-items-center rounded-full bg-ink text-paper transition-transform duration-500 group-hover:rotate-45 md:h-12 md:w-12">
+            <Icon name="up-right" className="h-4 w-4 md:h-5 md:w-5" />
           </span>
         </a>
       </Magnetic>
@@ -105,7 +106,7 @@ export default function Contact() {
                     {s.label}
                     <span className="absolute -bottom-1 left-0 h-px w-full origin-right scale-x-0 bg-current transition-transform duration-500 group-hover:origin-left group-hover:scale-x-100" />
                   </span>
-                  <span className="text-sm transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1">↗</span>
+                  <Icon name="up-right" className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-1 group-hover:translate-x-1" />
                 </a>
               </li>
             ))}

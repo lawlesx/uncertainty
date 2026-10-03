@@ -45,13 +45,16 @@ function Scramble({ text, className }: { text: string; className?: string }) {
 }
 
 function Screen() {
+  const ref = useRef<HTMLDivElement>(null)
+  // the animated noise repaints a full-size filter every frame — only run it while visible
+  const visible = useInView(ref, { margin: '10% 0px' })
   return (
-    <div className="relative aspect-video w-full overflow-hidden rounded-2xl border border-lime/30 bg-black shadow-[0_0_120px_-30px_rgba(198,255,61,0.6)]">
+    <div ref={ref} className="relative aspect-video w-full overflow-hidden rounded-2xl border border-lime/30 bg-black shadow-[0_0_120px_-30px_rgba(198,255,61,0.6)]">
       {/* static noise */}
       <svg className="absolute inset-0 h-full w-full opacity-[0.18] mix-blend-screen" aria-hidden>
         <filter id="tv-noise">
           <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch">
-            <animate attributeName="seed" from="1" to="40" dur="1.2s" repeatCount="indefinite" />
+            {visible && <animate attributeName="seed" from="1" to="40" dur="1.2s" repeatCount="indefinite" />}
           </feTurbulence>
           <feColorMatrix values="0 0 0 0 0.78  0 0 0 0 1  0 0 0 0 0.24  0 0 0 1.2 0" />
         </filter>
@@ -63,7 +66,10 @@ function Screen() {
         style={{ backgroundImage: 'repeating-linear-gradient(0deg, rgba(0,0,0,0.6) 0 1px, transparent 1px 3px)' }}
         aria-hidden
       />
-      <div className="absolute inset-x-0 h-1/3 animate-scanline bg-gradient-to-b from-transparent via-lime/10 to-transparent" aria-hidden />
+      <div
+        className={`absolute inset-x-0 h-1/3 bg-gradient-to-b from-transparent via-lime/10 to-transparent ${visible ? 'animate-scanline' : ''}`}
+        aria-hidden
+      />
 
       {/* corner brackets */}
       {['left-4 top-4 border-l border-t', 'right-4 top-4 border-r border-t', 'left-4 bottom-4 border-l border-b', 'right-4 bottom-4 border-r border-b'].map((c) => (

@@ -1,6 +1,6 @@
 'use client'
 
-import { Environment, Lightformer } from '@react-three/drei'
+import { Environment, Lightformer, PerformanceMonitor } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
 import { Suspense, useEffect, useState } from 'react'
 import * as THREE from 'three'
@@ -23,12 +23,20 @@ function Lights() {
 
 export default function Scene() {
   const [quality, setQuality] = useState<'high' | 'low' | null>(null)
+  const [paused, setPaused] = useState(false)
+  const [dpr, setDpr] = useState(1)
 
   // decide once, before the canvas mounts — context options can't change later
   useEffect(() => {
     const coarse = window.matchMedia('(pointer: coarse)').matches
     const cores = navigator.hardwareConcurrency ?? 8
-    setQuality(coarse || cores <= 4 ? 'low' : 'high')
+    const q = coarse || cores <= 4 ? 'low' : 'high'
+    setQuality(q)
+    setDpr(Math.min(window.devicePixelRatio, q === 'high' ? 1.5 : 1))
+
+    const onPause = (e: Event) => setPaused((e as CustomEvent<boolean>).detail)
+    window.addEventListener('scene:pause', onPause)
+    return () => window.removeEventListener('scene:pause', onPause)
   }, [])
 
   if (!quality) return null
@@ -36,7 +44,8 @@ export default function Scene() {
   return (
     <Canvas
       style={{ position: 'fixed', inset: 0, width: '100%', height: '100lvh', pointerEvents: 'none' }}
-      dpr={quality === 'high' ? [1, 1.5] : [1, 1.25]}
+      dpr={dpr}
+      frameloop={paused ? 'never' : 'always'}
       camera={{ position: [0, 0, 7], fov: 35 }}
       gl={{
         antialias: quality === 'high',
@@ -45,6 +54,11 @@ export default function Scene() {
         toneMapping: THREE.ACESFilmicToneMapping,
       }}
     >
+      {/* drop resolution when the device can't keep up, never raise it past the start */}
+      <PerformanceMonitor
+        onDecline={() => setDpr((d) => Math.max(0.6, +(d - 0.2).toFixed(2)))}
+        flipflops={3}
+      />
       <FluidBackground octaves={3} />
       <Suspense fallback={null}>
         <Lights />

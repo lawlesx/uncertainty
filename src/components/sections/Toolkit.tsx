@@ -18,7 +18,7 @@ export default function Toolkit() {
           text="The stuff in my bag."
           className="font-display text-4xl font-bold leading-[1.02] tracking-tight md:text-6xl xl:text-7xl"
         />
-        <div className="mt-16 grid gap-12 md:grid-cols-3 md:gap-8">
+        <div className="mt-16 grid gap-12 md:grid-cols-2 md:gap-x-10 xl:grid-cols-4 xl:gap-8">
           {toolkit.map((group, g) => (
             <div key={group.group}>
               <h3 className="mb-6 flex items-center justify-between border-b border-line pb-4 font-mono text-[11px] uppercase tracking-[0.25em] text-paper/70">

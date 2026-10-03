@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion, useScroll, useSpring } from 'motion/react'
 import { useEffect, useState } from 'react'
+import { setScenePaused } from '@/lib/store'
 import { nav, profile } from '@/lib/data'
 import { useApp } from './Providers'
 import Magnetic from './ui/Magnetic'
@@ -28,6 +29,13 @@ export default function Nav() {
   const { scrollYProgress } = useScroll()
   const progress = useSpring(scrollYProgress, { stiffness: 120, damping: 30 })
 
+  // the menu is opaque: stop rendering WebGL underneath it. Resume only once the
+  // close animation has finished so the two don't compete for the same frames.
+  useEffect(() => {
+    if (open) setScenePaused(true)
+  }, [open])
+  useEffect(() => () => setScenePaused(false), [])
+
   const go = (href: string) => {
     setOpen(false)
     scrollTo(href)
@@ -45,6 +53,8 @@ export default function Nav() {
         animate={ready ? { y: 0, opacity: 1 } : undefined}
         transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.6 }}
       >
+        {/* keeps the logo legible over scrolling text on small screens */}
+        <span className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[150%] bg-gradient-to-b from-ink/85 via-ink/50 to-transparent lg:hidden" aria-hidden />
         <a
           href="#top"
           onClick={(e) => {
@@ -105,10 +115,10 @@ export default function Nav() {
         </div>
       </motion.header>
 
-      <AnimatePresence>
+      <AnimatePresence onExitComplete={() => setScenePaused(false)}>
         {open && (
           <motion.div
-            className="fixed inset-0 z-[55] flex flex-col justify-end bg-ink/95 px-5 pb-10 pt-24 backdrop-blur-xl lg:hidden"
+            className="fixed inset-0 z-[55] flex flex-col justify-end bg-ink px-5 pb-10 pt-24 will-change-[clip-path] lg:hidden"
             initial={{ clipPath: 'circle(0% at calc(100% - 42px) 42px)' }}
             animate={{ clipPath: 'circle(150% at calc(100% - 42px) 42px)' }}
             exit={{ clipPath: 'circle(0% at calc(100% - 42px) 42px)' }}

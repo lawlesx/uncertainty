@@ -44,6 +44,11 @@ export const scene = {
   reducedMotion: false,
 }
 
+// Stop the WebGL loop while something opaque covers it (e.g. the mobile menu).
+export function setScenePaused(paused: boolean) {
+  window.dispatchEvent(new CustomEvent('scene:pause', { detail: paused }))
+}
+
 let last = { u: 0.5, v: 0.5, t: 0 }
 
 export function trackPointer(clientX: number, clientY: number) {

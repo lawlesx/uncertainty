@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { renders, socials, type Render } from '@/lib/data'
 import SectionLabel from '../ui/SectionLabel'
+import Icon from '../ui/Icon'
 
 const EASE = [0.16, 1, 0.3, 1] as const
 const useIsoLayoutEffect = typeof window === 'undefined' ? useEffect : useLayoutEffect
@@ -38,7 +39,7 @@ function RenderCard({ item, index, active }: { item: Render; index: number; acti
           <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.25em] text-paper/70">{item.medium}</p>
         </div>
         <span className="grid h-10 w-10 shrink-0 translate-y-3 place-items-center rounded-full bg-blood text-paper opacity-0 transition-all duration-500 group-hover:translate-y-0 group-hover:opacity-100">
-          {isVideo ? '▶' : '↗'}
+          <Icon name={isVideo ? 'play' : 'up-right'} className="h-4 w-4" />
         </span>
       </div>
     </a>

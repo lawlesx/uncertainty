@@ -11,7 +11,7 @@ import SplitReveal from '../ui/SplitReveal'
 function Badge() {
   const text = 'FRONTEND ✦ MOTION ✦ 3D ✦ GAMES ✦ '
   return (
-    <div className="absolute -right-6 -top-6 z-20 h-28 w-28 md:-right-10 md:-top-10 md:h-36 md:w-36">
+    <div className="absolute -right-1 -top-6 z-20 h-24 w-24 sm:-right-6 sm:h-28 sm:w-28 md:-right-10 md:-top-10 md:h-36 md:w-36">
       <svg viewBox="0 0 100 100" className="h-full w-full animate-spin-slow" aria-hidden>
         <defs>
           <path id="badge-circle" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0" />

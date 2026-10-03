@@ -6,7 +6,7 @@ import { useRef } from 'react'
 import * as THREE from 'three'
 import { pointer, scene } from '@/lib/store'
 
-type MTM = THREE.Material & { distortion: number; temporalDistortion: number; chromaticAberration: number }
+type MTM = THREE.Material & { distortion?: number; temporalDistortion?: number; chromaticAberration?: number }
 
 const ORBITERS = [
   { radius: 1.9, speed: 0.35, offset: 0, size: 0.16, tilt: 0.4, color: '#c6ff3d' },
@@ -77,9 +77,15 @@ export default function GlassCore({ quality = 'high' }: { quality?: 'high' | 'lo
     // cursor speed → jelly wobble
     const speed = Math.min(Math.hypot(pointer.vu, pointer.vv), 4)
     wobble.current += (speed * 0.35 - wobble.current) * (1 - Math.exp(-dt * 3))
-    mat.distortion = 0.25 + wobble.current * 0.9 * motion
-    mat.temporalDistortion = 0.08 + wobble.current * 0.25 * motion
-    mat.chromaticAberration = 0.35 + wobble.current * 0.5
+    if (quality === 'high') {
+      mat.distortion = 0.25 + wobble.current * 0.9 * motion
+      mat.temporalDistortion = 0.08 + wobble.current * 0.25 * motion
+      mat.chromaticAberration = 0.35 + wobble.current * 0.5
+    } else {
+      // no refraction to distort on phones: squash-and-stretch instead
+      const j = Math.sin(state.clock.elapsedTime * 16) * Math.min(wobble.current, 1) * 0.07 * motion
+      m.scale.set(1 + j, 1 - j, 1)
+    }
 
     // gentle breathing
     g.position.y += Math.sin(state.clock.elapsedTime * 0.8) * 0.04 * sc
@@ -97,28 +103,44 @@ export default function GlassCore({ quality = 'high' }: { quality?: 'high' | 'lo
     <group ref={group}>
       <mesh ref={mesh}>
         <torusGeometry args={[1, 0.42, quality === 'high' ? 96 : 48, quality === 'high' ? 200 : 96]} />
-        <MeshTransmissionMaterial
-          ref={material as never}
-          samples={quality === 'high' ? 8 : 4}
-          resolution={quality === 'high' ? 768 : 384}
-          backside={quality === 'high'}
-          backsideThickness={0.4}
-          thickness={0.55}
-          roughness={0.05}
-          ior={1.3}
-          chromaticAberration={0.35}
-          anisotropicBlur={0.2}
-          distortion={0.25}
-          distortionScale={0.45}
-          temporalDistortion={0.08}
-          iridescence={1}
-          iridescenceIOR={1.2}
-          iridescenceThicknessRange={[100, 900]}
-          clearcoat={1}
-          attenuationDistance={2.5}
-          attenuationColor="#ffffff"
-          color="#ffffff"
-        />
+        {quality === 'high' ? (
+          <MeshTransmissionMaterial
+            ref={material as never}
+            samples={8}
+            resolution={768}
+            backside
+            backsideThickness={0.4}
+            thickness={0.55}
+            roughness={0.05}
+            ior={1.3}
+            chromaticAberration={0.35}
+            anisotropicBlur={0.2}
+            distortion={0.25}
+            distortionScale={0.45}
+            temporalDistortion={0.08}
+            iridescence={1}
+            iridescenceIOR={1.2}
+            iridescenceThicknessRange={[100, 900]}
+            clearcoat={1}
+            attenuationDistance={2.5}
+            attenuationColor="#ffffff"
+            color="#ffffff"
+          />
+        ) : (
+          // phones: the refraction pass re-renders the whole scene every frame — use a cheap
+          // iridescent chrome finish that still picks up the coloured light
+          <meshPhysicalMaterial
+            ref={material as never}
+            color="#ffffff"
+            metalness={0.9}
+            roughness={0.12}
+            iridescence={1}
+            iridescenceIOR={1.5}
+            iridescenceThicknessRange={[100, 800]}
+            clearcoat={1}
+            clearcoatRoughness={0.05}
+          />
+        )}
       </mesh>
       <group ref={orbiters}>
         {ORBITERS.map((o, i) => (

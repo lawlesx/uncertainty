@@ -7,6 +7,7 @@ import SectionLabel from '../ui/SectionLabel'
 import SplitReveal from '../ui/SplitReveal'
 import Magnetic from '../ui/Magnetic'
 import ProjectCover from '../ui/ProjectCover'
+import Icon from '../ui/Icon'
 
 const EASE = [0.16, 1, 0.3, 1] as const
 
@@ -124,8 +125,8 @@ export default function Work() {
                       Code
                     </a>
                   )}
-                  <span className="grid h-10 w-10 place-items-center rounded-full border border-current transition-transform duration-500 group-hover:-rotate-45 md:h-12 md:w-12">
-                    →
+                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full border border-current transition-transform duration-500 group-hover:-rotate-45 md:h-12 md:w-12">
+                    <Icon name="right" className="h-4 w-4 md:h-5 md:w-5" />
                   </span>
                 </span>
                 <div className="relative col-span-3 aspect-[16/9] overflow-hidden rounded-xl md:hidden">
@@ -149,7 +150,7 @@ export default function Work() {
               rel="noreferrer"
               className="glass inline-flex items-center gap-3 rounded-full px-7 py-4 font-mono text-xs uppercase tracking-[0.2em] transition-colors hover:bg-paper hover:text-ink"
             >
-              More on GitHub <span aria-hidden>↗</span>
+              More on GitHub <Icon name="up-right" className="h-3.5 w-3.5" />
             </a>
           </Magnetic>
         </div>
