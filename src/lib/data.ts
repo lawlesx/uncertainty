@@ -1,6 +1,6 @@
 // All site content lives here. Search for "TODO" to find placeholders.
 
-const CAREER_START = new Date('2021-08-01') // Coinvise internship
+const CAREER_START = new Date('2022-07-01') // full-time at Coinvise (internship not counted)
 const yearsShipping = Math.floor((Date.now() - CAREER_START.getTime()) / (365.25 * 24 * 3600 * 1000))
 
 export const profile = {
@@ -189,10 +189,10 @@ const yt = (id: string) => ({ youtube: id, link: `https://www.youtube.com/watch?
 
 // Newest first.
 export const renders: Render[] = [
-  { title: 'The Silent Throne', medium: 'Unreal Engine · Animation', ...yt('jbqC7HRmse4') },
-  { title: 'Rift of the Fractured Light', medium: 'Unreal Engine · Animation', ...yt('w2-84Xhq85A') },
-  { title: 'The Ruined Throne', medium: 'Unreal Engine · Animation', ...yt('Pis-viimY9U') },
-  { title: 'The Highway', medium: 'Unreal Engine · Animation', ...yt('5NsJ_MCaXSA') },
+  { title: 'The Silent Throne', medium: 'Unreal Engine · Animation', image: '/images/renders/TheSilentThrone.webp', ...yt('jbqC7HRmse4') },
+  { title: 'Rift of the Fractured Light', medium: 'Unreal Engine · Animation', image: '/images/renders/RiftOfTheFracturedLight.webp', ...yt('w2-84Xhq85A') },
+  { title: 'The Ruined Throne', medium: 'Unreal Engine · Animation', image: '/images/renders/TheRuinedThrone.webp', ...yt('Pis-viimY9U') },
+  { title: 'The Highway', medium: 'Unreal Engine · Animation', image: '/images/renders/TheHighway.webp', ...yt('5NsJ_MCaXSA') },
   {
     title: 'Cave',
     medium: 'Blender · Animation',
