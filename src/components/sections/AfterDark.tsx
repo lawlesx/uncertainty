@@ -8,23 +8,32 @@ import SectionLabel from '../ui/SectionLabel'
 import Icon from '../ui/Icon'
 
 const EASE = [0.16, 1, 0.3, 1] as const
+
+// maxresdefault is 16:9 but not generated for every upload; hqdefault always exists but is
+// 4:3 with black bars baked in, so it gets scaled up to crop them away.
+const thumb = (item: Render, fallback = false) =>
+  item.image ?? `https://i.ytimg.com/vi/${item.youtube}/${fallback ? 'hqdefault' : 'maxresdefault'}.jpg`
 const useIsoLayoutEffect = typeof window === 'undefined' ? useEffect : useLayoutEffect
 
 function RenderCard({ item, index, active }: { item: Render; index: number; active: boolean }) {
   const isVideo = !!item.link && /youtube/.test(item.link)
+  const [fallback, setFallback] = useState(false)
   const className = `group relative block shrink-0 overflow-hidden rounded-2xl border border-paper/10 transition-[filter,opacity] duration-700 ${
     item.tall ? 'aspect-[9/16]' : 'aspect-[16/10]'
   } h-[48svh] md:h-[58svh] ${active ? 'opacity-100' : 'opacity-60 saturate-50'}`
 
   const body = (
     <>
-      <Image
-        src={item.image}
-        alt={`${item.title} — ${item.medium}`}
-        fill
-        sizes={item.tall ? '(max-width: 768px) 40vw, 30vh' : '(max-width: 768px) 80vw, 60vw'}
-        className="object-cover transition-transform duration-[1.4s] ease-[var(--ease-expo)] group-hover:scale-110"
-      />
+      <div className={`absolute inset-0 ${fallback ? 'scale-[1.34]' : ''}`}>
+        <Image
+          src={thumb(item, fallback)}
+          alt={`${item.title} — ${item.medium}`}
+          fill
+          sizes={item.tall ? '(max-width: 768px) 40vw, 30vh' : '(max-width: 768px) 80vw, 60vw'}
+          className="object-cover transition-transform duration-[1.4s] ease-[var(--ease-expo)] group-hover:scale-110"
+          onError={() => !item.image && setFallback(true)}
+        />
+      </div>
       <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent" />
       <span className="absolute left-4 top-4 font-mono text-[10px] uppercase tracking-[0.25em] text-paper/80">
         {String(index + 1).padStart(2, '0')}
@@ -117,7 +126,7 @@ export default function AfterDark() {
               exit={{ opacity: 0 }}
               transition={{ duration: 1.2, ease: EASE }}
             >
-              <Image src={renders[active].image} alt="" fill sizes="50vw" quality={40} className="object-cover blur-3xl" />
+              <Image src={thumb(renders[active], true)} alt="" fill sizes="50vw" quality={40} className="object-cover blur-3xl" />
             </motion.div>
           </AnimatePresence>
           <div className="absolute inset-0 bg-gradient-to-b from-ink via-ink/40 to-ink" />

@@ -180,11 +180,20 @@ export type Render = {
   title: string
   medium: string
   link?: string
-  image: string
+  image?: string // local still; defaults to the YouTube thumbnail when `youtube` is set
+  youtube?: string // video id
   tall?: boolean
 }
 
+const yt = (id: string) => ({ youtube: id, link: `https://www.youtube.com/watch?v=${id}` })
+
+// Newest first.
 export const renders: Render[] = [
+  // TODO: titles for the four newest videos
+  { title: 'Untitled IV', medium: 'Blender · Animation', ...yt('jbqC7HRmse4') },
+  { title: 'Untitled III', medium: 'Blender · Animation', ...yt('w2-84Xhq85A') },
+  { title: 'Untitled II', medium: 'Blender · Animation', ...yt('Pis-viimY9U') },
+  { title: 'Untitled I', medium: 'Blender · Animation', ...yt('5NsJ_MCaXSA') },
   {
     title: 'Cave',
     medium: 'Blender · Animation',
