@@ -7,6 +7,7 @@ import Preloader from '@/components/Preloader'
 import Providers from '@/components/Providers'
 import SceneLoader from '@/components/canvas/SceneLoader'
 import { profile, socials } from '@/lib/data'
+import { crawlerScript } from '@/lib/crawler'
 import { SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from '@/lib/site'
 import './globals.css'
 
@@ -93,7 +94,10 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${syne.variable} ${manrope.variable} ${mono.variable}`}>
+    <html lang="en" className={`${syne.variable} ${manrope.variable} ${mono.variable}`} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: crawlerScript }} />
+      </head>
       <body>
         <script
           type="application/ld+json"

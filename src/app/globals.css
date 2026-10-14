@@ -128,6 +128,17 @@ html.lenis body {
   }
 }
 
+/* Crawlers: no loader, and every reveal animation shown in its finished state */
+html[data-crawler] .preloader {
+  display: none !important;
+}
+html[data-crawler] main *,
+html[data-crawler] header {
+  opacity: 1 !important;
+  transform: none !important;
+  clip-path: none !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
