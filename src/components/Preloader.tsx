@@ -2,14 +2,11 @@
 
 import { animate, AnimatePresence, motion } from 'motion/react'
 import { useEffect, useRef, useState } from 'react'
+import { isCrawler } from '@/lib/crawler'
 import { useApp } from './Providers'
 
 const WORDS = ['Interfaces', 'Motion', 'Shaders', 'Worlds']
 
-const isCrawler = () =>
-  /bot|crawl|spider|slurp|lighthouse|headlesschrome|google-inspectiontool|bingpreview|facebookexternalhit|embedly|whatsapp/i.test(
-    navigator.userAgent,
-  )
 
 export default function Preloader() {
   const { setReady } = useApp()
@@ -58,7 +55,7 @@ export default function Preloader() {
       {!done && (
         <motion.div
           key="preloader"
-          className="fixed inset-0 z-[100] flex flex-col justify-between bg-ink p-5 md:p-10"
+          className="preloader fixed inset-0 z-[100] flex flex-col justify-between bg-ink p-5 md:p-10"
           initial={{ clipPath: 'inset(0% 0% 0% 0%)' }}
           exit={{ clipPath: 'inset(0% 0% 100% 0%)' }}
           transition={{ duration: 1.1, ease: [0.76, 0, 0.24, 1] }}
