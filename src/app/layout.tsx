@@ -82,7 +82,8 @@ const personJsonLd = {
   alumniOf: { '@type': 'CollegeOrUniversity', name: 'Nitte Meenakshi Institute of Technology' },
   address: { '@type': 'PostalAddress', addressLocality: 'Bangalore', addressCountry: 'IN' },
   knowsAbout: ['React', 'Next.js', 'TypeScript', 'WebGL', 'Three.js', 'Blender', 'Unreal Engine'],
-  sameAs: socials.map((s) => s.href),
+  // Other profiles that are clearly this person — helps Google tie them together for name searches
+  sameAs: [...socials.map((s) => s.href), 'https://lawlesx.hashnode.dev', 'https://devfolio.co/@LAWLESS'],
 }
 
 export const viewport: Viewport = {
