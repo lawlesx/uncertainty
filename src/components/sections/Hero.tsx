@@ -126,7 +126,7 @@ export default function Hero() {
             className="font-display text-[10vw] font-extrabold uppercase leading-[0.82] tracking-[-0.04em]"
             aria-label={profile.name}
           >
-            <BigWord word={profile.firstName} play={ready} delay={0.15} />
+            <BigWord word={profile.firstName} play={ready} delay={0.15} />{' '}
             <BigWord word={profile.lastName} play={ready} delay={0.5} />
           </h1>
           <motion.p

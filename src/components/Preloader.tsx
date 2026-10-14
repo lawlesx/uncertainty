@@ -6,6 +6,11 @@ import { useApp } from './Providers'
 
 const WORDS = ['Interfaces', 'Motion', 'Shaders', 'Worlds']
 
+const isCrawler = () =>
+  /bot|crawl|spider|slurp|lighthouse|headlesschrome|google-inspectiontool|bingpreview|facebookexternalhit|embedly|whatsapp/i.test(
+    navigator.userAgent,
+  )
+
 export default function Preloader() {
   const { setReady } = useApp()
   const [done, setDone] = useState(false)
@@ -14,6 +19,12 @@ export default function Preloader() {
   const bar = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
+    // Search engines and link-preview bots get the page straight away, with no intro to wait out
+    if (isCrawler()) {
+      setDone(true)
+      setReady(true)
+      return
+    }
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     const duration = reduce ? 0.4 : 2
     const fonts = document.fonts?.ready ?? Promise.resolve()
