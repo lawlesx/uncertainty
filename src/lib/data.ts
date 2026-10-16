@@ -109,9 +109,10 @@ export const projects: Project[] = [
     title: 'Clairvoyance',
     kind: 'AI · Data analysis',
     year: '2026',
-    github: 'https://github.com/lawlesx/clairvoyance', // not deployed (hosting costs)
+    link: 'https://frontend-production-5c77.up.railway.app/',
+    github: 'https://github.com/lawlesx/clairvoyance',
     image: '/images/work/Clairvoyance.webp',
-    note: 'Ask questions about any dataset in plain English. Upload a CSV or connect Postgres/MySQL — an AI agent writes the SQL, runs it and picks the right chart. Not deployed; the code is on GitHub.',
+    note: 'Ask questions about any dataset in plain English. Upload a CSV or connect Postgres/MySQL — an AI agent writes the SQL, runs it and picks the right chart.',
     color: '#22e1ff',
   },
   {
